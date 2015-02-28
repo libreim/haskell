@@ -1,0 +1,72 @@
+%% Paquetes y formato %%
+\documentclass{beamer} % Beamer
+\usepackage[spanish]{babel} % Traducciones
+\usepackage[utf8]{inputenc} % Uso de caracteres UTF-8
+\usepackage{amsfonts} %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}  % Paquetes de matemáticas  %
+\usepackage{amssymb}  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings} % Coloreado del código
+
+%% Comandos %%
+\newcommand{\iffd}{\overset{\Delta}{\iff}} % Si y sólo si por definición
+\newcommand{\N}{\mathbb{N}}                % Números naturales
+\newcommand{\R}{\mathbb{R}}                % Números reales
+\newcommand{\C}{\mathbb{C}}                % Números complejos
+\newcommand{\Power}{\mathcal{P}}           % Conjunto potencia
+\newcommand{\st}{\mathrel{} : \mathrel{}}  % Tal que (dos puntos)
+
+
+%% Temas %%	
+% Tema y tema de color
+\usetheme{Dresden}
+\usecolortheme{beaver}
+
+% Color de los enlaces (tex.stackexchange.com/questions/13423)
+\definecolor{links}{HTML}{DF0101}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+%% Título y otros %%
+\title{Introducción a Haskell}  % Título
+\subtitle{Y a la programación funcional}   % Subtítulo
+\author[@pbaeyens \and @M42]    % Autores (tex.stackexchange.com/questions/63259)
+{\texorpdfstring{
+    \begin{columns}
+      \column{.45\linewidth}
+      \centering
+      Pablo Baeyens\\
+      \href{http://www.github.com/pbaeyens}{@pbaeyens}
+      \column{.45\linewidth}
+      \centering
+      Mario Román\\
+      \href{http://www.github.com/M42}{@M42}
+    \end{columns}
+}{Pablo Baeyens \and Mario Román}}
+\date{OSL 2015} % Fecha
+
+
+%% Presentación %%
+\begin{document}
+
+  % Página de título
+  \frame{\titlepage}
+
+  % Índice
+  %\frame{
+  %  \frametitle{Índice}
+  %  \tableofcontents[currentsection]
+  %}
+
+  % Código fuente
+  \frame{
+    \frametitle{¡Contribuye!}
+    El código fuente de estas diapositivas está disponible en:
+    \begin{center}
+      \huge \href{http://github.com/M42/osl-talk-haskell}{github.com/M42/osl-talk-haskell}
+    \end{center}
+    Erratas, correcciones y aportaciones son bienvenidas.
+  }
+
+  % Secciones
+  \section{Bases de Haskell}
+\end{document}
