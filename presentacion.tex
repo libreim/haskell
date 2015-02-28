@@ -57,6 +57,22 @@
   %  \tableofcontents[currentsection]
   %}
 
+  % Secciones
+  \section{Haskell}
+  \section{Tipos}
+  \section{Funciones}
+  \section{Ejemplos}
+\begin{frame}[fragile]
+      \frametitle{Quicksort}
+	Implementación del algoritmo Quicksort
+ 	\begin{lstlisting}
+qsort []     = []
+qsort (x:xs) = qsort [y | y<-xs, y<=x] 
+            ++ [x]
+            ++ qsort [y | y<-xs, y>x]
+ 	\end{lstlisting}
+\end{frame}
+  
   % Código fuente
   \frame{
     \frametitle{¡Contribuye!}
@@ -67,6 +83,6 @@
     Erratas, correcciones y aportaciones son bienvenidas.
   }
 
-  % Secciones
-  \section{Bases de Haskell}
+
+    
 \end{document}
