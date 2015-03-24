@@ -1,0 +1,41 @@
+\section{Haskell}
+\begin{frame}[fragile]
+  \frametitle{Haskell Platform}
+  El paquete \texttt{haskell-platform} contiene el compilador, depurador, gestor de 
+  librerías y otras utilidades para programar en Haskell.
+  En otras distribuciones puede instalarse directamente \texttt{ghc} 
+  (Glasgow Haskell Compiler):
+  \begin{lstlisting}
+  sudo apt-get install haskell-platform
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{El intérprete: GHCi}
+  GHC es un compilador de Haskell con GHCi como intérprete asociado. 
+  El intérprete permite los siguientes comandos:
+  \begin{itemize}
+    \item \texttt{:q} \qquad  Quitar
+    \item \texttt{:l} \qquad  Cargar módulo
+    \item \texttt{:r} \qquad  Recargar módulos
+    \item \texttt{:t} \qquad  Consultar tipos
+  \end{itemize}
+  
+  Una vez cargado el intérprete podemos utilizarlo para probar el lenguaje.
+  Haskell permite operaciones aritméticas básicas, y operaciones con
+  cadenas, listas o booleanos.
+\end{frame}
+
+\begin{frame}[fragile]
+  Podemos probar el uso de un puñado de funciones simples. Nótese cómo las funciones
+  se escriben dejando sus argumentos a su lado y separados por espacios. ¡Estamos usando
+  \textbf{notación polaca}!
+  
+\begin{lstlisting}
+succ 9			-- El siguiente de 9
+min 28 51		-- El menor entre 28 y 51
+(max 6 4) * (succ 9)	-- El producto de lo definido
+(*) (max 6 4) (succ 9)	-- Notado como prefijo
+id 42			-- Identidad
+\end{lstlisting}
+\end{frame}
