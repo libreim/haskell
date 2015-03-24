@@ -27,15 +27,19 @@
 \end{frame}
 
 \begin{frame}[fragile]
-  Podemos probar el uso de un puñado de funciones simples. Nótese cómo las funciones
+  \frametitle{El intérprete: GHCi}
+  Podemos probar el uso de un puñado de funciones simples. Las funciones
   se escriben dejando sus argumentos a su lado y separados por espacios. ¡Estamos usando
   \textbf{notación polaca}!
   
 \begin{lstlisting}
-succ 9			-- El siguiente de 9
-min 28 51		-- El menor entre 28 y 51
-(max 6 4) * (succ 9)	-- El producto de lo definido
-(*) (max 6 4) (succ 9)	-- Notado como prefijo
-id 42			-- Identidad
+ghci> 3 + 4
+7
+ghci> (+) 2 9
+11
+ghci> succ 27
+28
+ghci> max 23 34
+34
 \end{lstlisting}
 \end{frame}
