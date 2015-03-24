@@ -14,6 +14,7 @@
 \newcommand{\C}{\mathbb{C}}                % Números complejos
 \newcommand{\Power}{\mathcal{P}}           % Conjunto potencia
 \newcommand{\st}{\mathrel{} : \mathrel{}}  % Tal que (dos puntos)
+\newcommand{\seccion}[1]{\input{./sections/#1}}           % Incluir secciones
 
 
 %% Temas %%	
@@ -24,6 +25,7 @@
 % Color de los enlaces (tex.stackexchange.com/questions/13423)
 \definecolor{links}{HTML}{DF0101}
 \hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
 
 
 %% Título y otros %%
@@ -86,34 +88,24 @@
   cadenas, listas o booleanos.
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   Podemos probar el uso de un puñado de funciones simples. Nótese cómo las funciones
   se escriben dejando sus argumentos a su lado y separados por espacios. ¡Estamos usando
-  \textbf{notación polaca}!.
+  \textbf{notación polaca}!
   
 \begin{lstlisting}
-succ 9				-- El siguiente de 9
-min 28 51			-- El menor entre 28 y 51
-(max 6 4) * (succ 9)		-- El producto de lo definido
-(*) (max 6 4) (succ 9)		-- Notado como prefijo
-id 42				-- Identidad
+succ 9			-- El siguiente de 9
+min 28 51		-- El menor entre 28 y 51
+(max 6 4) * (succ 9)	-- El producto de lo definido
+(*) (max 6 4) (succ 9)	-- Notado como prefijo
+id 42			-- Identidad
 \end{lstlisting}
 \end{frame}
 
   
   \section{Tipos}
   \section{Funciones}
-  \section{Ejemplos}
-\begin{frame}[fragile]
-      \frametitle{Quicksort}
-	Implementación del algoritmo Quicksort
- 	\begin{lstlisting}
-qsort []     = []
-qsort (x:xs) = qsort [y | y<-xs, y<=x] 
-            ++ [x]
-            ++ qsort [y | y<-xs, y>x]
- 	\end{lstlisting}
-\end{frame}
+  \seccion{examples.tex}
   
   % Código fuente
   \frame{
