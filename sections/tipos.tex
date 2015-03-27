@@ -1,0 +1,70 @@
+\section{Tipos}
+
+\begin{frame}[fragile]
+  \frametitle{Tipos}
+  Haskell tiene los tipos básicos ya construidos. Existen
+  \texttt{Int}, \texttt{Bool}, \texttt{Char}, \dots.
+  \begin{lstlisting}
+  ghci> :t True
+  True :: Bool
+  ghci> :t 'a'
+  'a' :: Char
+  ghci> :t "a string!"
+  "a string!" :: [Char]
+  ghci> :t 2
+  2 :: (Num a) => a
+  \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Clases de tipos}
+  También están definidas algunas clases de tipos, que agrupan a tipos con la misma interfaz.
+  Por ejemplo, la mayoría de los tipos son instancias de la clase \texttt{Eq}, porque disponen de una
+  función \texttt{==}.
+  
+  \begin{lstlisting}
+  ghci> :t 2
+  2 :: Num a => a
+  ghci> :t pi
+  pi :: Floating a => a
+  ghci> :t (==)
+  (==) :: Eq a => a -> a -> Bool
+  \end{lstlisting}
+  
+  Las instancias
+  de la clase \texttt{Num} pueden sumarse y multiplicarse, las instancias de \texttt{Show}
+  pueden convertirse a texto (String), y las instancias de \texttt{Integral} permiten 
+  calcular restos modulares sobre ellas.
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Variables de tipo}
+  Vemos que Haskell infiere siempre el tipo más general posible.
+  %% No sé cómo ni dónde contar esto.
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Constructores de tipos}
+  Podemos definir funciones
+  sobre tipos. Son constructores de tipos, que toman un tipo y nos dan otro.
+  \\~\\
+  Por ejemplo, el constructor \texttt{[]} construye listas de un tipo, y el 
+  constructor \texttt{Maybe} construye un tipo que puede tener o no un valor dado.
+  
+  \begin{lstlisting}
+  ghci> :t "Haskell!"
+  "Haskell!" :: [Char]
+  ghci> :t [1,2,3,4]
+  [1,2,3,4] :: (Num a) => [a]
+  ghci> :t [True, False, False]
+  [True, False, False] :: [Bool]
+  ghci> :t []
+  [] :: [a]
+  ghci> :t Just True
+  Just True :: Maybe Bool
+  \end{lstlisting}
+  
+\end{frame}
