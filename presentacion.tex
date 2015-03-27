@@ -7,16 +7,9 @@
 \usepackage{amssymb}  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Comandos %%
-\newcommand{\iffd}{\overset{\Delta}{\iff}} % Si y sólo si por definición
-\newcommand{\N}{\mathbb{N}}                % Números naturales
-\newcommand{\R}{\mathbb{R}}                % Números reales
-\newcommand{\C}{\mathbb{C}}                % Números complejos
-\newcommand{\Power}{\mathcal{P}}           % Conjunto potencia
-\newcommand{\st}{\mathrel{} : \mathrel{}}  % Tal que (dos puntos)
-\newcommand{\seccion}[1]{\input{./sections/#1}}           % Incluir secciones
+\newcommand{\seccion}[1]{\input{./sections/#1}} % Incluir secciones
 
-
-%% Temas %%	
+%% Temas %%
 % Tema y tema de color
 \usetheme{Dresden}
 \usecolortheme{beaver}
@@ -31,14 +24,13 @@
 \definecolor{title}{HTML}{bdc3d1}    % Títulos
 \definecolor{comments}{HTML}{BDBDBD} % Comentarios
 \definecolor{keywords}{HTML}{08388c} % Palabras clave
-\definecolor{strings}{HTML}{FA5858}  % Strings
-\definecolor{links}{HTML}{2C2C95}    % Enlaces
-\definecolor{bars}{HTML}{045FB4}     % Barras (gráfico)
+\definecolor{strings}{HTML}{0489B1}  % Strings
+\definecolor{links}{HTML}{DF0101}    % Enlaces
 
 % Código
 \usepackage{listings}
 \lstset{
-language=[LaTeX]TeX,
+language=haskell,
 basicstyle=\footnotesize,
 morekeywords={href,uselanguage,languagepath,column},
 otherkeywords={pause,usetheme,usecolortheme,useinnertheme,titlepage,tableofcontents,subtitle},
@@ -82,19 +74,11 @@ literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1
   \frame{\titlepage}
 
   % Índice
-  %\frame{
-  %  \frametitle{Índice}
-  %  \tableofcontents[currentsection]
-  %}
+  \frame{
+    \frametitle{Índice}
+    \tableofcontents
+  }
 
-
-
-
-  \seccion{haskell.tex}
-  \seccion{tipos.tex}
-  \section{Funciones}
-  \seccion{examples.tex}
-  
   % Código fuente
   \frame{
     \frametitle{¡Contribuye!}
@@ -105,5 +89,9 @@ literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1
     Erratas, correcciones y aportaciones son bienvenidas.
   }
 
-  
+  \seccion{haskell.tex}
+  \seccion{tipos.tex}
+  \section{Funciones}
+  \seccion{examples.tex}
+
 \end{document}
