@@ -1,5 +1,21 @@
 \section{Haskell}
 \begin{frame}[fragile]
+  \frametitle{Sin efectos secundarios}
+    Una función toma un argumento y devuelve una salida. Nada más. Ni
+    altera el mundo alrededor, ni cambia el valor de los argumentos.
+    \\~\\
+    Cuando llamamos una función en C++, puede cambiar nuestras variables
+    o escribir por pantalla. Eso hace que el orden en el que se llama a las
+    funciones importe.
+    \\~\\
+\begin{lstlisting}
+ int sum(int a, int b) {return a+b;}
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
   \frametitle{Haskell Platform}
   El paquete \texttt{haskell-platform} contiene el compilador, depurador, gestor de 
   librerías y otras utilidades para programar en Haskell.
