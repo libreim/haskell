@@ -13,9 +13,10 @@ Presentación de una introducción a Haskell.
     3. Tipos algebraicos. :heavy_check_mark:
     4. Constructores de tipos.
 3. Funciones
-    1. Currificación.
-    2. Funciones de orden superior.
-    1. Evaluación perezosa.
+    1. Reconocimiento de patrones
+    2. Currificación.
+    3. Funciones de orden superior.
+    4. Evaluación perezosa.
 3. Ejemplos
     1. Quicksort. :heavy_check_mark:
     2. Árboles.
