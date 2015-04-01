@@ -1,12 +1,11 @@
 \section{Ejemplos}
 
-\begin{frame}[fragile]
-  \frametitle{Quicksort}
+\begin{frame}[fragile]{Quicksort}
   Implementación del algoritmo Quicksort
-\begin{lstlisting}
-qsort []     = []
-qsort (x:xs) = qsort [y | y<-xs, y<=x] 
-            ++ [x]
-            ++ qsort [y | y<-xs, y>x]
-\end{lstlisting}
+  \begin{lstlisting}[language=haskell]
+    qsort []     = []
+    qsort (x:xs) = qsort [y | y<-xs, y<=x]
+                ++ [x]
+                ++ qsort [y | y<-xs, y>x]
+  \end{lstlisting}
 \end{frame}

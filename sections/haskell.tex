@@ -1,34 +1,39 @@
 \section{Haskell}
-\begin{frame}[fragile]
-  \frametitle{Sin efectos secundarios}
-    Una función toma un argumento y devuelve una salida. Nada más. Ni
-    altera el mundo alrededor, ni cambia el valor de los argumentos.
-    \\~\\
-    Cuando llamamos una función en C++, puede cambiar nuestras variables
-    o escribir por pantalla. Eso hace que el orden en el que se llama a las
-    funciones importe.
-    \\~\\
-\begin{lstlisting}
- int sum(int a, int b) {return a+b;}
-\end{lstlisting}
 
-\end{frame}
-
-
-\begin{frame}[fragile]
-  \frametitle{Haskell Platform}
-  El paquete \texttt{haskell-platform} contiene el compilador, depurador, gestor de 
+\begin{frame}[fragile]{Instalando Haskell Platform}
+  El paquete \texttt{haskell-platform} contiene el compilador, depurador, gestor de
   librerías y otras utilidades para programar en Haskell.
-  En otras distribuciones puede instalarse directamente \texttt{ghc} 
+  En otras distribuciones puede instalarse directamente \texttt{ghc}
   (Glasgow Haskell Compiler):
-  \begin{lstlisting}
+  \espacio
+
+  \begin{lstlisting}[language=bash]
   sudo apt-get install haskell-platform
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}
-  \frametitle{El intérprete: GHCi}
-  GHC es un compilador de Haskell con GHCi como intérprete asociado. 
+\begin{frame}[fragile]{Sin efectos secundarios}
+    En los lenguajes de programación funcional, una función toma un argumento y
+    devuelve una salida. No altera el mundo alrededor ni cambia el valor de los argumentos.
+
+    \espacio
+
+    En lenguajes imperativos, cuando llamamos a una función puede cambiar nuestras
+     variables o escribir por pantalla. Eso hace que el orden de llamada de las
+    funciones importe.
+
+    \espacio
+
+    % programmers.stackexchange.com/questions/40297/
+  \begin{lstlisting}[language=C++]
+     int n = 0;
+     int next_n() { return n++; }
+     next_n(); // n = 1
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{El intérprete: GHCi}
+  GHC es un compilador de Haskell con GHCi como intérprete asociado.
   El intérprete permite los siguientes comandos:
   \begin{itemize}
     \item \texttt{:q} \qquad  Quitar
@@ -36,26 +41,25 @@
     \item \texttt{:r} \qquad  Recargar módulos
     \item \texttt{:t} \qquad  Consultar tipos
   \end{itemize}
-  
+
   Una vez cargado el intérprete podemos utilizarlo para probar el lenguaje.
   Haskell permite operaciones aritméticas básicas, y operaciones con
   cadenas, listas o booleanos.
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{El intérprete: GHCi}
+\begin{frame}[fragile]{El intérprete: GHCi}
   Podemos probar el uso de un puñado de funciones simples. Las funciones
   se escriben dejando sus argumentos a su lado y separados por espacios. ¡Estamos usando
   \textbf{notación polaca}!
-  
-\begin{lstlisting}
-ghci> 3 + 4
-7
-ghci> (+) 2 9
-11
-ghci> succ 27
-28
-ghci> max 23 34
-34
-\end{lstlisting}
+
+  \begin{lstlisting}
+  ghci> 3 + 4
+  7
+  ghci> (+) 2 9
+  11
+  ghci> succ 27
+  28
+  ghci> max 23 34
+  34
+  \end{lstlisting}
 \end{frame}
