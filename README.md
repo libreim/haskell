@@ -11,7 +11,7 @@ Presentación de una introducción a Haskell.
     1. Tipos, funciones y variables de tipo.
     2. Clases. :heavy_check_mark:
     3. Tipos algebraicos. :heavy_check_mark:
-    4. Constructores de tipos.
+    4. Constructores de tipos. :heavy_check_mark:
 3. Funciones
     1. Reconocimiento de patrones
     2. Currificación.

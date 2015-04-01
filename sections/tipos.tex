@@ -103,3 +103,24 @@ ghci> :t Just True
 Just True :: Maybe Bool
   \end{lstlisting}
 \end{frame}
+
+\begin{frame}[fragile]{Constructores de tipos}
+  Sus definiciones son:
+
+  \espacio
+
+  \begin{lstlisting}
+data [a]     = [] | a:[a]
+data Maybe a = Nothing | Just a
+  \end{lstlisting}
+
+  \espacio
+
+  En las \textbf{listas}, el primer constructor es la lista vacía y
+  el segundo antepone un elemento a otra lista.
+
+  \espacio
+
+  En el caso de \textbf{Maybe} podemos tener algo de tipo \texttt{a} (\texttt{Just a})
+  o nada (\texttt{Nothing}).
+\end{frame}
