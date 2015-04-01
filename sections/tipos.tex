@@ -65,8 +65,6 @@ y sobre las de \texttt{Integral} pueden calcularse restos modulares.
   Creamos nuevos tipos definiendo \textbf{constructores de datos}: funciones que
   devuelven valores del tipo que definimos. % Quizás debería redactar esto de otra forma (?)
 
-  Utilizamos para ello \texttt{data}, separando los constructores con \texttt{|}
-
   \espacio
 
   \begin{lstlisting}
@@ -78,8 +76,8 @@ data Triangle = Triangle Point Point Point
 
   \espacio
 
-  Como vemos, podemos definir tipos a partir de otros, y tener constructores que
-  no tomen argumentos, como \texttt{False} o \texttt{True}.
+  Podemos definir tipos que dependan de otros
+  o tipos con constructores sin argumentos, como \texttt{Bool}.
 \end{frame}
 
 \begin{frame}[fragile]{Constructores de tipos}
