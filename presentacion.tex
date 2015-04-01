@@ -41,8 +41,6 @@
 \lstset{
 language=haskell,
 basicstyle=\footnotesize,
-morekeywords={href,uselanguage,languagepath,column},
-otherkeywords={pause,usetheme,usecolortheme,useinnertheme,titlepage,tableofcontents,subtitle},
 breaklines=true,
 backgroundcolor=\color{backg},
 keywordstyle=\color{keywords},
@@ -55,6 +53,8 @@ literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1
          {ú}{{\'u}}1 {ñ}{{\~n}}1 {¡}{{\textexclamdown}}1
          {¿}{{?`}}1
 }
+% Entorno compatible con haskell literario
+\newenvironment{code}{\begin{lstlisting}[language=haskell]}{\end{lstlisting}}
 
 
 %% Título y otros %%
