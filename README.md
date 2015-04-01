@@ -5,19 +5,19 @@ Presentación de una introducción a Haskell.
 
 1. El lenguaje
     1. Haskell
-    2. Uso del intérprete y el compilador
+    2. Uso del intérprete y el compilador :heavy_check_mark:
     3. Programación funcional
 2. Sistema de tipos
     1. Tipos, funciones y variables de tipo.
-    2. Clases.
-    3. Tipos algebraicos.
+    2. Clases. :heavy_check_mark:
+    3. Tipos algebraicos. :heavy_check_mark:
     4. Constructores de tipos.
 3. Funciones
     1. Currificación.
     2. Funciones de orden superior.
     1. Evaluación perezosa.
 3. Ejemplos
-    1. Quicksort.
+    1. Quicksort. :heavy_check_mark:
     2. Árboles.
     3. Problema del caballo.
     4. Sucesión de Fibonacci.
