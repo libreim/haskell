@@ -1,13 +1,22 @@
 %% Paquetes y formato %%
+
+\PassOptionsToPackage{unicode}{hyperref}  % Evita errores con caracteres no ASCII
+\PassOptionsToPackage{naturalnames}{hyperref} % tex.stackexchange.com/questions/10555
 \documentclass{beamer} % Beamer
 \usepackage[spanish]{babel} % Traducciones
 \usepackage[utf8]{inputenc} % Uso de caracteres UTF-8
 \usepackage{amsfonts} %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{amsmath}  % Paquetes de matemáticas  %
 \usepackage{amssymb}  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{lmodern}        % Fuentes de tamaño arbitrario
+\usepackage[T1]{fontenc}    % Permite copiar código y evita errores
+\uselanguage{Spanish}       % Traducciones beamer
+\languagepath{Spanish}      % (tex.stackexchange.com/questions/168208)
+
 
 %% Comandos %%
 \newcommand{\seccion}[1]{\input{./sections/#1}} % Incluir secciones
+\newcommand{\espacio}{\vspace*{\baselineskip}}  % Añade espacios
 
 %% Temas %%
 % Tema y tema de color
