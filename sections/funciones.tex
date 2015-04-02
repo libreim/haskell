@@ -1,0 +1,43 @@
+\section{Funciones}
+
+\begin{frame}[fragile]{Reconocimiento de patrones}
+  Para definir una función sobre un tipo, definimos su comportamiento para cada
+  constructor de datos del tipo:
+
+  \espacio
+
+  \begin{lstlisting}
+neg :: Bool -> Bool
+neg False = True
+neg True  = False
+  \end{lstlisting}
+
+  \espacio
+  
+  Podemos utilizar variables para sustituir cualquier argumento del constructor:
+
+  \espacio
+
+  \begin{lstlisting}
+suma (Point a b) (Point c d) = Point (a+c) (b+d)
+opuesto (Point a b) = Point (-a) (-b)
+resta a b = suma a (opuesto b)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Recursividad}
+  El tipo lista y las definiciones recursivas son la base de los programas de Haskell.
+  Por ejemplo, para calcular la \textbf{longitud de una lista}, definimos la función
+  \texttt{len} para sus dos constructores:
+
+  \espacio
+
+  \begin{lstlisting}
+len []     = 0
+len (_:xs) = 1 + len xs
+  \end{lstlisting}
+
+    \espacio
+
+  El primer constructor nos proporciona el caso base y el segundo la ecuación recursiva.
+\end{frame}
