@@ -54,3 +54,27 @@ len (_:xs) = 1 + len xs
   \end{lstlisting}
   Es lo mismo decir \texttt{(+3) 5} que \texttt{(+) 3 5}.
 \end{frame}
+
+
+\begin{frame}[fragile]{Funciones de orden superior}
+  Son las funciones que toman funciones como argumento.
+  \\~\\
+  \texttt{map} toma una función y devuelve su versión sobre listas,
+  elemento a elemento:
+  \begin{lstlisting}
+map :: (a -> b) -> ([a] -> [b])
+  \end{lstlisting}
+  Ejemplo: \texttt{map not [True, True, False]}
+  \\~\\
+  \textt{foldr} toma una función y un acumulador y aplica todos los elementos
+  de la lista contra el acumulador.
+  \begin{lstlisting}
+foldr :: (a -> a -> a) -> a -> [a] -> a
+  \end{lstlisting}
+  Ejemplo: \texttt{foldr (*) 1 [2,3,5,7]}
+\end{frame}
+
+\begin{frame}[fragile]{Especialización}
+  Ahora, a partir de funciones tan generales, podemos crear las funciones básicas
+  trivialmente
+\end{frame}
