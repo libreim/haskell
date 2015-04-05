@@ -27,12 +27,15 @@ not :: Bool -> Bool
   \espacio
 
   % No sé si este es el mejor ejemplo
+  % + Sirve para introducir ahora currificación y define una función sin usar 
+  % + nada, yo lo veo bien. 
   \begin{lstlisting}
 ghci> let nand a b = not (a && b)
 ghci> :t nand
 nand :: Bool -> Bool -> Bool
   \end{lstlisting}
 \end{frame}
+
 
 \begin{frame}[fragile]{Clases de tipos}
 Las clases de tipos agrupan a tipos con la misma interfaz.
