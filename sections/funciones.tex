@@ -41,3 +41,16 @@ len (_:xs) = 1 + len xs
 
   El primer constructor nos proporciona el caso base y el segundo la ecuación recursiva.
 \end{frame}
+
+\begin{frame}[fragile]{Currificación}
+  ¿Por qué el tipo de \texttt{(+)}, por ejemplo, es \texttt{(Num a) => a -> a -> a} en lugar de
+  ser \texttt{(Num a) => (a,a) -> a}?
+  \\~\\
+  Eso nos permite aplicar parcialmente una función. El tipo hay que leerlo realmente como
+  \texttt{a -> (a -> a)}, es decir, al darle un número nos devuelve otra función:
+    \begin{lstlisting}
+(+)  :: Num a => a -> a -> a
+(+3) :: Num a => a -> a
+  \end{lstlisting}
+  Es lo mismo decir \texttt{(+3) 5} que \texttt{(+) 3 5}.
+\end{frame}
