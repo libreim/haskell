@@ -57,7 +57,7 @@ len (_:xs) = 1 + len xs
 
 
 \begin{frame}[fragile]{Funciones de orden superior}
-  Son las funciones que toman funciones como argumento.
+  Son funciones que toman funciones como argumento.
   \\~\\
   \texttt{map} toma una función y devuelve su versión sobre listas,
   elemento a elemento:
@@ -76,5 +76,15 @@ foldr :: (a -> a -> a) -> a -> [a] -> a
 
 \begin{frame}[fragile]{Especialización}
   Ahora, a partir de funciones tan generales, podemos crear las funciones básicas
-  trivialmente
+  trivialmente:
+  \begin{lstlisting}
+ negation = map not
+ lowerText = map toLower
+ sum = foldr (+) 0
+ prod = foldr (*) 1
+ concat = foldr (++) []
+ and = foldr (&&) True
+  \end{lstlisting}
+  Ejemplo: \texttt{lowerText ''aBcDEfG''}
+  
 \end{frame}

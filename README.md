@@ -21,6 +21,7 @@ Presentación de una introducción a Haskell.
     - [x] Quicksort
     - [ ] Árboles
     - [ ] Problema del caballo
+    - [ ] Monoides
     - [ ] Sucesión de Fibonacci
 4. Más
     - [ ] IO. Mónadas
