@@ -1,9 +1,18 @@
 \section{Más}
 
+\begin{frame}[fragile]{Hoogle}
+  Cuando no encontramos una función con el tipo que queremos, podemos
+  buscarla por tipo en Hoogle:
+  
+  \begin{center}
+  \includegraphics[scale=0.35]{./images/hoogle.png}
+  \end{center}
+\end{frame}
+
+
 \begin{frame}[fragile]{Curry-Howard}
-  Como las instancias sólo pueden construirse desde los constructores definidos
-  y las funciones no tienen efectos secundarios, podemos razonar la
-  corrección del código con inducción estructural:
+  Como las funciones no tienen efectos secundarios, podemos razonar la
+  corrección del código por inducción:
 
   \begin{lstlisting}[language=haskell]
 qsort []     = []
@@ -12,6 +21,19 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
             ++ qsort [y | y<-xs, y>x]
   \end{lstlisting}
 
-  \textit{Quicksort} funciona porque ordena correctamente una lista vacía y porque, supuesto
-  que funcione para listas menores que una dada, funciona para ella.
+  \textbf{Demostración:} \textit{Quicksort} funciona porque:
+  \begin{itemize}
+   \item ordena correctamente una lista vacía.
+   \item la lista creada mantiene el orden entre las tres partes
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Curry-Howard}
+  \textbf{Idris}, construido encima de Haskell, demuestra que los
+  programas son correctos.
+  
+  \begin{center}
+  \includegraphics[scale=0.28]{./images/idris.png}
+  \end{center}
 \end{frame}
