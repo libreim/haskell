@@ -42,6 +42,35 @@ La forma obvia de calcular la sucesión de Fibonacci es mediante recursividad
 sobre los naturales. 
 
 \begin{code}
+fib' 0 = 1
+fib' 1 = 1
+fib' n = (fib' (n-1)) + (fib' (n-2)) 
 \end{code}
 
-Es sin embargo muy poco eficiente.
+Es, sin embargo, muy poco eficiente. Hay que volver a calcular todas las sumas
+cada vez que se calcula un término. Sería más útil tener una lista infinita
+de los términos de la sucesión, y tomar el que necesitáramos cada vez con el 
+operador `!!`. [^hwiki-fib]
+
+\begin{code}
+fib n = fibs !! n
+\end{code}
+
+[^hwiki-fib]: The Fibonacci Sequence. [Haskell wiki](https://wiki.haskell.org/The_Fibonacci_sequence).
+
+La definición de Fibonacci usará recursión de punto fijo,
+ocupará ahora una línea y tendrá eficiencia lineal.
+
+\begin{code}
+fibs = 1 : 1 : zipWith (+) fibs (tail fibs)
+\end{code}
+
+**¿Por qué funciona esta definición?** Lo que estamos haciendo es sumarla contra
+sí misma desplazada una posición; la suma es algo así:
+
+~~~haskell
+       1 : 1 : 2 : 3 : 5 : 8 : ...
+       +   1 : 1 : 2 : 3 : 5 : ...
+      --------------------------------
+       1 : 2 : 3 : 5 : 8 : 13 ....
+~~~
