@@ -82,7 +82,7 @@ map :: (a -> b) -> ([a] -> [b])
   \ejemplo{map not [True, True, False]}
 
   \espacio
-  
+
   \texttt{foldr} toma una función y un acumulador
   y aplica los elementos de la lista contra el acumulador.
   \begin{lstlisting}
@@ -111,4 +111,30 @@ foldr :: (a -> b -> b) -> b -> [a] -> b
   \ejemplo{lowerText ''aBcDEfG''}
 
   \note{Podemos escribirlas sin todos los argumentos por la currificación.}
+\end{frame}
+
+\begin{frame}[fragile]{Evaluación perezosa}
+  Haskell retrasa la evaluación de una expresión todo lo posible:
+  \begin{lstlisting}
+head [1..10**9]     -- Sólo evalua 1
+  \end{lstlisting}
+
+  \espacio
+
+  Esto permite la modularización del código:
+  \begin{lstlisting}
+min :: Ord a => [a] -> a
+min = head . sort
+  \end{lstlisting}
+\espacio
+  Y el uso de estructuras infinitas:
+  \begin{lstlisting}
+unos      = 1:unos
+diezDoses = take 10 (map (+1) unos)
+  \end{lstlisting}
+\note{
+Haskell comprueba el tipo de las expresiones (evaluando la WHNF) por lo que
+length [1, 1/0, 2] es válido pero length [1, "adas", 2] no.
+min es O(n) + O(n/2) + O(n/4) + ... = O(n)
+}
 \end{frame}
