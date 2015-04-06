@@ -43,12 +43,10 @@ Por ejemplo, la clase \texttt{Eq}, define la función \texttt{==}.
 
 \espacio
 
+% Quito las llamadas al intérprete porque ya las hemos enseñado antes
 \begin{lstlisting}
-ghci> :t 2
 2 :: Num a => a
-ghci> :t pi
 pi :: Floating a => a
-ghci> :t (==)
 (==) :: Eq a => a -> a -> Bool
 \end{lstlisting}
 
@@ -60,8 +58,20 @@ y sobre las de \texttt{Integral} pueden calcularse restos modulares.
 \end{frame}
 
 \begin{frame}[fragile]{Variables de tipo}
-  Haskell infiere siempre el tipo más general posible.
+  Haskell infiere siempre el tipo más general posible. Cuando
+  algo puede tener varios tipos, coloca una \textbf{variable
+  de tipo}, que puede ser luego sustituida.
   %% No sé cómo ni dónde contar esto.
+  %% + Voy a contar que la a es una variable y puede sustituirse.
+  %% + Siéntete libre de cambiarlo luego.
+  \begin{lstlisting}
+ id :: a -> a
+ (+) :: Num a => a -> a -> a
+ (<) :: Ord a => a -> a -> Bool
+  \end{lstlisting}
+  
+  Y la variable puede verse restringida por pertenecer a una clase.
+  
 \end{frame}
 
 \begin{frame}[fragile]{Tipos algebraicos}
@@ -91,17 +101,14 @@ data Triangle = Triangle Point Point Point
   Por ejemplo, \texttt{[]} construye listas, y \texttt{Maybe} construye un tipo
   que puede tener o no un valor.
 
+  % Quito las llamadas al intérprete porque ya las hemos enseñado antes
   \begin{lstlisting}
-ghci> :t "Haskell!"
 "Haskell!" :: [Char]
-ghci> :t [1,2,3,4]
 [1,2,3,4] :: (Num a) => [a]
-ghci> :t [True, False, False]
 [True, False, False] :: [Bool]
-ghci> :t []
 [] :: [a]
-ghci> :t Just True
 Just True :: Maybe Bool
+Nothing :: Maybe a
   \end{lstlisting}
 \end{frame}
 
