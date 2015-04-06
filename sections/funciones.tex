@@ -49,8 +49,9 @@ len (_:xs) = 1 + len xs
   Eso nos permite aplicar parcialmente una función. El tipo hay que leerlo realmente como
   \texttt{a -> (a -> a)}, es decir, al darle un número nos devuelve otra función:
     \begin{lstlisting}
-(+)  :: Num a => a -> a -> a
-(+3) :: Num a => a -> a
+(+)    :: Num a => a -> a -> a
+(+3)   :: Num a => a -> a
+(+3) 5 :: Num a => a
   \end{lstlisting}
   Es lo mismo decir \texttt{(+3) 5} que \texttt{(+) 3 5}.
 \end{frame}
@@ -75,8 +76,7 @@ foldr :: (a -> a -> a) -> a -> [a] -> a
 \end{frame}
 
 \begin{frame}[fragile]{Especialización}
-  Ahora, a partir de funciones tan generales, podemos crear las funciones básicas
-  trivialmente:
+  Ahora, a partir de funciones tan generales, podemos crear las funciones básicas:
   \begin{lstlisting}
  negation = map not
  lowerText = map toLower
@@ -86,5 +86,6 @@ foldr :: (a -> a -> a) -> a -> [a] -> a
  and = foldr (&&) True
   \end{lstlisting}
   Ejemplo: \texttt{lowerText ''aBcDEfG''}
-  
+  \\~\\
+  Podemos escribirlas sin todos los argumentos gracias a la Currificación.
 \end{frame}
