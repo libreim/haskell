@@ -31,3 +31,17 @@ height :: (Integral b) => Tree a -> b
 height Empty = 0
 height Node x lft rgt = 1 + (max (height lft) (height rgt))
 \end{code}
+
+El *preorden*, *inorden* y *postorden* surgen también directamente con
+recursividad. El caso trivial es la lista vacía, y en otro caso, sólo hay que
+colocar el nodo y reordenar los órdenes de los subárboles.
+
+\begin{code}
+preorder :: Tree a -> a
+preorder Empty = []
+preorder Node x lft rgt = (preorder lft) ++ [x] ++ (preorder rgt)
+\end{code}
+
+
+Inserción ordenada
+-----------------
