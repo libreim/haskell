@@ -4,14 +4,14 @@
   Como las instancias sólo pueden construirse desde los constructores definidos
   y las funciones no tienen efectos secundarios, podemos razonar fácilmente la
   corrección del código. Usamos inducción estructural:
-  
+
   \begin{lstlisting}[language=haskell]
 qsort []     = []
 qsort (x:xs) = qsort [y | y<-xs, y<=x]
             ++ [x]
             ++ qsort [y | y<-xs, y>x]
   \end{lstlisting}
-  
-  Por ejemplo, quicksort funciona porque ordena correctamente una lista vacía y porque, supuesto
+
+  \textit{Quicksort} funciona porque ordena correctamente una lista vacía y porque, supuesto
   que funcione para listas menores que una dada, funciona para ella.
 \end{frame}
