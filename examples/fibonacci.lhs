@@ -31,7 +31,7 @@ operador:
 Funcionará también con listas infinitas:
 
 \begin{code}
-oddnumbers = zipWith (+) naturals naturals
+evenNumbers = zipWith (+) naturals naturals
 \end{code}
 
 
