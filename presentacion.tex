@@ -1,5 +1,4 @@
 %% Paquetes y formato %%
-
 \PassOptionsToPackage{unicode}{hyperref}  % Evita errores con caracteres no ASCII
 \PassOptionsToPackage{naturalnames}{hyperref} % tex.stackexchange.com/questions/10555
 \documentclass{beamer} % Beamer
@@ -18,9 +17,11 @@
 \usepackage{pgfpages} %  Beamer User Guide sections 19.6 and 22
 %\setbeameroption{show notes on second screen} % Permite añadir notas con \note
 
+
 %% Comandos %%
 \newcommand{\seccion}[1]{\input{./sections/#1}} % Incluir secciones
 \newcommand{\espacio}{\vspace*{\baselineskip}}  % Añade espacios
+
 
 %% Temas %%
 % Tema y tema de color
@@ -30,7 +31,6 @@
 % Color de los enlaces (tex.stackexchange.com/questions/13423)
 \definecolor{links}{HTML}{DF0101}
 \hypersetup{colorlinks,linkcolor=,urlcolor=links}
-
 
 % Colores
 \definecolor{backg}{HTML}{F2F2F2}    % Fondo
@@ -55,10 +55,8 @@ tabsize=2,
 extendedchars=true,
 literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1
          {ú}{{\'u}}1 {ñ}{{\~n}}1 {¡}{{\textexclamdown}}1
-         {¿}{{?`}}1
+         {¿}{{?`}}1 {->}{{$\rightarrow$}}1 {=>}{{$\Rightarrow$}}1
 }
-% Entorno compatible con haskell literario
-%\newenvironment{code}{\begin{lstlisting}[language=haskell]}{\end{lstlisting}}
 
 
 %% Título y otros %%
