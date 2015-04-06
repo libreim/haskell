@@ -1,8 +1,8 @@
 \section{Tipos}
 
 \begin{frame}[fragile]{Tipos}
-  Haskell tiene los tipos básicos ya construidos. Existen
-  \texttt{Int}, \texttt{Bool}, \texttt{Char}, \dots
+  Usamos \texttt{:t} para ver el tipo de una expresión:
+  \espacio
   \begin{lstlisting}
 ghci> :t True
 True :: Bool
@@ -13,6 +13,11 @@ ghci> :t "Una string!"
 ghci> :t not
 not :: Bool -> Bool
   \end{lstlisting}
+  \note{
+  Los tipos se escriben con su primera letra mayúscula.
+  Haskell tiene los tipos básicos ya construidos. Existen
+  \texttt{Int}, \texttt{Bool}, \texttt{Char}, \dots
+  }
 \end{frame}
 
 \begin{frame}[fragile]{Tipos}
@@ -27,8 +32,8 @@ not :: Bool -> Bool
   \espacio
 
   % No sé si este es el mejor ejemplo
-  % + Sirve para introducir ahora currificación y define una función sin usar 
-  % + nada, yo lo veo bien. 
+  % + Sirve para introducir ahora currificación y define una función sin usar
+  % + nada, yo lo veo bien.
   \begin{lstlisting}
 ghci> let nand a b = not (a && b)
 ghci> :t nand
@@ -43,10 +48,9 @@ Por ejemplo, la clase \texttt{Eq}, define la función \texttt{==}.
 
 \espacio
 
-% Quito las llamadas al intérprete porque ya las hemos enseñado antes
 \begin{lstlisting}
-2 :: Num a => a
-pi :: Floating a => a
+2    :: Num a => a
+pi   :: Floating a => a
 (==) :: Eq a => a -> a -> Bool
 \end{lstlisting}
 
@@ -58,39 +62,38 @@ y sobre las de \texttt{Integral} pueden calcularse restos modulares.
 \end{frame}
 
 \begin{frame}[fragile]{Variables de tipo}
-  Haskell infiere siempre el tipo más general posible. Cuando
-  algo puede tener varios tipos, coloca una \textbf{variable
-  de tipo}, que puede ser luego sustituida.
-  %% No sé cómo ni dónde contar esto.
-  %% + Voy a contar que la a es una variable y puede sustituirse.
-  %% + Siéntete libre de cambiarlo luego.
-  \begin{lstlisting}
- id :: a -> a
- (+) :: Num a => a -> a -> a
- (<) :: Ord a => a -> a -> Bool
-  \end{lstlisting}
-  
-  Y la variable puede verse restringida por pertenecer a una clase.
-  
-\end{frame}
-
-\begin{frame}[fragile]{Tipos algebraicos}
-  Creamos nuevos tipos definiendo \textbf{constructores de datos}: funciones que
-  devuelven valores del tipo que definimos. % Quizás debería redactar esto de otra forma (?)
+  Haskell infiere siempre el tipo más general.
+  Para ello usa \textbf{variables de tipo}, que pueden ser sustituidas:
 
   \espacio
 
   \begin{lstlisting}
-data () = () -- Tipo void
+ id  :: a -> a
+ (+) :: Num a => a -> a -> a
+ (<) :: Ord a => a -> a -> Bool
+  \end{lstlisting}
+
+  \espacio
+
+  Las variables pueden restringirse a pertenecer a una clase.
+
+\end{frame}
+
+\begin{frame}[fragile]{Tipos algebraicos}
+  Creamos nuevos tipos definiendo \textbf{constructores de datos}: funciones que
+  devuelven valores del tipo que definimos.
+
+  \espacio
+
+  \begin{lstlisting}
+data () = () -- Tipo None
 data Bool = False | True
 data Point = Point Float Float
 data Triangle = Triangle Point Point Point
   \end{lstlisting}
 
-  \espacio
-
-  Podemos definir tipos que dependan de otros
-  o tipos con constructores sin argumentos, como \texttt{Bool}.
+  \note{Podemos definir tipos que dependan de otros
+  o tipos con constructores sin argumentos, como \texttt{Bool}.}
 \end{frame}
 
 \begin{frame}[fragile]{Constructores de tipos}
@@ -98,10 +101,6 @@ data Triangle = Triangle Point Point Point
 
   \espacio
 
-  Por ejemplo, \texttt{[]} construye listas, y \texttt{Maybe} construye un tipo
-  que puede tener o no un valor.
-
-  % Quito las llamadas al intérprete porque ya las hemos enseñado antes
   \begin{lstlisting}
 "Haskell!" :: [Char]
 [1,2,3,4] :: (Num a) => [a]
@@ -110,6 +109,9 @@ data Triangle = Triangle Point Point Point
 Just True :: Maybe Bool
 Nothing :: Maybe a
   \end{lstlisting}
+
+\note{\texttt{[]} construye listas, y \texttt{Maybe} construye un tipo
+que puede tener o no un valor.}
 \end{frame}
 
 \begin{frame}[fragile]{Constructores de tipos}
