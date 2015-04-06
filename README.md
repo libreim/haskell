@@ -6,7 +6,7 @@ Presentación de una introducción a Haskell.
 1. El lenguaje
     - [ ] Haskell
     - [x] Uso del intérprete y el compilador
-    - [ ] Programación funcional
+    - [x] Programación funcional
 2. Sistema de tipos
     - [ ] Tipos, funciones y variables de tipo
     - [x] Clases
@@ -15,11 +15,11 @@ Presentación de una introducción a Haskell.
 3. Funciones
     - [x] Reconocimiento de patrones
     - [x] Currificación
-    - [ ] Funciones de orden superior
+    - [x] Funciones de orden superior
     - [ ] Evaluación perezosa
 3. Ejemplos
     - [x] Quicksort
-    - [ ] Árboles
+    - [x] Árboles
     - [ ] Problema del caballo
     - [ ] Monoides
     - [ ] Sucesión de Fibonacci
