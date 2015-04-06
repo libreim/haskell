@@ -4,11 +4,11 @@ Presentación de una introducción a Haskell.
 ## Índice de contenidos
 
 1. El lenguaje
-    - [ ] Haskell
+    - [x] Haskell
     - [x] Uso del intérprete y el compilador
     - [x] Programación funcional
 2. Sistema de tipos
-    - [ ] Tipos, funciones y variables de tipo
+    - [x] Tipos, funciones y variables de tipo
     - [x] Clases
     - [x] Tipos algebraicos
     - [x] Constructores de tipos
@@ -16,7 +16,7 @@ Presentación de una introducción a Haskell.
     - [x] Reconocimiento de patrones
     - [x] Currificación
     - [x] Funciones de orden superior
-    - [ ] Evaluación perezosa
+    - [x] Evaluación perezosa
 3. Ejemplos
     - [x] Quicksort
     - [x] Árboles
@@ -25,5 +25,5 @@ Presentación de una introducción a Haskell.
     - [x] Sucesión de Fibonacci
 4. Más
     - [ ] IO. Mónadas
-    - [ ] Hoogle
+    - [x] Hoogle
     - [x] Idris
