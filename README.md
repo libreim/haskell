@@ -22,7 +22,8 @@ Presentación de una introducción a Haskell.
     - [x] Árboles
     - [ ] Problema del caballo
     - [ ] Monoides
-    - [ ] Sucesión de Fibonacci
+    - [x] Sucesión de Fibonacci
 4. Más
     - [ ] IO. Mónadas
-    - [ ] Isomorfismo de Curry-Howard
+    - [ ] Hoogle
+    - [x] Idris
