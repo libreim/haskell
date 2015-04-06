@@ -3,9 +3,6 @@
 \begin{frame}[fragile]{Reconocimiento de patrones}
   Para definir una función sobre un tipo, definimos su comportamiento para cada
   constructor de datos del tipo:
-
-  \espacio
-
   \begin{lstlisting}
 neg :: Bool -> Bool
 neg False = True
@@ -14,39 +11,41 @@ neg True  = False
 
   \espacio
 
-  Podemos utilizar variables para sustituir cualquier argumento del constructor:
-
-  \espacio
-
+  Podemos sustituir argumentos del constructor por variables:
   \begin{lstlisting}
-suma (Point a b) (Point c d) = Point (a+c) (b+d)
-opuesto (Point a b) = Point (-a) (-b)
-resta a b = suma a (opuesto b)
+factorial :: Integral a => a -> a
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Recursividad}
   El tipo lista y las definiciones recursivas son la base de los programas de Haskell.
-  Por ejemplo, para calcular la \textbf{longitud de una lista}, definimos la función
-  \texttt{len} para sus dos constructores:
+  Para calcular la \textbf{longitud de una lista}, definimos la función para sus dos
+  constructores:
 
   \espacio
 
   \begin{lstlisting}
+len :: Num a => [t] -> a
 len []     = 0
 len (_:xs) = 1 + len xs
   \end{lstlisting}
 
-    \espacio
-
-  El primer constructor nos proporciona el caso base y el segundo la ecuación recursiva.
+  \note{
+  Normalmente la lista vacía nos proporciona el caso base y \texttt{:} la ecuación recursiva.
+  No es la versión más eficiente porque no emplea recursión de cola;
+  necesitaría un parámetro acumulador.
+  }
 \end{frame}
 
 \begin{frame}[fragile]{Currificación}
-  ¿Por qué el tipo de \texttt{(+)} es \texttt{a -> a -> a} y no
-   \texttt{(a,a) -> a}?
-  \\~\\
-  Eso nos permite aplicar parcialmente una función. El tipo hay que leerlo realmente como
+  ¿Por qué \texttt{(+)} es de tipo \texttt{\alert{a -> a} -> a}
+  y no \texttt{\alert{(a,a)} -> a}?
+
+  \espacio
+
+  Esto nos permite aplicar parcialmente una función. El tipo hay que leerlo realmente como
   \texttt{a -> (a -> a)}, es decir, al darle un número nos devuelve otra función:
     \begin{lstlisting}
 (+)    :: Num a => a -> a -> a
@@ -59,33 +58,41 @@ len (_:xs) = 1 + len xs
 
 \begin{frame}[fragile]{Funciones de orden superior}
   Son funciones que toman funciones como argumento.
-  \\~\\
-  \texttt{map} toma una función y devuelve su versión sobre listas,
-  elemento a elemento:
+
+  \espacio
+
+  \texttt{map} toma una función y devuelve su versión sobre listas:
   \begin{lstlisting}
 map :: (a -> b) -> ([a] -> [b])
   \end{lstlisting}
   \ejemplo{map not [True, True, False]}
   \\~\\
-  \texttt{foldr} toma una función y un acumulador y aplica todos los elementos
-  de la lista contra el acumulador.
+  \texttt{foldr} toma una función y un acumulador
+  y aplica los elementos de la lista contra el acumulador.
   \begin{lstlisting}
-foldr :: (a -> a -> a) -> a -> [a] -> a
+foldr :: (a -> b -> b) -> b -> [a] -> b
   \end{lstlisting}
   \ejemplo{foldr (*) 1 [2,3,5,7]}
+
+\note{\texttt{map} aplica la función a cada elemento de la lista.
+      \texttt{map f = foldr ((:) . f) []}}
 \end{frame}
 
 \begin{frame}[fragile]{Especialización}
-  Ahora, a partir de funciones tan generales, podemos crear las funciones básicas:
+  A partir de estas podemos crear funciones básicas:
+
+  \espacio
+
   \begin{lstlisting}
  negation = map not
  lowerText = map toLower
  sum = foldr (+) 0
- prod = foldr (*) 1
+ product = foldr (*) 1
  concat = foldr (++) []
  and = foldr (&&) True
   \end{lstlisting}
+  \espacio
   \ejemplo{lowerText ''aBcDEfG''}
-  \\~\\
-  Podemos escribirlas sin todos los argumentos gracias a la Currificación.
+
+  \note{Podemos escribirlas sin todos los argumentos por la currificación.}
 \end{frame}
