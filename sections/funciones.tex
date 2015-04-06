@@ -17,6 +17,12 @@ factorial :: Integral a => a -> a
 factorial 0 = 1
 factorial n = n * factorial (n - 1)
   \end{lstlisting}
+
+\note{
+Cada entero es un constructor de tipos de \texttt{Int}.
+Las ecuaciones se evalúan en el orden en que aparecen, cambiando el orden de la
+segunda definición dejaría de funcionar.
+}
 \end{frame}
 
 \begin{frame}[fragile]{Recursividad}
@@ -34,8 +40,12 @@ len (_:xs) = 1 + len xs
 
   \note{
   Normalmente la lista vacía nos proporciona el caso base y \texttt{:} la ecuación recursiva.
+
   No es la versión más eficiente porque no emplea recursión de cola;
   necesitaría un parámetro acumulador.
+
+  Ponemos el segundo constructor entre paréntesis para distinguir de una función
+  que tomara 3 argumentos: _, : , xs.
   }
 \end{frame}
 
@@ -53,6 +63,10 @@ len (_:xs) = 1 + len xs
 (+3) 5 :: Num a => a
   \end{lstlisting}
   Es lo mismo decir \texttt{(+3) 5} que \texttt{(+) 3 5}.
+
+\note{
+Existen las funciones \texttt{curry} y \texttt{uncurry}.
+}
 \end{frame}
 
 
@@ -66,7 +80,9 @@ len (_:xs) = 1 + len xs
 map :: (a -> b) -> ([a] -> [b])
   \end{lstlisting}
   \ejemplo{map not [True, True, False]}
-  \\~\\
+
+  \espacio
+  
   \texttt{foldr} toma una función y un acumulador
   y aplica los elementos de la lista contra el acumulador.
   \begin{lstlisting}

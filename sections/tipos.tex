@@ -77,6 +77,11 @@ y sobre las de \texttt{Integral} pueden calcularse restos modulares.
 
   Las variables pueden restringirse a pertenecer a una clase.
 
+\note{
+El espacio de nombres de las variables es independiente en cada declaración de tipo.
+La clase de tipo \texttt{Ord} incluye tipos con relaciones de orden definidas.
+}
+
 \end{frame}
 
 \begin{frame}[fragile]{Tipos algebraicos}
@@ -92,12 +97,17 @@ data Point = Point Float Float
 data Triangle = Triangle Point Point Point
   \end{lstlisting}
 
-  \note{Podemos definir tipos que dependan de otros
-  o tipos con constructores sin argumentos, como \texttt{Bool}.}
+\note{
+  Los constructores se separan con \texttt{|}.
+
+  Podemos definir tipos que dependan de otros
+   o tipos con constructores sin argumentos, como \texttt{Bool}.
+}
 \end{frame}
 
 \begin{frame}[fragile]{Constructores de tipos}
-  Los constructores de tipos son funciones sobre tipos: toman un tipo y devuelven otro.
+  Los \textbf{constructores de tipos} son funciones sobre tipos:
+   toman un tipo y devuelven otro.
 
   \espacio
 
@@ -110,8 +120,14 @@ Just True :: Maybe Bool
 Nothing :: Maybe a
   \end{lstlisting}
 
-\note{\texttt{[]} construye listas, y \texttt{Maybe} construye un tipo
-que puede tener o no un valor.}
+\note{
+
+\texttt{[]} construye listas, y \texttt{Maybe} construye un tipo
+que puede tener o no un valor. \texttt{->} es el constructor de funciones.
+
+Aunque es posible, no es recomendable aplicar restricciones de clase a los tipos
+de entrada.
+}
 \end{frame}
 
 \begin{frame}[fragile]{Constructores de tipos}
@@ -133,4 +149,8 @@ data Maybe a = Nothing | Just a
 
   En el caso de \textbf{Maybe} podemos tener algo de tipo \texttt{a} (\texttt{Just a})
   o nada (\texttt{Nothing}).
+
+\note{
+  Las listas son flujos en otros lenguajes. Son puramente funcionales y perezosas.
+}
 \end{frame}

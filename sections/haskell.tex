@@ -2,13 +2,16 @@
 
 \begin{frame}[fragile]{Instalando Haskell Platform}
   \texttt{haskell-platform} contiene el compilador, depurador y otras utilidades.
-  También podemos instalar \texttt{ghc} (Glasgow Haskell Compiler):
+  También podemos instalar \texttt{ghc}:
   \espacio
   \begin{lstlisting}[language=bash]
 sudo apt-get install haskell-platform
   \end{lstlisting}
   \espacio
-  Viene con un gestor de librerías: \texttt{cabal}.
+  Ambos traen un gestor de librerías: \texttt{cabal}.
+  \note{
+    ghc: (Glorious) Glasgow Haskell Compiler.
+    Linter: \texttt{hlint}.}
 \end{frame}
 
 \begin{frame}[fragile]{Sin efectos secundarios}
@@ -18,8 +21,8 @@ sudo apt-get install haskell-platform
     \espacio
   \begin{lstlisting}[language=C++]
 int n = 0;
-int next_n() { return n++; }
-next_n(); // n = 1
+int next() { return n++; }
+next(); // n = 1
   \end{lstlisting}
 
   \note{
@@ -33,12 +36,10 @@ next_n(); // n = 1
 \begin{frame}[fragile]{Las funciones como objetos}
  Las funciones son objetos de \textit{primera clase}. Pueden ser devueltos
  por funciones y pueden pasarse como argumentos.
- 
- % ¿Qué tal este ejemplo? Así, sin anestesia
+
  \begin{lstlisting}
  duplica lista = map (\ x -> 2*x) lista
  \end{lstlisting}
-
 
 \end{frame}
 
@@ -52,8 +53,13 @@ next_n(); // n = 1
     \item \texttt{:t} \qquad  Consultar tipos
   \end{itemize}
 
-\note{Haskell permite operaciones aritméticas básicas, y operaciones con
-cadenas, listas o booleanos.}
+\note{
+Haskell permite operaciones aritméticas básicas, y operaciones con
+cadenas, listas o booleanos.
+\espacio
+\texttt{:set +t} para mostrar el tipo por defecto.
+\texttt{:set +m} para permitir entrada de varias líneas.
+}
 \end{frame}
 
 \begin{frame}[fragile]{El intérprete: GHCi}
@@ -70,5 +76,9 @@ ghci> max 23 34
 34
   \end{lstlisting}
 
-\note{Estamos usando \textbf{notación polaca}}
+\note{
+Estamos usando \textbf{notación polaca}.
+Para escribir una función infija de forma prefija se pone entre paréntesis.
+Para escribir una función prefija de forma infija se pone entre acentos graves.
+}
 \end{frame}
