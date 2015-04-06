@@ -84,12 +84,12 @@ foldr :: (a -> b -> b) -> b -> [a] -> b
   \espacio
 
   \begin{lstlisting}
- negation = map not
+ negation  = map not
  lowerText = map toLower
- sum = foldr (+) 0
- product = foldr (*) 1
- concat = foldr (++) []
- and = foldr (&&) True
+ sum       = foldr (+) 0
+ product   = foldr (*) 1
+ concat    = foldr (++) []
+ and       = foldr (&&) True
   \end{lstlisting}
   \espacio
   \ejemplo{lowerText ''aBcDEfG''}
