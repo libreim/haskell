@@ -29,7 +29,7 @@ mayor subárbol.
 \begin{code}
 height :: (Integral b) => Tree a -> b
 height Empty = 0
-height (Node x lft rgt) = 1 + (max (height lft) (height rgt))
+height (Node x lft rgt) = 1 + max (height lft) (height rgt)
 \end{code}
 
 El *preorden*, *inorden* y *postorden* surgen también directamente con
@@ -39,14 +39,14 @@ colocar el nodo y reordenar los órdenes de los subárboles.
 \begin{code}
 preorder :: Tree a -> [a]
 preorder Empty = []
-preorder (Node x lft rgt) = (preorder lft) ++ [x] ++ (preorder rgt)
+preorder (Node x lft rgt) = preorder lft ++ [x] ++ preorder rgt
 \end{code}
 
 
 Inserción ordenada
 -----------------
 
-Vamos a usar los árboles para implementar el algoritmo de ordenación 
+Vamos a usar los árboles para implementar el algoritmo de ordenación
 `treesort`. Para ello debemos empezar creando árboles binarios ordenados, lo que
 hacemos insertando un elemento ordenadamente sobre el árbol. En el caso vacío,
 creamos un árbol de un elemento.
@@ -56,13 +56,13 @@ insert :: (Ord a) => Tree a -> a -> Tree a
 insert Empty x = Node x Empty Empty
 \end{code}
 
-En el caso general, lo comparamos con 
+En el caso general, lo comparamos con
 el elemento del nodo y lo insertamos en el árbol derecho o izquierdo según el
 resultado de la comparación.
 
 \begin{code}
 insert (Node y lf rg) x
-  | x <= y    = Node y (insert lf x) rg 
+  | x <= y    = Node y (insert lf x) rg
   | otherwise = Node y lf (insert rg x)
 \end{code}
 
@@ -79,5 +79,5 @@ binario y volver a pasarlo a una lista de nuevo.
 
 \begin{code}
 treesort :: (Ord a) => [a] -> [a]
-treesort = preorder . (foldl insert Empty)
+treesort = preorder . foldl insert Empty
 \end{code}
