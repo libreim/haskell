@@ -3,10 +3,6 @@
 \PassOptionsToPackage{naturalnames}{hyperref} % tex.stackexchange.com/questions/10555
 \documentclass[12pt]{beamer} % Beamer
 
-\usepackage{amsfonts} %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{amsmath}  % Paquetes de matemáticas  %
-\usepackage{amssymb}  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \usepackage[spanish]{babel} % Traducciones
 \usepackage[utf8]{inputenc} % Uso de caracteres UTF-8
 \usepackage{lmodern}        % Fuentes de tamaño arbitrario
@@ -78,6 +74,10 @@ literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1
 }{Pablo Baeyens \and Mario Román}}
 \date{OSL 2015} % Fecha
 
+% Quita enlaces de navegación (stackoverflow.com/questions/3017030)
+\setbeamertemplate{navigation symbols}{}
+% Quita barra inferior (stackoverflow.com/questions/1435837)
+\setbeamertemplate{footline}{}
 
 %% Presentación %%
 \begin{document}
