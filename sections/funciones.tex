@@ -71,9 +71,7 @@ Existen las funciones \texttt{curry} y \texttt{uncurry}.
 
 
 \begin{frame}[fragile]{Funciones de orden superior}
-  Son funciones que toman funciones como argumento.
-
-  \espacio
+\hypertarget{funcionesOrdenSup}{}
 
   \texttt{map} toma una función y devuelve su versión sobre listas:
   \begin{lstlisting}
@@ -90,8 +88,15 @@ foldr :: (a -> b -> b) -> b -> [a] -> b
   \end{lstlisting}
   \ejemplo{foldr (*) 1 [2,3,5,7]}
 
-\note{\texttt{map} aplica la función a cada elemento de la lista.
-      \texttt{map f = foldr ((:) . f) []}}
+\hfill\hyperlink{definiciones}{\beamergotobutton{Definiciones}}
+
+\note{%
+\begin{itemize}
+\item Son funciones que toman funciones como argumento.
+\item \texttt{map} aplica la función a cada elemento de la lista.
+\item \texttt{map f = foldr ((:) . f) []}
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}[fragile]{Especialización}

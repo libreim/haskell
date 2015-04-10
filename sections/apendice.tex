@@ -1,0 +1,23 @@
+\appendix
+\section{Extra}
+
+\begin{frame}[fragile]{Funciones de orden superior}
+\hypertarget{definiciones}{}
+
+\texttt{map}:
+\begin{lstlisting}
+map :: (a -> b) -> ([a] -> [b])
+map f []     = []
+map f (x:xs) = f x : map f xs
+\end{lstlisting}
+\espacio
+
+\texttt{foldr}:
+\begin{lstlisting}
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr f z []     =  z
+foldr f z (x:xs) =  f x (foldr f z xs)
+\end{lstlisting}
+
+\hfill\hyperlink{funcionesOrdenSup}{\beamerreturnbutton{Funciones}}
+\end{frame}

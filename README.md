@@ -27,3 +27,12 @@ Presentación de una introducción a Haskell.
     - [ ] IO. Mónadas
     - [x] Hoogle
     - [x] Idris
+
+## Algunos recursos
+
+- [Learn you a Haskell for great good - learnyouahaskell.com](http://learnyouahaskell.com) - *Versión en castellano [¡Aprende Haskell por el bien de todos!](http://aprendehaskell.es)*
+- [Real World Haskell - realworldhaskell.org](http://book.realworldhaskell.org/)
+- [Haskell Wikibook](http://en.wikibooks.org/wiki/Haskell)
+- [dgiim/introHaskell](http://github.com/dgiim/introHaskell) - *Una introducción corta escrita por nosotros*
+- [Hoogle](https://www.haskell.org/hoogle/) - *Buscador de funciones*
+- [HaskellWiki](https://wiki.haskell.org/Haskell) - *Wiki de Haskell*
