@@ -31,9 +31,6 @@ not :: Bool -> Bool
 
   \espacio
 
-  % No sé si este es el mejor ejemplo
-  % + Sirve para introducir ahora currificación y define una función sin usar
-  % + nada, yo lo veo bien.
   \begin{lstlisting}
 ghci> let nand a b = not (a && b)
 ghci> :t nand
@@ -78,8 +75,11 @@ y sobre las de \texttt{Integral} pueden calcularse restos modulares.
   Las variables pueden restringirse a pertenecer a una clase.
 
 \note{
-El espacio de nombres de las variables es independiente en cada declaración de tipo.
-La clase de tipo \texttt{Ord} incluye tipos con relaciones de orden definidas.
+\begin{itemize}
+  \item El espacio de nombres de las variables de tipo es independiente en cada declaración.
+  \item Por convención se utilizan nombres cortos para las variables
+  \item La clase de tipo \texttt{Ord} incluye tipos con relaciones de orden definidas.
+\end{itemize}
 }
 
 \end{frame}

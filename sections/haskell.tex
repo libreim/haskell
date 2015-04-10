@@ -10,14 +10,16 @@ sudo apt-get install haskell-platform
   \espacio
   Ambos traen un gestor de librerías: \texttt{cabal}.
   \note{
-    ghc: (Glorious) Glasgow Haskell Compiler.
-    Linter: \texttt{hlint}.}
+    \begin{itemize}
+      \item ghc: (Glorious) Glasgow Haskell Compiler.
+      \item Linter: \texttt{hlint}.}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Sin efectos secundarios}
 
     Las funciones en los lenguajes funcionales no tienen \textit{efectos secundarios}.
-    No alteran el mundo alrededor ni cambia el valor de los argumentos.
+    No alteran el mundo alrededor ni cambian el valor de los argumentos.
     \espacio
   \begin{lstlisting}[language=C++]
 int n = 0;
@@ -26,10 +28,11 @@ next(); // n = 1
   \end{lstlisting}
 
   \note{
-  Ejemplo de \url{http://programmers.stackexchange.com/questions/40297}.
-  cuando llamamos a una función puede cambiar nuestras
-   variables o escribir por pantalla. Eso hace que el orden de llamada de las
-  funciones importe.
+  \begin{itemize}
+    \item Ejemplo de \url{http://programmers.stackexchange.com/questions/40297}.
+    \item Una función puede cambiar variables o escribir por pantalla.
+    Eso hace que el orden de llamada importe.
+  \end{itemize}
   }
 \end{frame}
 
@@ -56,9 +59,11 @@ next(); // n = 1
 \note{
 Haskell permite operaciones aritméticas básicas, y operaciones con
 cadenas, listas o booleanos.
-\espacio
-\texttt{:set +t} para mostrar el tipo por defecto.
-\texttt{:set +m} para permitir entrada de varias líneas.
+\begin{itemize}
+  \item \texttt{:set +t} para mostrar el tipo por defecto.
+  \item \texttt{:set +m} para permitir entrada de varias líneas.
+\end{itemize}
+
 }
 \end{frame}
 
@@ -77,8 +82,10 @@ ghci> max 23 34
   \end{lstlisting}
 
 \note{
-Estamos usando \textbf{notación polaca}.
-Para escribir una función infija de forma prefija se pone entre paréntesis.
-Para escribir una función prefija de forma infija se pone entre acentos graves.
+\begin{itemize}
+  \item Estamos usando \textbf{notación polaca}.
+  \item Para escribir una función infija de forma prefija se pone entre paréntesis.
+  \item Para escribir una función prefija de forma infija se pone entre acentos graves.
+\end{itemize}
 }
 \end{frame}
