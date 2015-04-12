@@ -45,11 +45,9 @@ porque sólo tenemos una forma de construir una instancia de `()`.
 
 El tipo **inicial** de la categoría es aquel para el que existe una única
 función hacia cualquier otro tipo. Será isomorfo a `Void`, el tipo vacío
-que definimos con un único constructor que depende de sí mismo; así, nunca
-habrá forma de construirlo.
+que definimos sin constructores; nunca habrá forma de construirlo.
 
 \begin{code}
-
 data Void
 
 absurd :: Void -> a
@@ -57,9 +55,7 @@ absurd v = case v of {}
 \end{code}
 
 Nótese que no hay que definir nada más para la función `absurd`. Hemos usado 
-`pattern matching` contra todos los constructores de `Void`. 
-Y hemos hecho depender la función de sí misma, porque no tenemos ninguna 
-forma de crear un tipo `a` arbitrario. Que es la única función
+`pattern matching` contra todos los constructores de `Void`. Que es la única función
 posible es obvio por esto mismo.
 
 
