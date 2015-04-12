@@ -41,14 +41,42 @@ porque sólo tenemos una forma de construir una instancia de `()`.
 
 El tipo **inicial** de la categoría es aquel para el que existe una única
 función hacia cualquier otro tipo. Será isomorfo a `Void`, el tipo vacío
-que definimos sin constructores.
+que definimos con un único constructor que depende de sí mismo; así, nunca
+habrá forma de construirlo.
 
 \begin{code}
-data Void
+data Void = Void Void
 
 absurd :: Void -> a
+absurd (Void a) = absurd a
 \end{code}
 
-Nótese que no hay que definir nada para la función `absurd`. Hemos usado 
-`pattern matching` contra todos los constructores de `Void`, es decir,
-ninguno. Que es la única posible es obvio por esto mismo.
+Nótese que no hay que definir nada más para la función `absurd`. Hemos usado 
+`pattern matching` contra todos los constructores de `Void`. 
+Y hemos hecho depender la función de sí misma, porque no tenemos ninguna 
+forma de crear un tipo `a` arbitrario. Que es la única función
+ posible es obvio por esto mismo.
+
+
+Productos y coproductos
+------------------
+
+El **producto** de dos tipos lo generamos con el constructor de tipos
+`(,)`. Cualesquiera dos tipos tienen un producto en esta categoría. Las
+proyecciones serán `fst` y `snd`.
+
+\begin{code}
+fst :: (a,b) -> a
+fst (x,y) = x
+
+snd :: (a,b) -> b
+snd (x,y) = y
+\end{code}
+
+Y otro tipo con morfismos hacia ambos podrá descomponerse a través del
+producto.
+
+\begin{code}
+univ_prod :: (c -> a) -> (c -> b) -> (c -> (a,b))
+univ_prod f g = f (&&&) g
+\end{code}
