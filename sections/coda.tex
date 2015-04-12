@@ -1,8 +1,8 @@
 \section{Más}
 
 \begin{frame}[fragile]{Hoogle}
-  Cuando no encontramos una función con el tipo que queremos, podemos
-  buscarla por tipo en Hoogle:
+  Hoogle permite buscar funciones por tipo entre las librerías
+  estándar de Haskell:
   
   \begin{center}
   \includegraphics[scale=0.35]{./images/hoogle.png}
@@ -10,7 +10,7 @@
 \end{frame}
 
 
-\begin{frame}[fragile]{Curry-Howard}
+\begin{frame}[fragile]{Demostraciones}
   Como las funciones no tienen efectos secundarios, podemos razonar la
   corrección del código por inducción:
 
@@ -29,8 +29,9 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
 \end{frame}
 
 
-\begin{frame}[fragile]{Curry-Howard}
-  \textbf{Idris}, construido encima de Haskell, demuestra que los
+\begin{frame}[fragile]{Idris}
+  \textbf{Idris}, construido encima de Haskell, demuestra
+  matemáticamente que los
   programas son correctos.
   
   \begin{center}
