@@ -23,6 +23,10 @@ Estos detalles pueden consultarse en la wiki de Haskell. [^hask-wiki]
 
 [^hask-wiki]: Hask. [Haskell wiki](https://wiki.haskell.org/Hask).
 
+\begin{code}
+{-# OPTIONS_GHC -XEmptyDataDecls -XEmptyCase #-}
+\end{code}
+
 
 Objetos inicial y final
 -------------------
@@ -45,17 +49,18 @@ que definimos con un único constructor que depende de sí mismo; así, nunca
 habrá forma de construirlo.
 
 \begin{code}
-data Void = Void Void
+
+data Void
 
 absurd :: Void -> a
-absurd (Void a) = absurd a
+absurd v = case v of {}
 \end{code}
 
 Nótese que no hay que definir nada más para la función `absurd`. Hemos usado 
 `pattern matching` contra todos los constructores de `Void`. 
 Y hemos hecho depender la función de sí misma, porque no tenemos ninguna 
 forma de crear un tipo `a` arbitrario. Que es la única función
- posible es obvio por esto mismo.
+posible es obvio por esto mismo.
 
 
 Productos y coproductos
@@ -77,6 +82,7 @@ Y otro tipo con morfismos hacia ambos podrá descomponerse a través del
 producto.
 
 \begin{code}
+
 univ_prod :: (c -> a) -> (c -> b) -> (c -> (a,b))
 univ_prod f g = f (&&&) g
 \end{code}
