@@ -38,3 +38,38 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
   \includegraphics[scale=0.28]{./images/idris.png}
   \end{center}
 \end{frame}
+
+
+\begin{frame}[fragile]{Curry-Howard}
+ Los siguientes tipos están habitados:
+ \begin{lstlisting}[language=haskell]
+ a -> a
+ (a,b) -> a
+ a -> Either a b
+ \end{lstlisting}
+ Por las funciones \texttt{id}, \texttt{fst} y \texttt{Left}. 
+ Estos, sin embargo, no:
+ \begin{lstlisting}[language=haskell]
+ a -> b
+ a -> (a,b)
+ Either a b -> a -> b
+ \end{lstlisting}
+ 
+ \textbf{¿Qué tipos de Haskell están habitados?} 
+\end{frame}
+
+
+\begin{frame}[fragile]{Curry-Howard}
+ A cada tipo le corresponde una proposición lógica, cambiando:
+ \begin{itemize}
+  \item \texttt{a -> b} por $a \Rightarrow b$
+  \item \texttt{(a,b)} por $a \vee b$
+  \item \texttt{Either a b} por $a \wedge b$
+  \item \texttt{()} por $True$
+  \item \texttt{Void} por $False$
+ \end{itemize}
+
+ 
+ \textbf{¿Qué tipos de Haskell están habitados?} Aquellos cuya
+ proposición lógica asociada puede demostrarse verdadera.
+\end{frame}
