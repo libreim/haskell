@@ -39,7 +39,7 @@ unit :: a -> ()
 unit _ = ()
 \end{code}
 
-Esta función existe desde cualquier tipo y no puede existir ninguna otra,
+Esta función existe desde cualquier tipo, y no puede existir ninguna otra
 porque sólo tenemos una forma de construir una instancia de `()`.
 
 
@@ -78,7 +78,24 @@ Y otro tipo con morfismos hacia ambos podrá descomponerse a través del
 producto.
 
 \begin{code}
+(&&&) :: (c -> a) -> (c -> b) -> (c -> (a,b))
+(&&&) f g = (\x -> (f x, g x))
+\end{code}
 
-univ_prod :: (c -> a) -> (c -> b) -> (c -> (a,b))
-univ_prod f g = f (&&&) g
+
+El **coproducto** de dos tipos lo generamos con el constructor de tipos
+`Either`. Cualesquiera dos tipos tienen un coproducto en esta categoría.
+Las coproyecciones serán `Left` y `Right`.
+
+\begin{code}
+data Either a b = Left a | Right b
+\end{code}
+
+Y otro tipo con morfismos desde ambos podrá descomponerlos a través del
+coproducto.
+
+\begin{code}
+either :: (a -> c) -> (b -> c) -> (Either a b -> c)
+either f g (Left  x) = f x
+either f g (Right y) = g y
 \end{code}
