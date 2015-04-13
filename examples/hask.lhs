@@ -25,6 +25,7 @@ Estos detalles pueden consultarse en la wiki de Haskell. [^hask-wiki]
 
 \begin{code}
 {-# OPTIONS_GHC -XEmptyDataDecls -XEmptyCase #-}
+import Prelude()
 \end{code}
 
 
@@ -98,4 +99,24 @@ coproducto.
 either :: (a -> c) -> (b -> c) -> (Either a b -> c)
 either f g (Left  x) = f x
 either f g (Right y) = g y
+\end{code}
+
+
+Cartesianamente cerrada
+------------------
+
+La categoría **Hask** es cerrada respecto a la estructura de monoide que tiene
+el producto categórico de tipos. Podemos ver que:
+
+* `((),a)` es isomorfo a `a`
+* `(a,(b,c))` es isomorfo a `((a,b),c)`
+
+Teniendo la estructura de monoide con el producto.
+
+\begin{code}
+prod_unit :: ((),a) -> a
+prod_unit ((),x) = x
+
+prod_assoc :: (a,(b,c)) -> ((a,b),c)
+prod_assoc (x,(y,z)) = ((x,y),z)
 \end{code}
