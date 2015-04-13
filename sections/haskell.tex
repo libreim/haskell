@@ -44,6 +44,17 @@ next(); // n = 1
  duplica lista = map (\ x -> 2*x) lista
  \end{lstlisting}
 
+ Esto ayuda a reutilizar código.
+ \begin{lstlisting}[language=C++]
+int duplica(int a);
+int incrementa(int a);
+vector<int> duplica_vector(vector<int> v);
+vector<int> incrementa_vector(vector<int> v);
+ \end{lstlisting}
+ Las dos últimas funciones sólo se diferencian en la función
+ que aplican sobre las componentes, eso podría ser un argumento
+ a una función \texttt{aplica\_vector} más general.
+
 \end{frame}
 
 \begin{frame}{El intérprete: GHCi}
