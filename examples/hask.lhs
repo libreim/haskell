@@ -120,3 +120,41 @@ prod_unit ((),x) = x
 prod_assoc :: (a,(b,c)) -> ((a,b),c)
 prod_assoc (x,(y,z)) = ((x,y),z)
 \end{code}
+
+
+Funtores
+------------------
+
+Los constructores de tipos de la clase `Functor` son endofuntores de esta 
+categoría. Un functor `f` se aplica sobre los tipos como `f a` y sobre los 
+morfismos con `fmap g`.
+
+Las leyes de los functores deben cumplirse al definirlos:
+
+``` Haskell
+ fmap id == id
+ fmap (f . g) == fmap f . fmap g
+```
+
+
+Lema de Yoneda
+--------------------
+
+La formulación en teoría de categorías del lema de Yoneda nos dice que hay una
+correspondencia biyectiva entre transformaciones naturales desde el funtor
+$Hom(A,-)$ a $F$ y $F(A)$, para cualquier funtor $F$ que vaya a la categoría
+**Set**:
+
+$$ Nat(Hom(A,-),F) \cong F(A) $$
+
+Este resultado, en tipos de Haskell se traduce en que equivalen los dos tipos
+siguientes:
+
+```Haskell
+ (a -> b) -> f b  ~~  f a
+```
+
+Puede encontrarse en las referencias una demostración y una explicación en mayor
+detalle. [^bartosz-yoneda]
+
+[^bartosz-yoneda]: Understanding Yoneda. [Bartosz Milewski](http://bartoszmilewski.com/2013/05/15/understanding-yoneda/).
