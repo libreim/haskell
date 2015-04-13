@@ -154,7 +154,14 @@ siguientes:
  (a -> b) -> f b  ~~  f a
 ```
 
-Puede encontrarse en las referencias una demostración y una explicación en mayor
+Donde `a` es algún tipo pero `b` es una variable arbitraria de tipo. De manera
+más exacta, debe escribirse como:
+
+```Haskell
+ forall b . (a -> b) -> f b ~~ f a
+```
+
+Pueden encontrarse en las referencias una demostración y una explicación en mayor
 detalle. [^bartosz-yoneda]
 
 [^bartosz-yoneda]: Understanding Yoneda. [Bartosz Milewski](http://bartoszmilewski.com/2013/05/15/understanding-yoneda/).
