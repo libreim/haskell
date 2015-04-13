@@ -26,6 +26,7 @@ int n = 0;
 int next() { return n++; }
 next(); // n = 1
   \end{lstlisting}
+    Los objetos son inmutables
 
   \note{
   \begin{itemize}
@@ -55,6 +56,14 @@ vector<int> incrementa_vector(vector<int> v);
  que aplican sobre las componentes, eso podría ser un argumento
  a una función \texttt{aplica\_vector} más general.
 
+ \note{
+  Puede notarse la necesidad de separar dos partes:
+   \begin{itemize}
+    \item La función en sí.
+    \item El aplicarla sobre un vector.
+   \end{itemize}
+  }
+ 
 \end{frame}
 
 \begin{frame}{El intérprete: GHCi}
