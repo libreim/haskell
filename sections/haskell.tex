@@ -27,6 +27,8 @@ int n = 0;
 int next() { return n++; }
 next(); // n = 1
   \end{lstlisting}
+    \espacio
+  
     Los objetos son inmutables. Son \texttt{thread-safe}.
 
   \note{
@@ -46,6 +48,8 @@ next(); // n = 1
    \item Las funciones son \textbf{deterministas}.
   \end{itemize}
 
+  \espacio
+  
   Y esto nos permite:
   \begin{itemize}
    \item Razonar algebraicamente: \texttt{f = g } $\Rightarrow$ \texttt{ f a = g a}.
@@ -70,6 +74,7 @@ next(); // n = 1
  duplica lista = map (\ x -> 2*x) lista
  \end{lstlisting}
 
+ \espacio
  Esto ayuda a reutilizar código.
  \begin{lstlisting}[language=C++]
 int duplica(int a);
