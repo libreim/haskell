@@ -1,8 +1,8 @@
 \section{Más}
 
 \begin{frame}[fragile]{Hoogle}
-  Cuando no encontramos una función con el tipo que queremos, podemos
-  buscarla por tipo en Hoogle:
+  Hoogle permite buscar funciones por tipo entre las librerías
+  estándar de Haskell:
   
   \begin{center}
   \includegraphics[scale=0.35]{./images/hoogle.png}
@@ -10,7 +10,7 @@
 \end{frame}
 
 
-\begin{frame}[fragile]{Curry-Howard}
+\begin{frame}[fragile]{Demostraciones}
   Como las funciones no tienen efectos secundarios, podemos razonar la
   corrección del código por inducción:
 
@@ -29,11 +29,47 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
 \end{frame}
 
 
-\begin{frame}[fragile]{Curry-Howard}
-  \textbf{Idris}, construido encima de Haskell, demuestra que los
+\begin{frame}[fragile]{Idris}
+  \textbf{Idris}, construido encima de Haskell, demuestra
+  matemáticamente que los
   programas son correctos.
   
   \begin{center}
   \includegraphics[scale=0.28]{./images/idris.png}
   \end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]{Curry-Howard}
+ Los siguientes tipos están habitados:
+ \begin{lstlisting}[language=haskell]
+ a -> a
+ (a,b) -> a
+ a -> Either a b
+ \end{lstlisting}
+ Por las funciones \texttt{id}, \texttt{fst} y \texttt{Left}. 
+ Estos, sin embargo, no:
+ \begin{lstlisting}[language=haskell]
+ a -> b
+ a -> (a,b)
+ Either a b -> a -> b
+ \end{lstlisting}
+ 
+ \textbf{¿Qué tipos de Haskell están habitados?} 
+\end{frame}
+
+
+\begin{frame}[fragile]{Curry-Howard}
+ A cada tipo le corresponde una proposición lógica, cambiando:
+ \begin{itemize}
+  \item \texttt{a -> b} por $a \Rightarrow b$
+  \item \texttt{(a,b)} por $a \wedge b$
+  \item \texttt{Either a b} por $a \vee b$
+  \item \texttt{()} por $True$
+  \item \texttt{Void} por $False$
+ \end{itemize}
+
+ 
+ \textbf{¿Qué tipos de Haskell están habitados?} Aquellos cuya
+ proposición lógica asociada puede demostrarse verdadera.
 \end{frame}

@@ -13,8 +13,12 @@ sudo apt-get install haskell-platform
     \begin{itemize}
       \item ghc: (Glorious) Glasgow Haskell Compiler.
       \item Linter: \texttt{hlint}.
+<<<<<<< HEAD
     \end{itemize}
   }
+=======
+    \end{itemize}}
+>>>>>>> bb55dfb83908ec34866e5aef447efe6accf59072
 \end{frame}
 
 \begin{frame}[fragile]{Sin efectos secundarios}
@@ -27,6 +31,7 @@ int n = 0;
 int next() { return n++; }
 next(); // n = 1
   \end{lstlisting}
+    Los objetos son inmutables. Son \texttt{thread-safe}.
 
   \note{
   \begin{itemize}
@@ -45,6 +50,25 @@ next(); // n = 1
  duplica lista = map (\ x -> 2*x) lista
  \end{lstlisting}
 
+ Esto ayuda a reutilizar código.
+ \begin{lstlisting}[language=C++]
+int duplica(int a);
+int incrementa(int a);
+vector<int> duplica_vector(vector<int> v);
+vector<int> incrementa_vector(vector<int> v);
+ \end{lstlisting}
+ Las dos últimas funciones sólo se diferencian en la función
+ que aplican sobre las componentes, eso podría ser un argumento
+ a una función \texttt{aplica\_vector} más general.
+
+ \note{
+  Puede notarse la necesidad de separar dos partes:
+   \begin{itemize}
+    \item La función en sí.
+    \item El aplicarla sobre un vector.
+   \end{itemize}
+  }
+ 
 \end{frame}
 
 \begin{frame}{El intérprete: GHCi}
