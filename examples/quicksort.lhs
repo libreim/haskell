@@ -25,3 +25,13 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
             ++ [x]
             ++ qsort [y | y<-xs, y>x]
 \end{code}
+
+
+Ejemplo
+---------------
+Este programa ordena una palabra dada:
+\begin{code}
+main :: IO ()
+main = do contents <- getContents
+          putStr (qsort contents)
+\end{code}
