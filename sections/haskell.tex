@@ -66,6 +66,11 @@ next(); // n = 1
     
 \end{frame}
 
+\begin{frame}[fragile]{Funcional: evaluación}
+  La programación se centra en \textbf{evaluar expresiones} en
+  lugar de \textbf{ejecutar instrucciones}.
+\end{frame}
+
 \begin{frame}[fragile]{Funcional: las funciones como objetos}
  Las funciones son objetos de \textit{primera clase}. Pueden ser devueltos
  por funciones y pueden pasarse como argumentos.
@@ -93,6 +98,19 @@ vector<int> incrementa_vector(vector<int> v);
     \item El aplicarla sobre un vector.
    \end{itemize}
   }
+\end{frame}
+
+\begin{frame}[fragile]{Funcional: abstracción}
+  El ser funcional facilita factorizar el código. Cada
+  pieza debería aparecer sólo una vez en su forma más
+  general posible. Esto se consigue con:
+  
+  \begin{itemize}
+   \item \textbf{Polimorfismo}, abstraer el tipo.
+   \item \textbf{Clases de tipos}, unifican propiedades de varios tipos.
+   \item \textbf{Funciones de alto nivel}, abstraen otras funciones.
+  \end{itemize}
+
 \end{frame}
 
 \begin{frame}{El intérprete: GHCi}
