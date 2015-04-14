@@ -18,8 +18,7 @@ sudo apt-get install haskell-platform
 
 \end{frame}
 
-\begin{frame}[fragile]{Sin efectos secundarios}
-
+\begin{frame}[fragile]{Puro: sin efectos secundarios}
     Las funciones en los lenguajes funcionales no tienen \textit{efectos secundarios}.
     No alteran el mundo alrededor ni cambian el valor de los argumentos.
     \espacio
@@ -39,7 +38,31 @@ next(); // n = 1
   }
 \end{frame}
 
-\begin{frame}[fragile]{Las funciones como objetos}
+\begin{frame}[fragile]{Puro: transparencia referencial}
+  Que las expresiones de Haskell sean referencialmente transparentes
+  quiere decir:
+  \begin{itemize}
+   \item Todas las variables son \textbf{inmutables}.
+   \item Las funciones son \textbf{deterministas}.
+  \end{itemize}
+
+  Y esto nos permite:
+  \begin{itemize}
+   \item Razonar algebraicamente: \texttt{f = g } $\Rightarrow$ \texttt{ f a = g a}.
+   \item Paralelizar fácilmente: \texttt{f `par` g}, sin afectarse.
+  \end{itemize}
+
+  
+  \note{
+  \begin{itemize}
+   \item \textbf{Inmutables}: no cambian de valor en ejecución.
+   \item \textbf{Deterministas}: devuelven lo mismo si se les pasan los mismos argumentos.
+  \end{itemize}  
+  }
+    
+\end{frame}
+
+\begin{frame}[fragile]{Funcional: las funciones como objetos}
  Las funciones son objetos de \textit{primera clase}. Pueden ser devueltos
  por funciones y pueden pasarse como argumentos.
 
@@ -65,7 +88,6 @@ vector<int> incrementa_vector(vector<int> v);
     \item El aplicarla sobre un vector.
    \end{itemize}
   }
-
 \end{frame}
 
 \begin{frame}{El intérprete: GHCi}
