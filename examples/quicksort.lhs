@@ -35,5 +35,5 @@ main :: IO ()
 main = do putStrLn "Introduzca números a ordenar: "
           contents <- getLine
           let numbers = map read $ words contents :: [Integer]
-          putStr $ show (qsort numbers) ++ "\n"
+          putStrLn $ show (qsort numbers)
 \end{code}
