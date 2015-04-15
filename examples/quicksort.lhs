@@ -32,6 +32,8 @@ Ejemplo
 Este programa ordena una palabra dada:
 \begin{code}
 main :: IO ()
-main = do contents <- getContents
-          putStr (qsort contents)
+main = do putStrLn "Introduzca números a ordenar: "
+          contents <- getLine
+          let numbers = map read $ words contents :: [Integer]
+          putStr $ show (qsort numbers) ++ "\n"
 \end{code}
