@@ -6,6 +6,10 @@ author: Pablo Baeyens, Mario Román
 Listas infinitas
 ----------------
 
+\begin{code}
+import Control.Monad
+\end{code}
+
 Gracias a la evaluación perezosa de Haskell podemos definir listas infinitas
 sin que haya problema. Recursivamente, podemos usar funciones con *punto fijo*:
 
@@ -74,3 +78,20 @@ sí misma desplazada una posición; la suma es algo así:
       --------------------------------
        1 : 2 : 3 : 5 : 8 : 13 ....
 ~~~
+
+
+Ejemplo
+----------------
+
+Este programa muestra el crecimiento de una sucesión de fibonacci
+por la terminal:
+
+\begin{code}
+main :: IO ()
+main = do
+  forM [1..] (\n ->  do
+                getLine
+                putStrLn (replicate (fib n) '#')
+             )
+  return ()   
+\end{code}
