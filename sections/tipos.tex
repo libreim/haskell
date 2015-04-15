@@ -23,7 +23,7 @@ not :: Bool -> Bool
 \begin{frame}[fragile]{Tipos}
   Los tipos de Haskell son \textbf{fuertes} y \textbf{estáticos}.
   La mayor parte de los errores se detectan en compilación como errores de tipo.
-
+  
   \espacio
 
   Además son \textbf{inferidos}, por lo que no tenemos por qué especificar el
@@ -36,12 +36,31 @@ ghci> let nand a b = not (a && b)
 ghci> :t nand
 nand :: Bool -> Bool -> Bool
   \end{lstlisting}
+  
+  \note{Más errores en compilación y menos en ejecución.
+  
+  Los tipos nos ayudan a documentar, a estructurar el código y
+  a clarificarlo.}
 \end{frame}
+
+% \begin{frame}[fragile]{Algunos tipos}
+%  Son tipos básicos y ya declarados:
+%  \begin{itemize}
+%   \item \texttt{Int}, entero de precisión fija.
+%   \item \texttt{Integer}, entero de precisión arbitraria.
+%   \item \texttt{Float}
+%   \item \texttt{Bool}
+%   \item \texttt{Char}
+%   \item \texttt{String}
+%  \end{itemize}
+% 
+% \end{frame}
 
 
 \begin{frame}[fragile]{Clases de tipos}
 Las clases de tipos agrupan a tipos con la misma interfaz.
-Por ejemplo, la clase \texttt{Eq}, define la función \texttt{==}.
+Por ejemplo, la clase \texttt{Eq}, agrupa a los que tienen
+definida la función \texttt{(==)}.
 
 \espacio
 
