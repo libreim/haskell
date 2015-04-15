@@ -106,6 +106,14 @@ En cada elemento del par se emplea la operación del tipo correspondiente. Este 
 es útil para la mónada `Writer`. Puede extenderse a tuplas de un número arbitrario de
 elementos.
 
+
+Crear un monoide
+------------------
+Podemos definir una función binaria sobre nuestros árboles y hacerlos un monoide.
+La operación será introducir ordenadamente todos los elementos de un árbol en el otro.
+
+
+
 Cosas que se podrían añadir:
 
 - [ ] Foldable: simplificación con foldMap
