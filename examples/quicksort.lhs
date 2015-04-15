@@ -29,7 +29,7 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
 
 Ejemplo
 ---------------
-Este programa ordena una palabra dada:
+Este programa ordena una lista de números:
 \begin{code}
 main :: IO ()
 main = do putStrLn "Introduzca números a ordenar: "
