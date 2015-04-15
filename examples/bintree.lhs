@@ -14,6 +14,7 @@ izquierdo** y un **subárbol derecho**.
 \begin{code}
 data Tree a = Empty
             | Node a (Tree a) (Tree a)
+            deriving Show
 \end{code}
 
 Lo hacemos polimórfico dependiendo de la variable de tipo `a`.
@@ -81,3 +82,20 @@ binario y volver a pasarlo a una lista de nuevo.
 treesort :: (Ord a) => [a] -> [a]
 treesort = preorder . foldl insert Empty
 \end{code}
+
+
+Completando los árboles
+------------------
+
+Vamos hacer a los árboles instancias de la clase `Eq`. 
+Podemos delegar la tarea en el compilador incluyendo `deriving Eq` en la
+definición, pero vamos a escribirlo nosotros mismos.
+
+\begin{code}
+instance (Eq a) => Eq (Tree a) where
+    Empty          == Empty          = True
+    (Node x xl xr) == Empty          = False
+    (Node x xl xr) == (Node y yl yr) = and [x==y, xl==yl, xr==yr] 
+\end{code}
+
+Inmediatamente podemos usar `(/=)` en árboles.
