@@ -3,7 +3,7 @@
 \begin{frame}[fragile]{Hoogle}
   Hoogle permite buscar funciones por tipo entre las librerías
   estándar de Haskell:
-  
+
   \begin{center}
   \includegraphics[scale=0.35]{./images/hoogle.png}
   \end{center}
@@ -33,7 +33,7 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
   \textbf{Idris}, construido encima de Haskell, demuestra
   matemáticamente que los
   programas son correctos.
-  
+
   \begin{center}
   \includegraphics[scale=0.28]{./images/idris.png}
   \end{center}
@@ -47,15 +47,15 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
  (a,b) -> a
  a -> Either a b
  \end{lstlisting}
- Por las funciones \texttt{id}, \texttt{fst} y \texttt{Left}. 
+ Por las funciones \texttt{id}, \texttt{fst} y \texttt{Left}.
  Estos, sin embargo, no:
  \begin{lstlisting}[language=haskell]
  a -> b
  a -> (a,b)
  Either a b -> a -> b
  \end{lstlisting}
- 
- \textbf{¿Qué tipos de Haskell están habitados?} 
+
+ \textbf{¿Qué tipos de Haskell están habitados?}
 \end{frame}
 
 
@@ -72,4 +72,59 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
  \espacio
  \textbf{¿Qué tipos de Haskell están habitados?} Aquellos cuya
  proposición lógica asociada puede demostrarse verdadera.
+\end{frame}
+
+\begin{frame}[fragile]{Mónadas}
+Las mónadas son constructores de tipos que definen un \textbf{contexto computacional}.
+Se definen con:
+
+\espacio
+
+\begin{lstlisting}
+return :: a -> m a
+\end{lstlisting}
+\texttt{return} introduce un valor de tipo \texttt{a} en el contexto.
+
+\espacio
+
+\begin{lstlisting}
+>>= :: m a -> (a -> m b) -> m b
+\end{lstlisting}
+Dado un valor en un contexto y una función que devuelve valores en el contexto,
+\textbf{¿Cómo podemos aplicar la función al valor?}-
+\end{frame}
+
+\begin{frame}[fragile]{Mónadas: Maybe}
+La mónada \texttt{Maybe}, nos permite operar con funciones que pueden \textit{fallar}:
+
+\begin{lstlisting}
+return x = Just x -- return = Just
+\end{lstlisting}
+
+\espacio
+
+\begin{lstlisting}
+Just x  >>= f = f x
+Nothing >>= _ = Nothing
+\end{lstlisting}
+Cuando hay un fallo no devolvemos nada, y cuando no aplicamos la función al valor
+del interior de \texttt{Just}.
+\end{frame}
+
+\begin{frame}[fragile]{Mónadas: IO}
+\textbf{¿Cómo hacemos E/S con funciones puras?}\\
+Utilizamos la mónada \texttt{IO}:
+
+\espacio
+
+\begin{lstlisting}
+main = readFile "file1" >>= writeFile "file2"
+\end{lstlisting}
+
+\espacio
+
+Todo programa de Haskell se ejecuta evaluando la función \texttt{main}, de tipo
+\texttt{IO ()}.
+
+\note{Su implementación es abstracta, pero nos permite componer acciones.}
 \end{frame}
