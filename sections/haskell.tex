@@ -13,7 +13,7 @@ apt-get install haskell-platform
   \espacio
   Ambos traen un gestor de librerías: \texttt{cabal}.
   \column{.3\textwidth}
-  \haskelllogo
+  \haskelllogo[rounded corners=2pt]
   \center{\scriptsize \textit {Haskell logo}}
  \end{columns}
   
@@ -51,7 +51,7 @@ cadenas, listas o booleanos.
  Las funciones se llaman escribiendo su nombre, un espacio y sus parámetros, separados por espacios:
 \espacio
   \begin{lstlisting}
-ghci> 3 + 4  \end{columns}
+ghci> 3 + 4
 7
 ghci> (+) 2 9
 11
@@ -122,7 +122,7 @@ next(); // n = 1
   \begin{itemize}
    \item \textbf{Inmutables}: no cambian de valor en ejecución.
    \item \textbf{Deterministas}: devuelven lo mismo si se les pasan los mismos argumentos.
-  \item \textbf{Par}: \textit{The expression (x `par` y) sparks the evaluation of x (to weak head 
+  \item \textbf{Par}: En \texttt{Control.Parallel} \textit{The expression (x `par` y) sparks the evaluation of x (to weak head 
   normal form) and returns y.} \url{https://downloads.haskell.org/~ghc/7.0-latest/docs/html/users_guide/lang-parallel.html#id3208592}
   \end{itemize}
   }
@@ -132,6 +132,15 @@ next(); // n = 1
 \begin{frame}[fragile]{Funcional: evaluación}
   La programación se centra en \textbf{evaluar expresiones} en
   lugar de \textbf{ejecutar instrucciones}.
+  
+  \note{La diferencia es que nosotros no explicitamos al compilador
+  cómo deben ser evaluadas estas expresiones. Simplemente indicamos lo 
+  que queremos obtener. En la programación imperativa solemos describir
+  el proceso para obtenerlo, y no lo que queremos obtener.
+  
+  \espacio
+  Esta libertad permite al compilador evaluar las expresiones en el 
+  orden que quiera.}
 \end{frame}
 
 \begin{frame}[fragile]{Funcional: las funciones como objetos}
