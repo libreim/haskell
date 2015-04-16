@@ -132,12 +132,12 @@ La mónada `Writer` nos permite guardar un registro de las acciones que realizam
 - `return` introduce el elemento en su mínimo contexto. De esta forma, el mínimo
   registro es `mempty`: `return x = Writer (x, mempty)`
 - Para definir el *bind* necesitamos una función que extraiga el tipo: `runWriter`
-    ~~~Haskell
+~~~Haskell
         x >>= f =
           let (a, m)  = runWriter x
               (b, m') = runWriter (f a)
           in Writer (b, m <> m')
-    ~~~
+~~~
 
 De esta forma unimos ambos registros.
 
@@ -163,7 +163,7 @@ Y para probar nuestra función, creamos un programa sencillo:
 
 \begin{code}
 main = do
-       putStr "Introduzca un número: "
+       putStrLn "Introduzca un número: "
        n <- readLn :: IO Int
        let (resultado, registro) = runWriter (h n)
        putStrLn $ "El resultado es " ++ show resultado
