@@ -21,10 +21,12 @@ operación binaria `<> :: T -> T -> T` tal que:
 
 El ejemplo más sencillo de monoide es el tipo `()` con `a <> b = ()`.
 Para empezar a utilizarlos, importamos el módulo que los define
-y el módulo de árboles que usaremos luego:
+y otros módulos que usaremos luego:
 
 \begin{code}
+{-# LANGUAGE FlexibleInstances, OverlappingInstances #-}
 import Data.Monoid
+import Control.Monad.Writer
 import Data.Tree
 \end{code}
 
@@ -66,8 +68,8 @@ Las funciones `getSum` y `getProduct` permiten extraer el número del tipo. De e
 forma podemos definir:
 
 \begin{code}
-suma, producto :: Num a => [a] -> a
-suma     = getSum     . mconcat . map Sum
+sumar, producto :: Num a => [a] -> a
+sumar     = getSum     . mconcat . map Sum
 producto = getProduct . mconcat . map Product
 \end{code}
 
@@ -95,19 +97,20 @@ g = appEndo (mconcat fs)
 
 De esta forma forma tenemos `g x = (negate (37 - x) + 2) * 3`.
 
+Kleisi
+------
 
-Pares de monoides
------------------
+De forma análoga a `Endo`, podemos definir un monoide sobre las
+funciones `a -> m a` con `m` una mónada.
 
-Dados dos monoides `a` y `b` , se define el monoide `(a,b)` con:
+La composición es `(>=>) :: Monad m => (a -> m b) -> (b -> m c) -> a -> m c`, y
+`mempty` es simplemente `return`:
 
-- `mempty = (mempty, mempty)`.
-- `(a1,b1) <> (a2,b2) =  (a1 <> a2, b1 <> b2)`
-
-En cada elemento del par se emplea la operación del tipo correspondiente. Este monoide
-es útil para la mónada `Writer`. Puede extenderse a tuplas de un número arbitrario de
-elementos.
-
+\begin{code}
+instance Monad m => Monoid (a -> m a) where
+    mempty  = return
+    mappend = (>=>)
+\end{code}
 
 Crear un monoide
 ------------------
@@ -115,13 +118,54 @@ Podemos definir una función binaria sobre nuestros árboles y hacerlos un monoi
 La operación será introducir ordenadamente todos los elementos de un árbol en el otro.
 
 \begin{code}
-instance (Ord a) => Monoid (Tree a) where
-   at <> bt =  
+--instance (Ord a) => Monoid (Tree a) where
+--   at <> bt =
 \end{code}
 
-Cosas que se podrían añadir:
+La mónada Writer
+----------------
 
-- [ ] Foldable: simplificación con foldMap
-- [ ] http://blog.sigfpe.com/2009/01/haskell-monoids-and-their-uses.html
-- [ ] https://www.fpcomplete.com/user/mgsloan/monoids-tour
-- [ ] http://www.reddit.com/r/haskell/comments/1yc2vg/opportunities_to_use_monoids/
+La mónada `Writer` nos permite guardar un registro de las acciones que realizamos.
+ **¿Cómo se define esta mónada?**:
+
+- En primer lugar necesitamos un **monoide**, que será el tipo de nuestro registro.
+- `return` introduce el elemento en su mínimo contexto. De esta forma, el mínimo
+  registro es `mempty`: `return x = Writer (x, mempty)`
+- Para definir el *bind* necesitamos una función que extraiga el tipo: `runWriter`
+    ~~~Haskell
+        x >>= f =
+          let (a, m)  = runWriter x
+              (b, m') = runWriter (f a)
+          in Writer (b, m <> m')
+    ~~~
+
+De esta forma unimos ambos registros.
+
+Veamos un ejemplo. Podemos introducir algo en la mónada `Writer` utilizando la
+función `writer`:
+
+\begin{code}
+suma n x  = writer (x + n, ["Suma " ++ show n])
+mult n x  = writer (x * n, ["Multiplica por " ++ show n])
+resta n x = writer (x - n, ["Resta " ++ show n])
+\end{code}
+
+Estas funciones realizan una operación sobre un número y guardan en el registro
+la operación realizada.
+
+Utilizando el monoide que creamos antes componemos una serie de estas funciones:
+
+\begin{code}
+h = mconcat [suma 3, suma 2, mult 4, resta 24]
+\end{code}
+
+Y para probar nuestra función, creamos un programa sencillo:
+
+\begin{code}
+main = do
+       putStr "Introduzca un número: "
+       n <- readLn :: IO Int
+       let (resultado, registro) = runWriter (h n)
+       putStrLn $ "El resultado es " ++ show resultado
+       putStrLn $ "\nLas operaciones realizadas han sido:\n" ++ unlines registro
+\end{code}
