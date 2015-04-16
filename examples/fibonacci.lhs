@@ -89,9 +89,9 @@ por la terminal:
 \begin{code}
 main :: IO ()
 main = do
-  forM [1..] (\n ->  do
+  forM_ [1..] (\n ->  do
                 getLine
                 putStrLn (replicate (fib n) '#')
              )
-  return ()   
+  return ()
 \end{code}

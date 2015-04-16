@@ -12,7 +12,7 @@
 
 \usepackage{pgfpages} %  Beamer User Guide sections 19.6 and 22
 %\setbeameroption{show notes on second screen} % Permite añadir notas con \note
-
+\usepackage[absolute,overlay]{textpos}
 
 %% Comandos %%
 \newcommand{\seccion}[1]{\input{./sections/#1}} % Incluir secciones
@@ -101,8 +101,12 @@ literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1
       \LARGE \href{http://github.com/M42/osl-talk-haskell}{github.com/M42/osl-talk-haskell}
     \end{center}
     Erratas, correcciones y aportaciones son bienvenidas.
-    
+
     \note{\textbf{Esta es la versión con notas.}}
+  \begin{textblock*}{80mm}(.7\textwidth,\textheight)%
+    {\scriptsize Con licencias CC BY-SA y GPLv2}
+    \includegraphics[width=10px]{./images/freeculture.png}
+  \end{textblock*}
   }
 
   \seccion{haskell.tex}

@@ -8,7 +8,7 @@ Implementación
 
 El algoritmo Quicksort toma el primer elemento de la lista, coloca a su izquierda
 los menores que él y a su derecha los mayores, y vuelve a aplicarse a ambos
-lados. 
+lados.
 
 Lo definimos recursivamente. La lista vacía está ya ordenada:
 
@@ -18,7 +18,7 @@ qsort [] = []
 
 Dada una lista no vacía, tomamos el elemento inicial y colocamos a un lado y
 otro de él las listas de menores y mayores, respectivamente. Ordenamos esas
-listas. 
+listas.
 
 \begin{code}
 qsort (x:xs) = qsort [y | y<-xs, y<=x]
@@ -35,5 +35,5 @@ main :: IO ()
 main = do putStrLn "Introduzca números a ordenar: "
           contents <- getLine
           let numbers = map read $ words contents :: [Integer]
-          putStrLn $ show (qsort numbers)
+          print $ qsort numbers
 \end{code}
