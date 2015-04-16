@@ -45,7 +45,7 @@ porque sólo tenemos una forma de construir una instancia de `()`.
 
 El tipo **inicial** de la categoría es aquel para el que existe una única
 función hacia cualquier otro tipo. Será isomorfo a `Void`, el tipo vacío
-que definimos sin constructores; nunca habrá forma de construirlo.
+que definimos con constructores autorreferentes; nunca habrá forma de construirlo.
 
 \begin{code}
 data Void = Void Void
@@ -56,7 +56,8 @@ absurd (Void a) = absurd a
 
 Nótese que no hay que definir nada más para la función `absurd`. Hemos usado 
 `pattern matching` contra todos los constructores de `Void`. Que es la única función
-posible es obvio por esto mismo.
+posible es obvio porque la única forma de conseguir un tipo cualquiera desde Void
+es con la propia función `absurd`.
 
 
 Productos y coproductos
