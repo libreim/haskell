@@ -88,10 +88,5 @@ por la terminal:
 
 \begin{code}
 main :: IO ()
-main = do
-  forM_ [1..] (\n ->  do
-                getLine
-                putStrLn (replicate (fib n) '#')
-             )
-  return ()
+main = forM_ [1..] (\n -> getLine >> putStrLn (replicate (fib n) '🐇'))
 \end{code}
