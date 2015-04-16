@@ -19,17 +19,23 @@ sudo apt-get install haskell-platform
 \end{frame}
 
 \begin{frame}[fragile]{Puro: sin efectos secundarios}
-    Las funciones en los lenguajes funcionales no tienen \textit{efectos secundarios}.
-    No alteran el mundo alrededor ni cambian el valor de los argumentos.
+
+  \begin{columns}
+    \column{.7\textwidth}
+    Las funciones no tienen \textit{efectos secundarios}.
+    No alteran el mundo ni cambian el valor de los argumentos.
     \espacio
   \begin{lstlisting}[language=C++]
 int n = 0;
 int next() { return n++; }
 next(); // n = 1
   \end{lstlisting}
-    \espacio
-  
-    Los objetos son inmutables. Son \texttt{thread-safe}.
+  \espacio
+  Los objetos son inmutables. Son \texttt{thread-safe}.
+  \column{.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/xkcd-haskell.png}
+    \center{\scriptsize \textit xkcd: \href{http://xkcd.com/1312}{Haskell}}
+  \end{columns}
 
   \note{
   \begin{itemize}
@@ -49,21 +55,21 @@ next(); // n = 1
   \end{itemize}
 
   \espacio
-  
+
   Y esto nos permite:
   \begin{itemize}
    \item Razonar algebraicamente: \texttt{f = g } $\Rightarrow$ \texttt{ f a = g a}.
    \item Paralelizar fácilmente: \texttt{f `par` g}, sin afectarse.
   \end{itemize}
 
-  
+
   \note{
   \begin{itemize}
    \item \textbf{Inmutables}: no cambian de valor en ejecución.
    \item \textbf{Deterministas}: devuelven lo mismo si se les pasan los mismos argumentos.
-  \end{itemize}  
+  \end{itemize}
   }
-    
+
 \end{frame}
 
 \begin{frame}[fragile]{Funcional: evaluación}
@@ -104,7 +110,7 @@ vector<int> incrementa_vector(vector<int> v);
   El ser funcional facilita factorizar el código. Cada
   pieza debería aparecer sólo una vez en su forma más
   general posible. Esto se consigue con:
-  
+
   \begin{itemize}
    \item \textbf{Polimorfismo}, abstraer el tipo.
    \item \textbf{Clases de tipos}, unifican propiedades de varios tipos.
