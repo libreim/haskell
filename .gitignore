@@ -1,3 +1,9 @@
+## Literate haskell auxiliary files:
+*.hi
+*.o
+!examples/*.lhs
+examples/*
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
