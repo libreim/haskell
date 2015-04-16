@@ -108,7 +108,7 @@ return x = Just x -- return = Just
 Just x  >>= f = f x
 Nothing >>= _ = Nothing
 \end{lstlisting}
-Cuando hay un fallo no devolvemos nada, y cuando no aplicamos la función al valor
+Cuando hay un fallo no devolvemos nada, y cuando no, aplicamos la función al valor
 del interior de \texttt{Just}.
 \end{frame}
 
