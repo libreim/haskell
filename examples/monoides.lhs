@@ -20,10 +20,12 @@ operación binaria `<> :: T -> T -> T` tal que:
      *Ejemplo*: $0$ con respecto de la suma. La exponenciación no tiene.
 
 El ejemplo más sencillo de monoide es el tipo `()` con `a <> b = ()`.
-Para empezar a utilizarlos, importamos el módulo que los define:
+Para empezar a utilizarlos, importamos el módulo que los define
+y el módulo de árboles que usaremos luego:
 
 \begin{code}
 import Data.Monoid
+import Data.Tree
 \end{code}
 
 Además, este módulo define la función `mconcat :: [m] -> m` que se define:
@@ -112,7 +114,10 @@ Crear un monoide
 Podemos definir una función binaria sobre nuestros árboles y hacerlos un monoide.
 La operación será introducir ordenadamente todos los elementos de un árbol en el otro.
 
-
+\begin{code}
+instance (Ord a) => Monoid (Tree a) where
+   at <> bt =  
+\end{code}
 
 Cosas que se podrían añadir:
 
