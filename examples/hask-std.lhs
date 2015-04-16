@@ -10,21 +10,20 @@ La categoría **Hask** es la que toma a los tipos de Haskell como objetos y a la
 funciones de un tipo a otro como los morfismos entre ellos. Podemos comprobar
 que cumplen la definición de categoría:
 
-~~~Haskell
+```Haskell
 -- La composición de funciones es asociativa
-f . (g . h) === (f . g) . h
+f . (g . h) === (f . g) . h 
 -- Hay un morfismo identidad para cualquier objeto
 id . f === f === f . id
-~~~
+``` 
 
 Para usarla tendremos que excluir algunos casos extremos, como funciones
-definibles que no terminan nunca o la instancia `undefined`.
+definibles que no terminan nunca o la instancia `undefined`. 
 Estos detalles pueden consultarse en la wiki de Haskell. [^hask-wiki]
 
 [^hask-wiki]: Hask. [Haskell wiki](https://wiki.haskell.org/Hask).
 
 \begin{code}
-{-# LANGUAGE EmptyDataDecls, EmptyCase #-}
 import Prelude()
 \end{code}
 
@@ -49,13 +48,13 @@ función hacia cualquier otro tipo. Será isomorfo a `Void`, el tipo vacío
 que definimos sin constructores; nunca habrá forma de construirlo.
 
 \begin{code}
-data Void
+data Void = Void Void
 
 absurd :: Void -> a
-absurd v = case v of {}
+absurd (Void a) = absurd a 
 \end{code}
 
-Nótese que no hay que definir nada más para la función `absurd`. Hemos usado
+Nótese que no hay que definir nada más para la función `absurd`. Hemos usado 
 `pattern matching` contra todos los constructores de `Void`. Que es la única función
 posible es obvio por esto mismo.
 
@@ -125,8 +124,8 @@ prod_assoc (x,(y,z)) = ((x,y),z)
 Funtores
 ------------------
 
-Los constructores de tipos de la clase `Functor` son endofuntores de esta
-categoría. Un functor `f` se aplica sobre los tipos como `f a` y sobre los
+Los constructores de tipos de la clase `Functor` son endofuntores de esta 
+categoría. Un functor `f` se aplica sobre los tipos como `f a` y sobre los 
 morfismos con `fmap g`.
 
 Las leyes de los functores deben cumplirse al definirlos:
