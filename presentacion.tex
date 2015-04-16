@@ -11,8 +11,9 @@
 \languagepath{Spanish}      % (tex.stackexchange.com/questions/168208)
 
 \usepackage{pgfpages} %  Beamer User Guide sections 19.6 and 22
-%\setbeameroption{show notes on second screen} % Permite añadir notas con \note
+\setbeameroption{show notes on second screen} % Permite añadir notas con \note
 \usepackage[absolute,overlay]{textpos}
+\usepackage{Haskelllogo}
 
 %% Comandos %%
 \newcommand{\seccion}[1]{\input{./sections/#1}} % Incluir secciones
@@ -84,7 +85,8 @@ literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1
 \begin{document}
 
   % Página de título
-  \frame{\titlepage}
+  \frame{\titlepage
+  \note{\textbf{Esta es la versión con notas.}}}
 
   % Índice
   \frame{
@@ -102,7 +104,7 @@ literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1
     \end{center}
     Erratas, correcciones y aportaciones son bienvenidas.
 
-    \note{\textbf{Esta es la versión con notas.}}
+    
   \begin{textblock*}{80mm}(.7\textwidth,\textheight)%
     {\scriptsize Con licencias CC BY-SA y GPLv2}
     \includegraphics[width=10px]{./images/freeculture.png}
