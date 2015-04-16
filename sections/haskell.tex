@@ -1,22 +1,31 @@
 \section{Haskell}
 
 \begin{frame}[fragile]{Instalando Haskell Platform}
+
+ \begin{columns}
+  \column{.7\textwidth}
   \texttt{haskell-platform} contiene el compilador, depurador y otras utilidades.
   También podemos instalar \texttt{ghc}:
   \espacio
   \begin{lstlisting}[language=bash]
-sudo apt-get install haskell-platform
+apt-get install haskell-platform
   \end{lstlisting}
   \espacio
   Ambos traen un gestor de librerías: \texttt{cabal}.
+  \column{.3\textwidth}
+  \haskelllogo
+  \center{\scriptsize \textit {Haskell logo}}
+ \end{columns}
+  
   \note{
     \begin{itemize}
       \item ghc: (Glorious) Glasgow Haskell Compiler.
       \item Linter: \texttt{hlint}.
+      \item El paquete está disponible al menos en distribuciones Debian, Fedora y Arch.
     \end{itemize}
   }
-
 \end{frame}
+
 
 \begin{frame}{El intérprete: GHCi}
   GHC incluye GHCi como intérprete. Permite los siguientes comandos:
@@ -42,7 +51,7 @@ cadenas, listas o booleanos.
  Las funciones se llaman escribiendo su nombre, un espacio y sus parámetros, separados por espacios:
 \espacio
   \begin{lstlisting}
-ghci> 3 + 4
+ghci> 3 + 4  \end{columns}
 7
 ghci> (+) 2 9
 11
@@ -97,6 +106,7 @@ next(); // n = 1
   \begin{itemize}
    \item Todas las variables son \textbf{inmutables}.
    \item Las funciones son \textbf{deterministas}.
+   \item Lo definido puede ser sustituido por su definición.
   \end{itemize}
 
   \espacio
@@ -112,6 +122,8 @@ next(); // n = 1
   \begin{itemize}
    \item \textbf{Inmutables}: no cambian de valor en ejecución.
    \item \textbf{Deterministas}: devuelven lo mismo si se les pasan los mismos argumentos.
+  \item \textbf{Par}: \textit{The expression (x `par` y) sparks the evaluation of x (to weak head 
+  normal form) and returns y.} \url{https://downloads.haskell.org/~ghc/7.0-latest/docs/html/users_guide/lang-parallel.html#id3208592}
   \end{itemize}
   }
 
