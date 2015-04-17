@@ -154,7 +154,7 @@ diezDoses = take 10 (map (+1) unos)
 \note{
 \begin{itemize}
   \item Haskell comprueba el tipo de las expresiones (evaluando la WHNF) por lo que
-\texttt{length [1, 1/0, 2]} es válido pero \texttt{length [1, ''adsf'', 2]} no.
+\texttt{length [1, 1/0, 2]} es válido pero \texttt{length [1, "adsf", 2]} no.
   \item min es O(n) + O(n/2) + O(n/4) + ... = O(n)
 \end{itemize}
 }

@@ -21,6 +21,8 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
             ++ qsort [y | y<-xs, y>x]
   \end{lstlisting}
 
+  \espacio
+  
   \textbf{Demostración:} \textit{Quicksort} funciona porque:
   \begin{itemize}
    \item ordena correctamente una lista vacía.
@@ -56,7 +58,7 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
  \end{lstlisting}
 
  \textbf{¿Qué tipos de Haskell están habitados?}
- 
+
  \note{No vale que estén habitados para un tipo concreto,
  necesitamos que haya algún elemento general para todos
  los tipos. Es lo que se nota en Haskell como:
@@ -86,7 +88,7 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
  \textbf{¿Qué tipos de Haskell están habitados?} Aquellos cuya
  proposición lógica asociada puede demostrarse verdadera en lógica
  intuicionista.
- 
+
  \note{La lógica intuicionista se creó para el programa constructivista
  de Brouwer. En ella, no se tiene el principio del tercio excluso ni la
  eliminación de la doble negación.}
