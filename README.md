@@ -1,12 +1,12 @@
 # osl-talk-haskell
-Presentación de una introducción a Haskell. 
+Presentación de una introducción a Haskell.
 Puedes descargarla [aquí](https://github.com/M42/osl-talk-haskell/raw/master/pdfs/sin_notas.pdf) (4:3) o [aquí](https://github.com/M42/osl-talk-haskell/raw/master/pdfs/169.pdf) (16:9) o compilarla a partir de `presentacion.tex`.
 
 ## Índice de contenidos
 
 1. El lenguaje
-    - Haskell
-    - Uso del intérprete y el compilador
+    - Haskell Platform y GHC
+    - Uso del intérprete y el intérprete
     - Programación funcional
 2. Sistema de tipos
     - Tipos, funciones y variables de tipo
@@ -18,15 +18,19 @@ Puedes descargarla [aquí](https://github.com/M42/osl-talk-haskell/raw/master/pd
     - Currificación
     - Funciones de orden superior
     - Evaluación perezosa
-3. Ejemplos
-    - Quicksort
-    - Árboles
-    -  Monoides
-    - Sucesión de Fibonacci
 4. Más
     - IO. Mónadas
     - Hoogle
     - Idris
+    - Curry-Howard
+
+Ejemplos en Haskell literario:
+
+* Quicksort
+* Árboles binarios
+* Sucesión de Fibonacci
+* Monoides
+* La categoría Hask
 
 ## Algunos recursos
 
