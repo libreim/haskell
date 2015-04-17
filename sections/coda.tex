@@ -56,6 +56,19 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
  \end{lstlisting}
 
  \textbf{¿Qué tipos de Haskell están habitados?}
+ 
+ \note{No vale que estén habitados para un tipo concreto,
+ necesitamos que haya algún elemento general para todos
+ los tipos. Es lo que se nota en Haskell como:
+ \begin{center}
+  \texttt{forall a . a -> a}
+ \end{center}
+ Necesitamos un elemento de este tipo en lugar de uno como:
+ \begin{center}
+  \texttt{Int -> Bool}
+ \end{center}
+
+ }
 \end{frame}
 
 
@@ -73,6 +86,10 @@ qsort (x:xs) = qsort [y | y<-xs, y<=x]
  \textbf{¿Qué tipos de Haskell están habitados?} Aquellos cuya
  proposición lógica asociada puede demostrarse verdadera en lógica
  intuicionista.
+ 
+ \note{La lógica intuicionista se creó para el programa constructivista
+ de Brouwer. En ella, no se tiene el principio del tercio excluso ni la
+ eliminación de la doble negación.}
 \end{frame}
 
 \begin{frame}[fragile]{Mónadas}
