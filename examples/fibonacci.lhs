@@ -88,5 +88,5 @@ por la terminal:
 
 \begin{code}
 main :: IO ()
-main = forM_ [1..] (\n -> getLine >> putStrLn (replicate (fib n) '#'))
+main = mapM_ (\n -> getLine >> putStrLn (replicate n '#')) fibs
 \end{code}
