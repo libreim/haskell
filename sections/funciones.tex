@@ -19,8 +19,8 @@ factorial n = n * factorial (n - 1)
   \end{lstlisting}
 
 \note{
-Cada entero es un constructor de tipos de \texttt{Int}.
 Las ecuaciones se evalúan en el orden en que aparecen, cambiando el orden de la
+Cada entero es un constructor de tipos de \texttt{Int}.
 segunda definición dejaría de funcionar.
 }
 \end{frame}
@@ -58,7 +58,7 @@ len (1:2:3:[])
     \item No es la versión más eficiente porque no emplea recursión de cola;
     necesitaría un parámetro acumulador. Además da lugar a space leak.
     \item Ponemos el segundo constructor entre paréntesis para distinguir de una función
-    que tomara 3 argumentos: \_, \: , xs.
+    que tomara 3 argumentos: \_, : , xs.
   \end{itemize}
 }
 \end{frame}
