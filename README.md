@@ -1,6 +1,6 @@
-# osl-talk-haskell
+# libreim-talk-haskell
 Presentación de una introducción a Haskell.
-Puedes descargarla [aquí](https://github.com/github-users-grx/osl-talk-haskell/raw/master/pdfs/sin_notas.pdf) (4:3) o [aquí](https://github.com/github-users-grx/osl-talk-haskell/raw/master/pdfs/169.pdf) (16:9) o compilarla a partir de `presentacion.tex`.
+Puedes descargarla [aquí](https://github.com/libreim/libreim-talk-haskell/raw/master/pdfs/sin_notas.pdf) (4:3) o [aquí](https://github.com/libreim/libreim-talk-haskell/raw/master/pdfs/169.pdf) (16:9) o compilarla a partir de `presentacion.tex`.
 
 ## Índice de contenidos
 
