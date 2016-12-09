@@ -63,10 +63,10 @@ False == 0 -- Los tipos son estáticos
 - Las listas. Tamaño no fijo, tipo homogéneo. String es [Char]
 - Se construyen con `:` y `[]`: `[1 ,2 ,3] == 1:2:3:[]`
   - ¿Cuál es el tipo de `[]` y `:`?
-- Definir funciones básicas (head, length, repeat, ++, elem, !!)
+- Definir funciones básicas (head, length, repeat, ++, elem, !!, take, drop, takeWhile, reverse, replicate, last, cycle)
  - Dejar algunas como ejercicio
 - Funciones de orden superior (directamente ir con map, filter y foldr)
-  - Con filter pueden hacer una versión sencilla de quicksort
+  - Con filter pueden hacer una versión sencilla de quicksort. Ejercicio: definir filter
   - Con foldr puede definirse concat, sum, maximum, minimum, product...
     - Expresar foldr como:
      `foldr (×) z [a1,...,an] = a1 × (a2 × (... × (an × z)))`
@@ -75,6 +75,7 @@ False == 0 -- Los tipos son estáticos
 # Definición de tipos
   - Tipos simples
     - Bool, un tipo que sea una enumeración. Int (minBound, maxBound)
+    - Se enumeran los constructores de datos. Deben estar en mayúscula
   - Tipos con campos
     - RGB
   - Tipos recursivos (Nat). Proponer ejercicios con Nat.
@@ -85,4 +86,5 @@ False == 0 -- Los tipos son estáticos
 - Clases de tipos más frecuentes (Num, Ord, Show, Read, Floating, Eq..)
 - Creación de una instancia de tipo (con `Eq` por ejemplo)
 - Los funtores si da tiempo?
--
+  - Son constructores de tipos sobre los que se pueden mapear cosas
+  - Las listas son un ejemplo, los árboles otro

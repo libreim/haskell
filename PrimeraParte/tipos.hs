@@ -1,4 +1,14 @@
 {- Declaraciones de tipo -}
+
+haskell :: String
+haskell = "haskell.org/platform"
+
+lambda :: Char
+lambda = 'λ' -- Permite Unicode
+
+e :: Double
+e = exp 1
+
 a :: Int
 a = 42
 -- a = 5
@@ -12,7 +22,6 @@ b = f a + f a
 -- Podemos especificar o no el tipo de nand
 nand :: Bool -> Bool -> Bool
 nand x y = not (x && y)
-
 
 
 {- Variables de tipo -}
@@ -32,10 +41,10 @@ niega False = True
 
 esCero :: Int -> Bool
 esCero 0 = True
-esCero x = False
+esCero _ = False
 
-factorial :: Int -> Int
 -- El orden importa!!
+factorial :: Int -> Int
 factorial 0 = 1
 factorial n = n * factorial (n-1)
 
@@ -51,3 +60,8 @@ siempre3 = ignoraY 3
 
 siempre8 :: a -> Int
 siempre8 = suma5 . siempre3 -- . es la función composición
+
+
+
+
+
