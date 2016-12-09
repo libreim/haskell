@@ -104,10 +104,10 @@ group = do
 -- devuelve la tabla de multiplicación del grupo
 main :: IO ()
 main = do
-  grp <- (parse group "") <$> filteredinput
-  let mul = multtable <$> grp
-  putStrLn $ either (const "Error") show mul
+  solv <- fmap multtable <$> (parse group "") <$> filteredinput
+  putStrLn $ either (const "Error") show solv
   where
+    filteredinput :: IO String
     filteredinput = filter (/= ' ') <$> getLine
 
 
