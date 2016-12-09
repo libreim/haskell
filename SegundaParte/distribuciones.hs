@@ -91,10 +91,14 @@ bernoulli p = do
 binomial :: Int -> Double -> Distribution Int
 binomial k p = sum <$> replicateM k (bernoulli p)
 
-
--- La distribución constante.
+-- La distribución constante y otra forma de escribir la distribución
+-- binomial, de manera algebraica.
 constant :: Int -> Distribution Int
 constant n = return n
+
+binomial' :: Int -> Double -> Distribution Int
+binomial' k p = foldr (⊕) (constant 0) (replicate k (bernoulli p))
+
 
 
 
