@@ -16,7 +16,7 @@ f :: Int -> Int
 f x = x + 2
 
 -- :t b ?
-b = f a + f a
+b = f a + f a + f a
 
 -- Podemos especificar o no el tipo de nand
 nand :: Bool -> Bool -> Bool
