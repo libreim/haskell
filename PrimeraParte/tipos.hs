@@ -11,17 +11,17 @@ e = exp 1
 
 a :: Int
 a = 42
--- a = 5
 
 f :: Int -> Int
 f x = x + 2
 
--- :t b
+-- :t b ?
 b = f a + f a
 
 -- Podemos especificar o no el tipo de nand
 nand :: Bool -> Bool -> Bool
 nand x y = not (x && y)
+
 
 
 {- Variables de tipo -}
@@ -34,7 +34,10 @@ identidad x = x
 ignoraY :: a -> b -> a
 ignoraY x y = x
 
+
+
 {- Reconocimiento de patrones -}
+
 niega :: Bool -> Bool
 niega True  = False
 niega False = True
@@ -43,14 +46,17 @@ esCero :: Int -> Bool
 esCero 0 = True
 esCero _ = False
 
--- El orden importa!!
 factorial :: Int -> Int
+-- El orden importa!!
 factorial 0 = 1
 factorial n = n * factorial (n-1)
 
 
 
 {- Currificación -}
+
+-- f : A×B → C           f(a,b) = c
+-- f : A → (B → C)       f(a) = g, g(b) = c
 
 suma5 :: Int -> Int
 suma5 = (5+)

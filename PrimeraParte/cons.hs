@@ -11,27 +11,34 @@ l3 = 0 : l2 -- Anteponer un elemento
 -- :t l4 ?
 l4 = []
 
+
+
 {- Funciones sobre listas -}
 
 head' :: [a] -> a
+-- Primer elemento
 head' []     = error "Lista vacía"
 head' (x:xs) = x
 
 length' :: [a] -> Int
+-- Longitud
 length' []     = 0
 length' (x:xs) = 1 + length' xs
 
 repeat' :: a -> [a]
+-- Listas infinitas. Parar con Ctrl+C
 repeat' a = a : repeat' a
 
-elem' :: a -> [a] -> Bool
-elem' y [] = False
-elem' y (x:xs) = (y == x) || (elem' y xs)
-
+(!!!) :: [a] -> Int -> a
+-- Pertenencia
+[]     !!! _ = error "Índice demasiado grande"
+(x:_)  !!! 0 = x
+(_:xs) !!! n = xs !!! (n-1)
 
 {- Funciones de orden superior -}
 
--- map f [a1, a2, ..., an] = [f a1, f a2, ..., f an]
+-- map f [a1, a2, ..., an] = 
+-- [f a1, f a2, ..., f an]
 map' :: (a -> b) -> [a] -> [b]
 map' f []     = []
 map' f (x:xs) = f x : map f xs
@@ -42,23 +49,32 @@ suma1 = map (+1)
 exclama :: [String] -> [String]
 exclama = map (++"!")
 
--- foldr (⊕) z [a1,...,an] = a1 ⊕ (a2 ⊕ (... ⊕ (an ⊕ z)))
+
+
+-- foldr (⊕) z [a1,...,an] = 
+-- a1 ⊕ (a2 ⊕ (... ⊕ (an ⊕ z)))
 foldr' :: (a -> b -> b) -> b -> [a] -> b
+foldr' f z []     = z
+foldr' f z (x:xs) = f x (foldr' f z xs)
 
 sum' :: [Int] -> Int
-sum' = foldr' (+) 0
+sum' = foldr (+) 0
 
 concat' :: [[a]] -> [a]
-concat' = foldr' (++) []
+concat' = foldr (++) []
+
+
+
 
 {- Definición de tipos -}
 
 -- data Bool = False | True
--- data Int = -9223372036854775808 | ... | -1 | 0 | 1 | ... | 9223372036854775807
+-- data Int = 
+-- -9223372036854775808|...|-1|0|1|...|9223372036854775807
 
 
 -- Tipos enumerados
-data Forma = Triangulo | Cuadrado | Circulo
+data Forma = Triangulo | Cuadrado | Circulo -- :t Triangulo ?
 
 esPoligono :: Forma -> Bool
 esPoligono Triangulo = True
@@ -66,29 +82,36 @@ esPoligono Cuadrado  = True
 esPoligono Circulo   = False
 
 
--- Tipos con campos
-data Persona = Persona String Int
+-- Tipos con campos :t Persona ?
+data Persona = P String Int
 
+-- Obtener la edad de una persona
 getEdad :: Persona -> Int
-getEdad (Persona nombre edad) = edad
+getEdad (P nombre edad) = edad
 
+-- Tienen la misma edad?
 mismaEdad :: Persona -> Persona -> Bool
-mismaEdad (Persona n1 e1) (Persona n2 e2) = e1 == e2
+mismaEdad (P _ e1) (P _ e2) = e1 == e2
+
 
 
 -- Varios constructores de datos
-data Color = RGB Double Double Double |  HSV Double Double Double
+data Color = RGB Double Double Double 
+          |  HSV Double Double Double
 
 -- Tipos recursivos
 data Nat = Z | S Nat -- Naturales (Peano)
 
 suma :: Nat -> Nat -> Nat
+-- suma de naturales
 suma   Z   n = n
 suma (S n) m = S (suma n m)
 
 toInt :: Nat -> Int
+-- Pasar a entero
 toInt   Z   = 0
 toInt (S n) = 1 + toInt n
+
 
 {- Constructores de tipos -}
 
@@ -97,6 +120,8 @@ toInt (S n) = 1 + toInt n
 
 data Tree a = Empty | Node a (Tree a) (Tree a)
 
+-- Árbol reflejado
+refl :: Tree a -> Tree a
 refl Empty = Empty
 refl (Node a t1 t2) = Node a (refl t2) (refl t1)
 
