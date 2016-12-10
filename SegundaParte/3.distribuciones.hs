@@ -82,8 +82,8 @@ twodices = dice 6 ⊕ dice 6
 -- p y la otra tiene probabilidad (1-p).
 bernoulli :: Double -> Distribution Int
 bernoulli p = do
-  sample <- dice 100000
-  if (fromIntegral sample / 100000.0 < p)
+  sample <- dice 1000000
+  if (fromIntegral sample / 1000000.0 < p)
     then return 1
     else return 0
 
@@ -104,7 +104,8 @@ binomial' k p = foldr (⊕) (constant 0) (replicate k (bernoulli p))
 
 -- Muestra la distribución. Los detalles de implementación no son interesantes.
 -- Hemos usado  TypeSynonymInstances para simplificar el proceso de sobrecargar
--- la instancia de Show y poder dibujar directamente por la pantalla las demostraciones.
+-- la instancia de Show y poder dibujar directamente por la pantalla las
+-- demostraciones.
 instance Show (State Seed Int) where
   show = showdist
 
@@ -112,7 +113,7 @@ showdist :: Distribution Int -> String
 showdist dist = unlines $ map counter [minimum samples..maximum samples]
   where samples = fst $ runState (replicateM 50000 dist) 1
         counter n = show n ++ ":\t " ++ replicate ((count n samples) `div` (3000 `div` range)) '#'
-        range = maximum samples - minimum samples
+        range = maximum samples - minimum samples + 1
 
 count :: Eq a => a -> [a] -> Int
 count x = length . filter (x==)

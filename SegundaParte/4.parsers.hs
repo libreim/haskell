@@ -51,7 +51,7 @@ multtable (Group gens rels) = Table [[rewrite cs (a ++ b) | a <- nf] | b <- nf]
 --
 -- Nuestra idea final es la de parsear la presentación de un grupo:
 --    < x,y,z | xy = z; xx = 1; yy = 1; zz = 1 >
-
+--
 
 -- Un generador es una letra.
 -- Usamos un parser ya construído.

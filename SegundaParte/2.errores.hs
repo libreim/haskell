@@ -23,7 +23,7 @@ printd = putStrLn . printf "%.3f"
 -- 0.000
 --
 -- >>> powerseq = map ((1//) . (2^)) [1..]
--- >>> powerseries = scan (+) 0 powerseq
+-- >>> powerseries = scanl (+) 0 powerseq
 -- >>> printd $ limit 0.000000001 powerseries
 -- 1.000
 limit :: Double -> [Double] -> Double
@@ -44,7 +44,6 @@ sqroot x = limit 0.003 (iterate (newtonaprox x) x)
 -- Podemos definir una estructura de datos `QPol` para el polinomio y una
 -- función que lo resuelva obteniendo sus dos raíces:
 data QPol = QPol Double Double Double
-
 instance Show QPol where
   show (QPol a b c) = show a ++ "x² + " ++ show b ++ "x + " ++ show c
 
@@ -74,8 +73,9 @@ sqroot' x
 
 
 
--- Esto lo soluciona, pero nos crea un problema mayor. La función `solve` está usando la
--- raíz cuadrada y se espera de ella que devuelva un número, no un posible error.
+-- Esto lo soluciona, pero nos crea un problema mayor. La función `solve`
+-- está usando la raíz cuadrada y se espera de ella que devuelva un número,
+-- no un posible error.
 --
 -- Tenemos varias soluciones:
 --  Solución 1. Implementar una suma especial.
@@ -140,13 +140,14 @@ solve'' (QPol a b c) = sqroot' (b*b-4*c*a) >>= (\d -> return (sol1 d, sol2 d))
     sol1 d = ( (-b) + d )/(2*a)
     sol2 d = ( (-b) - d )/(2*a)
 
+
 -- Esto funciona muy bien pero es difícil de escribir, porque tenemos
 -- que pasar el discriminante como argumento a una función lambda que
 -- nos calcula los dos usos del discriminante.
 -- Las mónadas nos dan una notación do, que es más fácil de usar para
 -- estos casos:
-solve' :: QPol -> Maybe (Double,Double)
-solve' (QPol a b c) = do
+solve2 :: QPol -> Maybe (Double,Double)
+solve2 (QPol a b c) = do
   -- Esta es una forma de escribir la composición de sqroot y el return
   -- Aquí guardamos el resultado de la primera función para usarlo luego
   discr <- sqroot' (b*b - 4*c*a)
@@ -154,6 +155,13 @@ solve' (QPol a b c) = do
   -- Aquí componemos con la segunda función, que ya usa el resultado
   -- de la primera función.
   return (((-b) + discr)/(2*a), ((-b) - discr)/(2*a))
+
+-- Más claramente
+solve3 :: QPol -> Maybe (Double,Double)
+solve3 (QPol a b c) = do
+  discr <- sqroot' (b*b - 4*c*a)
+  return (((-b) + discr)/(2*a), ((-b) - discr)/(2*a))
+
 
 -- Nótese que esta es una composición que tiene en cuenta la estructura
 -- de la mónada. Si la primera sqroot produce un error, esta se propaga
