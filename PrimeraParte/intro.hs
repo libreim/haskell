@@ -1,6 +1,6 @@
 
--- Instaladlo!!
-haskellPlatform = "haskell.org/platform"
+
+haskell = "haskell.org/platform"
 
 a = 42
 --a = 5
@@ -11,3 +11,5 @@ b = f a + f a + f a
 int b = f(a) + f(a) + f(a);
 b == 3*f(a) ??
 -}
+
+main = putStrLn "Hola Mundo!"
