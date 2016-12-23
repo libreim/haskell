@@ -1,0 +1,100 @@
+\section{Constructores de tipos}
+
+Dados los tipos básicos podemos combinarlos para construir nuevos tipos en otras
+estructuras como listas, árboles o tuplas. Podemos pensar en los constructores de
+tipos como funciones sobre tipos: Toman uno o más tipos y devuelven un nuevo tipo.
+
+\begin{extra}{Sinonimos de tipo}
+\texttt{String} es un sinónimo de tipo de \texttt{[Char]}:
+son distintos nombres para el mismo tipo. La notación usual para
+cadenas es equivalente a la de listas:
+
+\espacio
+
+\texttt{"hi" == ['h','i']}
+
+\espacio
+
+Los sinónimos de tipo se definen con la palabra clave \texttt{type}:
+
+\espacio
+
+\texttt{type String = [Char]}
+\end{extra}
+
+Veamos algunos ejemplos:
+
+\subsection{Listas}
+Las listas almacenan colecciones ordenadas de valores de un tipo homogéneo.
+Su tamaño \textbf{no es fijo}, es decir, listas de distintos tamaños pertenecen
+al mismo tipo.
+
+Una lista se escribe entre corchetes, separando sus elementos por comas.
+La lista vacía se escribe \texttt{[]}:
+
+\begin{lstlisting}
+[1,2,3]   :: [Int]
+[]        :: [a]
+['a','b'] :: [Char]
+\end{lstlisting}
+
+También podemos utilizar el constructor \texttt{:},
+que antepone un elemento al principio de una lista:
+\begin{lstlisting}
+[1,2,3] == 1:2:3:[]
+\end{lstlisting}
+
+\begin{extra}{Rangos}
+Haskell proporciona una sintaxis de rangos para tipos enumerables, que permite
+definir listas fácilmente. Prueba estos ejemplos:
+
+\begin{itemize}
+  \item \texttt{[1..10]}
+  \item \texttt{['a'..'m']}
+  \item \texttt{[1,4..20]}
+  \item \texttt{[10,8..1]}
+\end{itemize}
+
+Su implementación se basa en la clase de tipos \texttt{Enum}.
+\end{extra}
+
+Algunas funciones relevantes sobre listas son:
+
+\begin{itemize}
+  \item \texttt{++ :: [a] -> [a] -> [a]}: concatena dos listas.
+  \item \texttt{head :: [a] -> a}: devuelve la cabeza (primer elemento).
+  \item \texttt{tail :: [a] -> [a]}: devuelve la cola.
+  \item \texttt{null :: [a] -> Bool}: indica si una lista está vacía.
+  \item \texttt{elem :: a -> [a] -> Bool}: indica si un elemento está en la lista.
+  \item \texttt{(!!) :: [a] -> Int -> a}: elemento en la posición dada.
+  \item \texttt{length :: [a] -> Int}:
+  \footnote{La mayoría de funciones sobre listas están restringidas sobre \texttt{Int}
+  por razones de retrocompatibilidad.} indica la longitud.
+\end{itemize}
+
+Otras funciones generalizan una función binaria sobre una lista. Es el caso de
+\texttt{sum}, \texttt{product}, \texttt{maximum} o \texttt{minimum}.
+
+\subsection{Tuplas}
+Las tuplas son un tipo que almacena varios datos en una sola estructura.
+Podemos pensar en ellas como el producto cartesiano de dos tipos.
+
+Podemos guardar por ejemplo una película y su año:
+
+\begin{lstlisting}
+(1960, "Psicosis") :: (Int, String)
+\end{lstlisting}
+
+Las tuplas tienen un tamaño \textit{fijo}. Cada n-tupla es un tipo diferente.
+Pueden contener elementos de distintos tipos.
+
+Es usual utilizar los pares (2-tuplas), como en la función \texttt{zip}.
+Esta función toma dos listas y devuelve una lista de pares con los elementos de
+cada lista:
+
+\begin{lstlisting}
+  zip :: [a] -> [b] -> [(a,b)]
+\end{lstlisting}
+
+No existen tuplas de un elemento, aunque sí existe la tupla vacía, escrita \texttt{()}
+y llamada \textit{unit}, que funciona como \texttt{void}.

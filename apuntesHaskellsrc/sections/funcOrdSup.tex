@@ -1,0 +1,66 @@
+\section{Funciones de orden superior sobre listas}
+Las listas son muy importantes en Haskell, y para tratarlas existen varias
+funciones de orden superior muy utilizadas. Todas estas funciones pueden
+generalizarse sobre otros tipos por lo que es importante saber utilizarlas:
+
+\texttt{map} toma una función y una lista y la devuelve con la función aplicada
+a sus elementos. Su definición es:
+\begin{lstlisting}
+map :: (a -> b) -> [a] -> [b]
+map _ [] = []
+map f (x:xs) = f x : map f xs
+\end{lstlisting}
+
+Algunos ejemplos de uso:
+\begin{lstlisting}
+map (++"!") ["Sugar", "Spice", "Everything nice"]
+map (map (*3)) [[1,2],[5,2,7],[]]
+\end{lstlisting}
+
+\texttt{filter} toma un predicado y una lista, y devuelve una lista con los elementos
+que cumplen el predicado:
+\begin{lstlisting}
+filter :: (a -> Bool) -> [a] -> [a]
+filter _ [] = []
+filter p (x:xs) =
+  if p x
+    then x : filter p xs
+    else filter p xs
+\end{lstlisting}
+
+Un ejemplo es:
+
+\begin{lstlisting}
+filter (`elem` ['0'..'9']) "The answer is 42"
+\end{lstlisting}
+
+\texttt{foldr}
+\footnote{Es similar a \texttt{reduce} en Python. o \texttt{accumulate} en C++.
+Existe otra función \texttt{foldl} que aplica los paréntesis de izquierda a derecha.}
+toma una función binaria ($\oplus$) y un valor por defecto ($z$) y
+aplican la función a los elementos de una lista ordenadamente:
+
+\begin{equation*}
+\operatorname{foldr} (\oplus) \; z \; [a_1 , a_2 , \dots , a_n] =
+ a_1 \oplus  (a_2 \oplus  (\dots \oplus  (a_n \oplus  z )))
+\end{equation*}
+
+Su definición es:
+
+\begin{lstlisting}
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr f z  []    = z
+foldr f z (x:xs) = f x (foldr f z xs)
+\end{lstlisting}
+
+Estas funciones tienen un gran poder expresivo. Si queremos obtener la suma
+o el producto de los elementos de una lista podemos hacerlo con \texttt{foldr}:
+
+\begin{lstlisting}
+sum      =  foldr (+) 0
+product  =  foldr (*) 1
+concat   =  foldr (++) []
+\end{lstlisting}
+
+Con \texttt{foldr} podemos definir \texttt{map}, \texttt{filter} y la mayoría de
+funciones sobre listas.

@@ -1,0 +1,157 @@
+%%%
+% Apuntes para un seminario de introducción a Haskell
+% Author: Pablo Baeyens
+% Author: Mario Román
+%
+% License:
+%  CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%
+
+%%%
+% Este archivo parte de una modificación de una plantilla de Latex para
+% adaptarla al castellano.
+% Su autor original es Frits Wenneker (http://www.howtotex.com).
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-------------------------------------------------------------------------------
+%	PAQUETES
+%-------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt, spanish]{tufte-handout}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+
+\usepackage{xcolor}   % Colores
+\usepackage{amsmath}  % align*
+\usepackage{ulem}     % Enlaces
+\usepackage{listings} % Código
+
+\usepackage{environ}
+\usepackage{tikz}
+\usetikzlibrary{babel}
+\usetikzlibrary{matrix, shapes, decorations, positioning}
+
+\setlength{\parskip}{1.2ex}
+\setlength{\parindent}{0pt}
+
+%-------------------------------------------------------------------------------
+%	TITULO Y FORMATO GENERAL
+%-------------------------------------------------------------------------------
+
+\title{Introducción a Haskell}
+\renewcommand{\and}{\hspace*{1cm}} % tufte-handout no define \and :(
+\author{Mario Román \and Pablo Baeyens} % Your name
+\date{}
+
+%% Enlaces %%
+\newcommand{\enlace}[2]{\href{#1}{\dotuline{#2}}}
+
+%% Otros comandos %%
+\newcommand{\seccion}[1]{\input{./sections/#1.tex}} % Incluir secciones
+\newcommand{\espacio}{\vspace*{\baselineskip}}  % Añade espacios
+\newcommand{\R}{\mathbb{R}}
+
+%-------------------------------------------------------------------------------
+%	ENTORNOS
+%-------------------------------------------------------------------------------
+
+%% CÓDIGO %%
+
+% Colores
+\definecolor{backg}{HTML}{F2F2F2}    % Fondo
+\definecolor{comments}{HTML}{BDBDBD} % Comentarios
+\definecolor{keywords}{HTML}{08388c} % Palabras clave
+\definecolor{strings}{HTML}{0489B1}  % Strings
+
+\lstset{
+language=haskell,
+basicstyle=\small\ttfamily,
+breaklines=true,
+backgroundcolor=\color{backg},
+keywordstyle=\color{keywords},
+commentstyle=\color{comments},
+stringstyle=\color{strings},
+morekeywords={Tree},
+tabsize=2,
+% Acentos, ñ, ¿, ¡ (tex.stackexchange.com/questions/24528)
+extendedchars=true,
+literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1
+         {ú}{{\'u}}1 {ñ}{{\~n}}1 {¡}{{\textexclamdown}}1
+         {¿}{{?`}}1 {->}{{$\rightarrow$}}1 {=>}{{$\Rightarrow$}}1 {\\}{{$\lambda$}}1
+}
+
+%% ENTORNOS LATERALES %%
+
+\definecolor{extra}{HTML}{005190}  % Color base para bloques extra
+\definecolor{otro}{HTML}{8d0033} % Color base para otros
+
+\NewEnviron{extra}[1]{%
+\begin{marginfigure}
+\setlength{\parskip}{1.2ex}
+\begin{tikzpicture}
+\node [inner sep=10pt, inner ysep=15pt, fill=extra!10] (box){%
+\begin{minipage}{\textwidth}
+  \noindent\BODY
+\end{minipage}
+};
+
+\node[right=0cm of box.north west, fill=extra,
+text=white, text width=5.57cm, text height=0.3cm] (m)
+{\smallcaps{#1}};
+\end{tikzpicture}
+\end{marginfigure}
+}
+
+\NewEnviron{otro}[1]{%
+\begin{marginfigure}
+\setlength{\parskip}{1.2ex}
+\begin{tikzpicture}
+\node [inner sep=10pt, inner ysep=15pt, fill=otro!10] (box){%
+\begin{minipage}{\textwidth}
+  \noindent\BODY
+\end{minipage}
+};
+
+\node[right=0cm of box.north west, fill=otro,
+text=white, text width=5.57cm, text height=0.3cm] (m)
+{\smallcaps{#1}};
+\end{tikzpicture}
+\end{marginfigure}
+}
+
+%-------------------------------------------------------------------------------
+%	DOCUMENTO
+%-------------------------------------------------------------------------------
+
+
+\begin{document}
+
+\maketitle
+
+\seccion{ghc}
+\seccion{tipos}
+\seccion{constr}
+\seccion{funciones}
+\seccion{defTipos}
+\newpage
+\seccion{apendice}
+
+\end{document}

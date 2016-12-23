@@ -1,0 +1,88 @@
+\subsection{Definición de tipos}
+Para definir un tipo utilizamos \texttt{data}. \footnote{Existen otras formas
+de definir tipos. Puedes leer más
+\enlace{https://en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial/Type_advanced\#Newtypes}{aquí.}}
+Por ejemplo, el tipo \texttt{Bool} se define:
+
+\begin{lstlisting}
+  data Bool = False | True
+\end{lstlisting}
+
+Después de \texttt{data} indicamos el nombre del tipo y después de \texttt{=} indicamos los
+\textit{constructores de datos}, separados por \texttt{|}. Tanto el nombre de tipo como
+los constructores de datos deben empezar con mayúscula. \footnote{Excepto si son un
+símbolo como en los tipos numéricos o en las listas.} Podemos pensar en un tipo como
+\texttt{Int} como si estuviera definido:
+
+\begin{fullwidth}
+\begin{lstlisting}
+data Int = -9223372036854775808 | ... | -1 | 0 | 1 | ... | 9223372036854775807
+\end{lstlisting}
+\end{fullwidth}
+
+Podemos definir tipos con campos que dependan de otros tipos, como por ejemplo
+puntos en el espacio:
+
+\begin{lstlisting}
+data Point = Point Int Int Int
+\end{lstlisting}
+
+Como vemos un tipo puede llamarse igual que uno de sus constructores y
+para indicar un campo de un cierto tipo ponemos el tipo en el lugar del campo.
+Los tipos pueden definirse recursivamente, como en el caso de los naturales
+según los axiomas de Peano:
+
+\begin{lstlisting}
+data Nat = Zero | Succ Nat
+\end{lstlisting}
+
+Un natural puede ser el cero o un sucesor de un natural.
+
+También podemos definir \textbf{constructores de tipos}. Podemos verlos como
+funciones sobre tipos: toman como argumento uno o más tipos y definen nuevos
+tipos. Es el caso del tipo lista o de las tuplas
+\footnote{Las definiciones de listas y tuplas son primitivas para poder usar
+esta notación. Podríamos definir tipos equivalentes utilizando sintaxis legal.}:
+
+\begin{lstlisting}
+data [a] = [] | a : [a]
+data (a,b) = (a,b)
+\end{lstlisting}
+
+Después del nombre del constructor de tipos damos un nombre a las variables que
+utiliza (\texttt{a}). Podemos ver entonces que  \texttt{[a]} puede
+ser una lista vacía (\texttt{[]}) o un par de elementos, el primero de tipo
+\texttt{a} y el segundo una lista de tipo \texttt{a}.
+
+Los constructores de datos se utilizan para definir funciones en lo que se conoce
+como \textit{reconocimiento de patrones}. Cuando definimos una función podemos
+emplear una variable para un argumento o bien un constructor de datos.
+Por ejemplo\footnote{Podemos usar el mismo nombre para las variables de tipo y
+los nombres de los elementos del constructor porque sus ámbitos son distintos.}:
+
+\begin{lstlisting}
+fst :: (a,b) -> a
+fst (a,b) = a
+\end{lstlisting}
+
+Como vimos antes en el caso de las listas es habitual utilizar el constructor
+\texttt{:}
+\footnote{Debemos poner \texttt{head (x:xs)} y no \texttt{head x:xs} ya que si
+no nuestra función estaría tomando 3 argumentos: \texttt{x}, \texttt{:} y \texttt{xs}
+}:
+
+\begin{lstlisting}
+head (x:xs) = x
+second (x:y:xs) = y
+\end{lstlisting}
+
+Otro ejemplo es \texttt{(++)}:
+\begin{lstlisting}
+(++) :: [a] -> [a] -> [a]
+[]     ++ ys = ys
+(x:xs) ++ ys = x : (xs ++ ys)
+\end{lstlisting}
+
+Podemos utilizar el reconocimiento de patrones sobre cualquier tipo que soporte
+la igualdad utilizando cualquier constructor del tipo. Debemos asegurarnos de que
+cubrimos todos los constructores.

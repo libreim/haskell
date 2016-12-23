@@ -1,0 +1,137 @@
+\section {El compilador y el intérprete}
+
+\begin{otro}{Instalación de GHC}
+\enlace{https://www.haskell.org/platform/}{Haskell Platform}
+contiene un compilador, depurador, gestor de librerías y otras utilidades
+para programar en Haskell.
+
+Puede instalarse desde su página oficial o desde los
+repositorios de la mayoría de distribuciones GNU/Linux
+(\texttt{haskell-platform}).
+\end{otro}
+
+\texttt{ghc} es el compilador más utilizado para Haskell. Contiene gran cantidad
+de extensiones y es actualmente el compilador más utilizado para este lenguaje.
+
+\texttt{ghci} es el intérprete interactivo asociado a \texttt{ghc}.
+Para simplificar el proceso de E/S en esta introducción usaremos el intérprete
+para cargar un archivo \footnote{Existe una versión online del intérprete
+interactivo en \enlace{http://ghc.io}{ghc.io}, aunque éste no permite cargar archivos.}
+y trabajaremos los archivos desde el propio intérprete.
+El intérprete permite los siguientes comandos:
+
+\begin{itemize}
+ \item \texttt{:q} \qquad  Salir
+ \item \texttt{:l} \qquad  Cargar módulo
+ \item \texttt{:r} \qquad  Recargar módulos
+ \item \texttt{:t} \qquad  Comprobar tipos \footnote{
+ Si queremos que \texttt{ghci} nos muestre el tipo de las expresiones por defecto
+ podemos usar \texttt{:set +t}.}
+ \item \texttt{:i} \qquad  Obtener información
+\end{itemize}
+
+Una vez instalado \texttt{ghci}, crea un archivo \texttt{archivo.hs} y
+cárgalo con \texttt{:l archivo}.
+
+\section{Conceptos básicos}
+
+Haskell es un lenguaje de programación funcional puro, perezoso y con tipos fuertes
+y estáticos, nombrado en honor a Haskell Curry.
+
+En Haskell las funciones \textbf{no tienen efectos secundarios}: no alteran el
+mundo ni cambian el valor de sus argumentos. No existen las variables: la
+ejecución de un programa se basa en evaluar expresiones: sustituir
+\enlace{http://stackoverflow.com/questions/210835}{\textit{iguales por iguales}}.
+
+\begin{otro}{Efectos secundarios}
+  ¿Podemos optimizar $ f(x) - f(x) \rightarrow 0$?
+
+  \espacio
+
+  En un lenguaje imperativo las funciones pueden tener efectos secundarios:
+  si su valor de retorno depende del mundo exterior o es aleatorio las expresiones
+  podrían no ser equivalentes.
+
+  \espacio
+
+  Un lenguaje funcional nos da más libertad: la ausencia de efectos secundarios
+  permite realizar gran cantidad de optimizaciones y razonamientos.
+\end{otro}
+
+Estas restricciones permiten optimizar enormemente nuestros programas y paralelizar
+la evaluación.
+
+Al no haber efectos secundarios el orden de evaluación no importa permitiendo una
+evaluación \textbf{perezosa}, y pudiendo
+\enlace{http://dgiim.github.io/blog/2015/03/24/algebra-tipos/}{
+razonar algebraicamente} sobre nuestros programas.
+
+
+\section{Llamada a funciones}
+
+Haskell permite operaciones aritméticas básicas, y operaciones con
+cadenas, listas o booleanos. Las siguientes líneas pueden ejecutarse en el
+intérprete, devolviendo el resultado esperado:
+
+\begin{lstlisting}
+5 + 6 * 4
+(+) 5 6
+"Hello " ++ "World!"
+True && False
+not True
+"Hello" == "Hello"
+5 == (+) 2 3
+\end{lstlisting}
+
+Si ejecutamos algo como \texttt{True == 'a'} Haskell nos indicará que los tipos
+no concuerdan:
+
+\begin{lstlisting}
+Couldn't match expected type 'Bool' with actual type 'Char'
+In the second argument of '(==)', namely ''a''
+In the expression: True == 'a'
+\end{lstlisting}
+
+Las mayoría de las funciones son prefijas. Se escriben dejando sus argumentos a
+su lado y separados por espacios. No encerramos los argumentos entre paréntesis
+como se haría en la mayoría de lenguajes:
+
+\begin{lstlisting}
+succ 9				-- El siguiente de 9
+min 28 51			-- El menor entre 28 y 51
+succ  2 + 3   -- El sucesor de 2 sumado a 3
+succ (2 + 3)  -- El sucesor de 2 + 3
+(*) (max 6 4) (succ 9)	-- Notado como prefijo
+id 42	 -- Identidad
+\end{lstlisting}
+
+\begin{extra}{Funciones infijas}
+Haskell permite escribir funciones infijas como prefijas y viceversa:
+
+\espacio
+
+\begin{tabular}{lcl}
+  \texttt{3 + 4} & $\longleftrightarrow$ & \texttt{(+) 3 4} \\
+  \texttt{min 3 2} & $\longleftrightarrow$ & \texttt{3 `min` 2}\\
+\end{tabular}
+
+\espacio
+
+Sólo necesitamos añadir paréntesis o acentos graves para convertir
+cualquier función de un tipo al otro.
+\end{extra}
+
+Nótese la diferencia entre \texttt{f g 2} y \texttt{f (g 2)}: En el primer caso
+llamamos a \texttt{f} con \textbf{2} argumentos (\texttt{g} y \texttt{2}), mientras
+que en el segundo la llamamos con uno sólo (\texttt{g 2}).
+
+Haskell incluye una sentencia condicional \texttt{if}.
+\textbf{Siempre} tiene que tener una sentencia \texttt{else}.
+Otras estructuras como los bucles no tienen un equivalente en Haskell.
+
+\begin{lstlisting}
+if 3 > 2 then 4 else 3
+(if False then "Hello" else "Goodbye") ++ " World!"
+\end{lstlisting}
+
+\newpage

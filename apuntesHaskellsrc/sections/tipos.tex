@@ -1,0 +1,252 @@
+\section {El sistema de tipos}
+
+En Haskell están definidos los tipos básicos comunes a otros lenguajes,
+y pueden usarse directamente.
+Podemos comprobar el tipo de cualquier expresión con \texttt{:t}. \footnote{
+Algunos de estos ejemplos están simplificados; se describen en la sección de
+clases de tipos.} Por ejemplo:
+
+\begin{lstlisting}
+True   :: Bool
+'a'    :: Char
+"a"    :: String
+10^320 :: Integer
+2      :: Int
+3.3    :: Double
+\end{lstlisting}
+
+Los tipos de Haskell son \textbf{estáticos} y \textbf{fuertes}.
+El compilador hace comprobaciones de tipo e infiere los tipos cuando no se
+declaran explícitamente. La mayoría de errores de un código escrito en Haskell
+serán de tipos; en otro caso, sólo pueden ser errores de sintaxis o lógicos.
+
+\begin{otro}{Tipos fuertes y estáticos}
+En un sistema de tipos estáticos tenemos que declarar el tipo de todos los objetos
+que utilizamos. Es el caso de C++, pero no el de Python o Javascript.
+
+\espacio
+
+Un sistema de tipos fuertes impide la conversión implícita entre tipos. En C++
+los tipos no son fuertes: podemos convertir un entero a un booleano
+de forma implícita para comprobar si es nulo.
+\end{otro}
+
+
+\subsection{Polimorfismo}
+
+Algunos datos pueden tener más de un tipo. En estos casos, Haskell asume
+el tipo más general e infiere el tipo concreto al usarlo.
+Podemos indicar el tipo de los objetos que usemos para
+facilitar la depuración.
+
+\begin{lstlisting}
+fst :: (a,b) -> a
+id  :: a -> a
+\end{lstlisting}
+
+Sobre enteros la identidad tendría tipo \texttt{id :: Int -> Int}, y sobre
+booleanos \texttt{id :: Bool -> Bool}. Haskell infiere el tipo más general: puede
+tomar un tipo cualquiera (\texttt{a}) y devuelve un elemento de ese tipo. La letra
+\texttt{a} es una \textbf{variable de tipo}.
+
+\begin{extra}{Variables de tipo}
+Las variables de tipo deben empezar con una letra \textbf{minúscula}.
+Usualmente se utiliza una sola letra, pero puede
+utilizarse cualquier identificador que empiece por minúscula.
+
+\espacio
+
+En contraposición, los tipos concretos empiezan por una letra
+\textbf{mayúscula} (\texttt{Bool} y no \texttt{bool}). Si los escribimos en
+minúscula el compilador pensará que son una variable de tipo.
+\end{extra}
+
+\subsection{Clases de tipos}
+
+Algunos tipos tienen propiedades comunes. Para aprovecharlas se definen
+\textbf{clases de tipos}, que agrupan tipos con la misma interfaz.
+La mayoría de los tipos son instancias de \texttt{Eq},
+porque disponen de una función \texttt{(==)} \footnote{Y una función \texttt{(/=)}
+para comprobar la desigualdad.}.
+Las instancias de la clase \texttt{Num} pueden sumarse y multiplicarse,
+las de \texttt{Show} pueden convertirse a texto (\texttt{String}),
+y las de \texttt{Integral} permiten calcular restos modulares sobre ellas.
+
+\newpage
+
+Las clases de tipos se indican utilizando \texttt{=>}:
+
+\begin{lstlisting}
+3    :: Num a => a
+show :: Show a => a -> String
+gcd  :: Integral a => a -> a -> a
+(==) :: Eq a => a -> a -> Bool
+\end{lstlisting}
+
+Un tipo puede pertenecer a varias clases: \texttt{Integer} pertenece a todas las
+clases anteriores.
+
+\begin{extra}{Tipos numéricos}
+Los números en Haskell son polimórficos: \texttt{3} puede ser interpretado como
+\texttt{Double} o \texttt{Int}. Esto permite mantener un sistema de tipos fuerte
+sin preocuparse por convertirlos explícitamente.
+
+\espacio
+
+Los tipos más comúnmente utilizados son:
+
+\begin{itemize}
+  \item \texttt{Int}: Enteros de 32 o 64 bits.
+  \item \texttt{Integer}: Precisión ilimitada.
+  \item \texttt{Double}: Punto flotante.
+\end{itemize}
+
+\espacio
+
+Las clases \texttt{Num}, \texttt{Integral} y \texttt{Fractional} unifican ciertas
+propiedades de los tipos numéricos. Puedes leer más
+\enlace{https://wiki.haskell.org/Converting_numbers}{aquí}.
+\end{extra}
+
+\subsection{Primeras definiciones}
+
+Todo objeto en Haskell es una función: una constante es simplemente una función
+sin argumentos:
+
+\begin{lstlisting}
+constante = 28
+\end{lstlisting}
+
+Definimos las funciones con una serie de igualdades que cubran todas las formas
+posibles de los argumentos de entrada. El compilador intentará encajar los
+argumentos en alguna de esas formas en orden y usará la \textbf{primera}
+definición que encaje. Veamos un ejemplo:
+
+\begin{lstlisting}
+muestra :: Bool -> String
+muestra True  = "True"
+muestra False = "False"
+\end{lstlisting}
+
+\begin{extra}{Librerías}
+Cargamos librerías con \texttt{import <nombre>}, tanto en un archivo como en
+\texttt{ghci}. Si no están ya instaladas podemos hacerlo utilizando
+\texttt{cabal}.
+
+\espacio
+
+Para buscar una función concreta existe \enlace{http://www.haskell.org/hoogle/}{Hoogle},
+que permite buscar una función por nombre o por tipo.
+\end{extra}
+
+Podemos poner opcionalmente antes de la definición el tipo. Esto se llama
+\textbf{declaración de tipo}. En la mayoría de las ocasiones Haskell es capaz
+de deducir el tipo de una función:
+
+\begin{lstlisting}
+duplica x = x + x
+\end{lstlisting}
+
+Cuando usemos variables estas tienen que empezar por \textbf{minúscula} o ser
+\texttt{\_} \footnote{Este es el único nombre de variable que puede utilizarse
+más de una vez}, que utilizamos para indicar que el argumento no se va a utilizar:
+
+\begin{lstlisting}
+esNulo :: Int -> Bool
+esNulo 0 = True
+esNulo _ = False
+
+esPar x = esNulo (mod x 2)
+\end{lstlisting}
+
+
+\subsection {Funciones, tipos y currificación}
+Las funciones en un lenguaje funcional son tratadas como objetos
+de primera clase. Pueden pasarse como argumentos o ser devueltas como resultado.
+Por defecto una función en Haskell es currificada.
+
+La currificación es la identificación entre las funciones:
+\begin{align*}
+\begin{matrix}
+f: A \times B \to C    & \quad &   f: A \to (B \to C) \\
+f(a,b) = c       & \quad &     f(a)(b) =  c
+\end{matrix}
+\end{align*}
+
+En lugar de tener una función que toma dos argumentos y devuelve
+un resultado, tenemos una función que toma un argumento y devuelve otra
+función que toma otro argumento para devolver el resultado.
+Por ejemplo, la suma queda:
+\begin{align*}
+\begin{matrix}
+(+) :: & \R \times \R & \rightarrow & \R    & \quad & (+) :: & \R & \rightarrow & (\R \rightarrow  \R) \\
+       & x , y      & \mapsto     & x+y  & \quad &        & x & \mapsto     & (y  \mapsto x+y)
+\end{matrix}
+\end{align*}
+
+De esta forma una función binaria toma un argumento y devuelve una función
+unaria. Por inducción se definen funciones de más argumentos, toman un sólo argumento
+y devuelven
+\footnote{Consideramos $\rightarrow$ asociativo por la derecha, de tal forma que
+\texttt{a -> b -> c} es equivalente a \texttt{a -> (b -> c)}}
+una función con un argumento menos:
+
+\begin{lstlisting}
+(&&) :: Bool -> Bool -> Bool
+(+) :: Num a => a -> a -> a
+const :: a -> b -> a
+(==) :: Eq a => a -> a -> Bool
+\end{lstlisting}
+
+Podemos indicar sólo una parte de los argumentos de una función. Esto se conoce
+como \textbf{aplicación parcial}. Aquí definimos la función
+\texttt{xor} y definimos la negación sobre ella, usando primero la definición
+normal y luego usando aplicación parcial:
+
+\begin{lstlisting}
+xor :: Bool -> Bool -> Bool
+xor x y = ((not x) && y) || (x && (not y))
+
+neg' x = xor True x -- Sin aplicación parcial
+neg = xor True      -- Con aplicación parcial
+\end{lstlisting}
+
+\begin{extra}{Combinando funciones}
+Existen 3 operadores muy utilizados para combinar funciones:
+
+\espacio
+
+\begin{itemize}
+  \item \texttt{(f . g) x = f (g x)}
+  \item \texttt{flip f x y = f y x}
+  \item \texttt{f \$ x = f x}
+\end{itemize}
+
+\espacio
+
+\texttt{.} es la composición de funciones y \texttt{flip} cambia el orden de
+los argumentos.
+
+\texttt{\$} es el operador con menor prioridad, lo que permite ahorrar paréntesis:
+
+\espacio
+
+\texttt{succ (9 + 10)} $\rightarrow$ \texttt{succ \$ 9 + 10}
+
+\end{extra}
+De la misma forma podemos llamar \texttt{(+)} con sólo un argumento, y nos
+devolverá la función que suma ese número:
+
+\begin{lstlisting}
+suma5 = (5+)
+suma2 = (2+)
+\end{lstlisting}
+
+Podemos componer funciones con la función composición, \texttt{(.)} y aprovechar
+la aplicación parcial para omitir argumentos.
+
+\begin{lstlisting}
+suma7 = suma5 . suma2
+\end{lstlisting}
+
+\newpage

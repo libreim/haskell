@@ -1,0 +1,155 @@
+\section{Recursividad}
+
+La recursividad es la base de Haskell. Como Haskell comprueba en el orden de
+definición, el caso base debe escribirse antes para que se llegue a ejecutar:
+
+\begin{lstlisting}
+factorial 0 = 1
+factorial n = n * factorial (n-1)
+\end{lstlisting}
+
+En una función con más de un argumento debemos definir casos base para todos los
+argumentos\footnote{En realidad este ejemplo puede hacerse con sólo dos casos (!)}:
+
+\begin{lstlisting}
+zip :: [a] -> [b] -> [(a,b)]
+zip   []     _    = []
+zip   _      []   = []
+zip (a:as) (b:bs) = (a,b) : zip as bs
+\end{lstlisting}
+
+En la mayoría de los casos puede probarse por inducción que la función termina
+en casos finitos. En las \textbf{listas} el caso base suele ser la lista vacía:
+
+\begin{lstlisting}
+length :: [a] -> Int
+length []     = 0
+length (_:xs) = 1 + length xs
+\end{lstlisting}
+
+También puede no haber caso base:
+
+\begin{lstlisting}
+repeat :: a -> [a]
+repeat a = a : repeat a
+\end{lstlisting}
+
+\section{Funciones de orden superior}
+Las funciones de orden superior son aquellas que toman funciones como parámetros.
+Esto permite modularizar el código. El objetivo es tener funciones simples
+que se compongan para formar las funciones más complejas:
+
+Tomemos estas dos funciones:
+
+\begin{lstlisting}
+mult 1 x = x
+mult n x = x + (mult (n-1) x)
+
+replica 1 s = s
+replica n s = s ++ (replica (n-1) s)
+\end{lstlisting}
+
+Tienen un patrón común: Aplican una misma función binaria un cierto número de
+veces. Por tanto podríamos definir:
+
+\begin{lstlisting}
+repite :: (a -> a -> a) -> Int -> a -> a
+repite f 1 x = x
+repite f n x = f x (repite f (n-1) x)
+\end{lstlisting}
+
+De esta forma:
+\texttt{mult = repite (+)} y \texttt{replica = repite (++)}.
+Esto nos deja unas funciones mucho más limpias y más fáciles de mantener.
+
+\begin{extra}{Funciones lambda}
+Las funciones lambda son funciones anónimas. Por ejemplo:
+
+\espacio
+
+\texttt{\textbackslash x $\to$  x + 4}
+
+\espacio
+
+Son útiles para ser pasadas como argumento cuando son suficientemente simples.
+Pueden tomar varios argumentos, que quedan currificados:
+
+\espacio
+
+\texttt{\textbackslash x y $\to$ x * (y + 2)}
+
+\end{extra}
+
+Otro ejemplo sería construir una función que aplique otra 2 veces:
+
+\begin{lstlisting}
+applyTwice :: (a -> a) -> a -> a
+applyTwice f = f . f
+\end{lstlisting}
+
+\section{Funciones de orden superior sobre listas}
+Las listas son muy importantes en Haskell, y para tratarlas existen varias
+funciones de orden superior muy utilizadas. Todas estas funciones pueden
+generalizarse sobre otros tipos por lo que es importante saber utilizarlas:
+
+\texttt{map} toma una función y una lista y la devuelve con la función aplicada
+a sus elementos. Su definición es:
+\begin{lstlisting}
+map :: (a -> b) -> [a] -> [b]
+map _ [] = []
+map f (x:xs) = f x : map f xs
+\end{lstlisting}
+
+Algunos ejemplos de uso:
+\begin{lstlisting}
+map (++"!") ["Sugar", "Spice", "Everything nice"]
+map (map (*3)) [[1,2],[5,2,7],[]]
+\end{lstlisting}
+
+\texttt{filter} toma un predicado y una lista, y devuelve una lista con los elementos
+que cumplen el predicado:
+\begin{lstlisting}
+filter :: (a -> Bool) -> [a] -> [a]
+filter _ [] = []
+filter p (x:xs) =
+  if p x
+    then x : filter p xs
+    else filter p xs
+\end{lstlisting}
+
+Un ejemplo es:
+
+\begin{lstlisting}
+filter (`elem` ['0'..'9']) "The answer is 42"
+\end{lstlisting}
+
+\texttt{foldr}
+\footnote{Es similar a \texttt{reduce} en Python. o \texttt{accumulate} en C++.
+Existe otra función \texttt{foldl} que aplica los paréntesis de izquierda a derecha.}
+toma una función binaria ($\oplus$) y un valor por defecto ($z$) y
+aplican la función a los elementos de una lista ordenadamente:
+
+\begin{equation*}
+\operatorname{foldr} \; [a_1 , a_2 , \dots , a_n] =
+ a_1 \oplus  (a_2 \oplus  (\dots \oplus  (a_n \oplus  z )))
+\end{equation*}
+
+Su definición es:
+
+\begin{lstlisting}
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr f z  []    = z
+foldr f z (x:xs) = f x (foldr f z xs)
+\end{lstlisting}
+
+Estas funciones tienen un gran poder expresivo. Si queremos obtener la suma
+o el producto de los elementos de una lista podemos hacerlo con \texttt{foldr}:
+
+\begin{lstlisting}
+sum      =  foldr (+) 0
+product  =  foldr (*) 1
+concat   =  foldr (++) []
+\end{lstlisting}
+
+Con \texttt{foldr} podemos definir \texttt{map}, \texttt{filter} y la mayoría de
+funciones sobre listas.

@@ -1,0 +1,85 @@
+\appendix
+
+\section{Apéndice}
+
+En este apéndice se incluyen otros temas de interés sobre la sintaxis o uso de
+Haskell.
+
+\subsection{Comprensión de listas}
+
+La comprensión de listas es una forma de escribir listas parecida a la notación para
+expresar conjuntos por extensión. Su sintaxis es:
+\begin{lstlisting}
+-- [<expresion> | <variable> <- <lista>, <predicado>]
+[x*2 | x <- [1..10]] -- [2,4,6,8,10,12,14,16,18,20]
+[x*2 | x <- [1..10], x*2 >= 12] -- [12,14,16,18,20]
+\end{lstlisting}
+
+Cada elemento de la lista es sustituido en la expresión, que puede depender de la variable, y, si
+cumple los predicados se añadirá a la lista. Si se utilizan varios predicados éstos se separan por
+comas. También podemos utilizar varias listas, cada una ligada a una variable. En este caso las
+variables se sustituirán por cada combinación posible de los elementos:
+\begin{lstlisting}
+[ (x,y) | x <- [1,2,3], y <- [8,3], x < y]
+-- [(1,8),(1,3),(2,8),(2,3),(3,8)]
+\end{lstlisting}
+
+\section{Listas infinitas y evaluación perezosa}
+La sintaxis de rangos nos permite escribir listas infinitas:
+
+\begin{lstlisting}
+[1..] -- Enteros positivos
+fibs = 0 : 1 : zipWith (+) fibs (tail fibs) -- Secuencia de Fibonacci
+repeat :: a -> [a] -- Crea listas infinitas con todos los elementos iguales
+repeat n = n : repeat n -- repeat n = [n,n..]
+\end{lstlisting}
+
+Si intentamos mostrar estas listas en el intérprete no acabará. Sin embargo, podemos utilizarlas
+junto con otras funciones sin problema:
+
+\begin{lstlisting}
+  zip [1..] ["azul","verde","rojo"] -- [(1,"azul"),(2,"verde"),(3,"rojo")]
+\end{lstlisting}
+
+Esto sucede porque Haskell es un lenguaje de evaluación no estricta o perezoso, por lo que sólo evaluará
+los elementos que necesite. Así, en \texttt{||}, el segundo elemento sólo se evaluará si el
+primero es \texttt{False}, ya que si es \texttt{True} el valor de la expresión ya estará fijado.
+
+
+\subsection{Prueba del compilador de Haskell}
+
+Escribimos el clásico programa \textit{"Hello World"} para Haskell,
+que servirá para probar el compilador.
+En \texttt{test.hs} escribimos el programa:
+
+\begin{lstlisting}
+main = putStrLn "Hello World!"
+\end{lstlisting}
+
+Compilamos usando \texttt{ghc -o hello test.hs}
+\footnote{También podríamos usar \texttt{runghc}, que compila y ejecuta el programa
+en un solo paso}.
+Acabamos de definir la función \texttt{main} como la función \texttt{putStrLn}
+aplicada sobre la cadena \texttt{``Hello World!''}.
+
+A diferencia de lo que haríamos en un lenguaje imperativo no le decimos que
+para ejecutar \texttt{main} haya que ejecutar una función \texttt{putStr},
+sino que \textbf{definimos} \texttt{main} como la función.
+
+Además del compilador, \textit{Haskell Platform} incluye \texttt{runhaskell}, un
+intérprete no interactivo que podríamos llamar con \texttt{runhaskell test.hs}
+para este ejemplo.
+
+\subsection{Ejemplos prácticos y más}
+
+En la carpeta \texttt{examples} hay algunos ejemplos prácticos de programas
+completos. Si quieres seguir aprendiendo, recomendamos los siguientes recursos:
+
+\begin{itemize}
+  \item \enlace{http://stackoverflow.com/questions/1012573}{Getting started with Haskell}
+  \item \enlace{http://tryhaskell.org/}{Try Haskell}
+  \item \enlace{http://aprendehaskell.es/}{¡Aprende Haskell por el bien de todos!}
+  \item \enlace{https://en.wikibooks.org/wiki/Haskell}{Wikibooks - Haskell}
+  \item \enlace{https://wiki.haskell.org/Learning_Haskell}{Learning Haskell}
+  \item \enlace{http://book.realworldhaskell.org/}{Real World Haskell}
+\end{itemize}
