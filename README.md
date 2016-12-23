@@ -1,42 +1,55 @@
-# libreim-talk-haskell
-Presentación de una introducción a Haskell.
-Puedes descargarla [aquí](https://github.com/libreim/libreim-talk-haskell/raw/master/pdfs/sin_notas.pdf) (4:3) o [aquí](https://github.com/libreim/libreim-talk-haskell/raw/master/pdfs/169.pdf) (16:9) o compilarla a partir de `presentacion.tex`.
+# haskell
 
-## Índice de contenidos
+Repositorio de recursos de libreim sobre Haskell.
 
-1. El lenguaje
-    - Haskell Platform y GHC
-    - Uso del intérprete y el intérprete
-    - Programación funcional
-2. Sistema de tipos
-    - Tipos, funciones y variables de tipo
-    - Clases
-    - Tipos algebraicos
-    - Constructores de tipos
-3. Funciones
-    - Reconocimiento de patrones
-    - Currificación
-    - Funciones de orden superior
-    - Evaluación perezosa
-4. Más
-    - IO. Mónadas
-    - Hoogle
-    - Idris
-    - Curry-Howard
+## Cuaderno en IHaskell
 
-Ejemplos en Haskell literario:
+[Introducción a Haskell interactiva](https://github.com/libreim/haskell/blob/master/PrimeraParte/PrimeraParte.ipynb) que describe desde cero el sistema de tipos, cómo definir y utilizar funciones, tipos y constructores de tipos y funtores. El código original utilizado en la charla está disponible [aquí](https://github.com/libreim/haskell/tree/master/PrimeraParte).
 
-* Quicksort
-* Árboles binarios
-* Sucesión de Fibonacci
-* Monoides
-* La categoría Hask
+Contiene ejercicios sobre los temas introducidos que pueden realizarse en el mismo cuaderno si **se ejecuta con [IHaskell](https://github.com/gibiansky/IHaskell)**.
 
-## Algunos recursos
+También se incluyen [algunos ejercicios](https://github.com/libreim/haskell/blob/master/ejercicios.md) adicionales.
 
-- [Learn you a Haskell for great good - learnyouahaskell.com](http://learnyouahaskell.com) - *Versión en castellano [¡Aprende Haskell por el bien de todos!](http://aprendehaskell.es)*
-- [Real World Haskell - realworldhaskell.org](http://book.realworldhaskell.org/)
-- [Haskell Wikibook](http://en.wikibooks.org/wiki/Haskell)
-- [dgiim/introHaskell](http://github.com/dgiim/introHaskell) - *Una introducción corta escrita por nosotros*
-- [Hoogle](https://www.haskell.org/hoogle/) - *Buscador de funciones*
-- [HaskellWiki](https://wiki.haskell.org/Haskell) - *Wiki de Haskell*
+
+## Introducción a Haskell
+
+Los primeros apuntes que creamos están revisados y [disponibles en pdf](https://github.com/libreim/haskell/blob/master/apuntesHaskell.pdf). Son una introducción corta que describe desde cero el sistema de tipos, los constructores de tipos más habituales (listas y tuplas) y cómo definir y utilizar funciones y tipos.
+
+También está disponible [el código fuente](https://github.com/libreim/haskell/tree/master/apuntesHaskellsrc) en LaTeX.
+
+## Funtores y Mónadas
+
+Ejemplos autocontenidos de funtores y uso de mónadas. Requieren los conocimientos de las introducciones desde cero.
+
+* [Funtores](https://github.com/libreim/haskell/blob/master/SegundaParte/1.funtores.hs)
+* [Manejo de errores con `Maybe`](https://github.com/libreim/haskell/blob/master/SegundaParte/2.errores.hs)
+* [Distribuciones de probabilidad con `State`](https://github.com/libreim/haskell/blob/master/SegundaParte/3.distribuciones.hs)
+* [Ejemplo de parser con `Parsec`](https://github.com/libreim/haskell/blob/master/SegundaParte/4.parsers.hs)
+
+## Haskell en la OSL
+
+Como parte de una reunión de [usuarios de Github en Granada](https://github.com/github-users-grx) dimos una charla en la [OSL](http://osl.ugr.es). Incluimos aquí [la presentación con notas](https://github.com/libreim/haskell/blob/master/CharlaOSL.pdf).
+
+Puedes acceder a otras versiones, a un índice describiendo el contenido y al código fuente en el [repositorio de la charla](https://github.com/github-users-grx/osl-talk-haskell).
+
+### Ejemplos en Haskell literario
+
+Ejemplos autocontenidos realizados en [Haskell literario](https://wiki.haskell.org/Literate_programming). Pueden compilarse a pdf o ejecutarse con ghc mediante el Makefile que incluimos. Requieren conocer los contenidos descritos en las introducciones desde cero:
+
+* [Quicksort](https://github.com/libreim/haskell/blob/master/Haskell%20Literario/quicksort.lhs)
+* [Árboles binarios](https://github.com/libreim/haskell/blob/master/Haskell%20Literario/bintree.lhs)
+* [Sucesión de Fibonacci](https://github.com/libreim/haskell/blob/master/Haskell%20Literario/fibonacci.lhs)
+* [Monoides](https://github.com/libreim/haskell/blob/master/Haskell%20Literario/monoides.lhs)
+* [La categoría Hask](https://github.com/libreim/haskell/blob/master/Haskell%20Literario/hask.lhs)
+
+## Posts
+
+En el [blog](http://tux.ugr.es/libreim/blog/) de libreim hay disponibles varios posts que expanden distintos temas de Haskell, relacionados con la teoría de tipos y la teoría de categorías:
+
+- [Teoría de tipos](http://tux.ugr.es/libreim/blog/2016/01/08/teoria-de-tipos/) una lista de lectura sobre teoría de tipos. Incluye:
+    - [Álgebra de tipos](http://tux.ugr.es/libreim/blog/2015/03/24/algebra-tipos). Construcción de un álgebra sobre los tipos de Haskell
+    - [Inducción estructural](http://tux.ugr.es/libreim/blog/2015/03/14/induccion-estructural/). Generalización de la inducción para trabajar sobre tipos
+    - [Isomorfismo de Curry-Howard](http://tux.ugr.es/libreim/blog/2014/12/04/curry-howard/). Exposición del isomorfismo de Curry-Howard en Haskell y su utilización en Coq
+- [Mónadas](http://tux.ugr.es/libreim/blog/2016/12/21/monadas/). Motivación de las mónadas y visión categórica. Esta última parte requiere conocer conceptos de [teoría de categorías](http://tux.ugr.es/libreim/blog/2014/10/04/intro-categorias).
+
+- Más recursos en nuestra [página de recursos](http://tux.ugr.es/libreim/awesome)
