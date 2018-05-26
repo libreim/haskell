@@ -44,12 +44,12 @@ Ejemplos autocontenidos realizados en [Haskell literario](https://wiki.haskell.o
 
 ## Posts
 
-En el [blog](http://tux.ugr.es/libreim/blog/) de libreim hay disponibles varios posts que expanden distintos temas de Haskell, relacionados con la teoría de tipos y la teoría de categorías:
+En el [blog](https://libreim.github.io/blog/) de libreim hay disponibles varios posts que expanden distintos temas de Haskell, relacionados con la teoría de tipos y la teoría de categorías:
 
-- [Teoría de tipos](http://tux.ugr.es/libreim/blog/2016/01/08/teoria-de-tipos/) una lista de lectura sobre teoría de tipos. Incluye:
-    - [Álgebra de tipos](http://tux.ugr.es/libreim/blog/2015/03/24/algebra-tipos). Construcción de un álgebra sobre los tipos de Haskell
-    - [Inducción estructural](http://tux.ugr.es/libreim/blog/2015/03/14/induccion-estructural/). Generalización de la inducción para trabajar sobre tipos
-    - [Isomorfismo de Curry-Howard](http://tux.ugr.es/libreim/blog/2014/12/04/curry-howard/). Exposición del isomorfismo de Curry-Howard en Haskell y su utilización en Coq
-- [Mónadas](http://tux.ugr.es/libreim/blog/2016/12/21/monadas/). Motivación de las mónadas y visión categórica. Esta última parte requiere conocer conceptos de [teoría de categorías](http://tux.ugr.es/libreim/blog/2014/10/04/intro-categorias).
+- [Teoría de tipos](https://libreim.github.io/blog/2016/01/08/teoria-de-tipos/) una lista de lectura sobre teoría de tipos. Incluye:
+    - [Álgebra de tipos](https://libreim.github.io/blog/2015/03/24/algebra-tipos). Construcción de un álgebra sobre los tipos de Haskell
+    - [Inducción estructural](https://libreim.github.io/blog/2015/03/14/induccion-estructural/). Generalización de la inducción para trabajar sobre tipos
+    - [Isomorfismo de Curry-Howard](https://libreim.github.io/blog/2014/12/04/curry-howard/). Exposición del isomorfismo de Curry-Howard en Haskell y su utilización en Coq
+- [Mónadas](https://libreim.github.io/blog/2016/12/21/monadas/). Motivación de las mónadas y visión categórica. Esta última parte requiere conocer conceptos de [teoría de categorías](https://libreim.github.io/blog/2014/10/04/intro-categorias).
 
-- Más recursos en nuestra [página de recursos](http://tux.ugr.es/libreim/awesome)
+- Más recursos en nuestra [página de recursos](https://libreim.github.io/recursos/)
