@@ -21,8 +21,8 @@ declaran explícitamente. La mayoría de errores de un código escrito en Haskel
 serán de tipos; en otro caso, sólo pueden ser errores de sintaxis o lógicos.
 
 \begin{otro}{Tipos fuertes y estáticos}
-En un sistema de tipos estáticos tenemos que declarar el tipo de todos los objetos
-que utilizamos. Es el caso de C++, pero no el de Python o Javascript.
+  En un sistema de tipos estáticos el tipo de todos los elementos es conocido en tiempo de compilación.
+  Es el caso de C++, pero no el de Python o Javascript.
 
 \espacio
 
@@ -205,7 +205,7 @@ normal y luego usando aplicación parcial:
 
 \begin{lstlisting}
 xor :: Bool -> Bool -> Bool
-xor x y = ((not x) && y) || (x && (not y))
+xor x y = (not x && y) || (x && not y)
 
 neg' x = xor True x -- Sin aplicación parcial
 neg = xor True      -- Con aplicación parcial
@@ -239,14 +239,14 @@ devolverá la función que suma ese número:
 
 \begin{lstlisting}
 suma5 = (5+)
-suma2 = (2+)
+mult2 = (2+)
 \end{lstlisting}
 
 Podemos componer funciones con la función composición, \texttt{(.)} y aprovechar
 la aplicación parcial para omitir argumentos.
 
 \begin{lstlisting}
-suma7 = suma5 . suma2
+f = suma5 . mult2 -- f x = 2*x + 5
 \end{lstlisting}
 
 \newpage

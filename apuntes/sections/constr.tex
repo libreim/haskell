@@ -58,21 +58,21 @@ definir listas fácilmente. Prueba estos ejemplos:
 Su implementación se basa en la clase de tipos \texttt{Enum}.
 \end{extra}
 
-Algunas funciones relevantes sobre listas son:
+Algunas funciones relevantes sobre listas (y otras estructuras \footnote{\texttt{null}, \texttt{elem} y \texttt{length} funcionan sobre otro tipo de estructuras de datos como conjuntos, árboles o vectores en versiones recientes de GHC.}) son:
 
 \begin{itemize}
   \item \texttt{++ :: [a] -> [a] -> [a]}: concatena dos listas.
   \item \texttt{head :: [a] -> a}: devuelve la cabeza (primer elemento).
   \item \texttt{tail :: [a] -> [a]}: devuelve la cola.
   \item \texttt{null :: [a] -> Bool}: indica si una lista está vacía.
-  \item \texttt{elem :: a -> [a] -> Bool}: indica si un elemento está en la lista.
+  \item \texttt{elem :: Eq a => a -> [a] -> Bool}: indica si un elemento está en la lista.
   \item \texttt{(!!) :: [a] -> Int -> a}: elemento en la posición dada.
   \item \texttt{length :: [a] -> Int}:
   \footnote{La mayoría de funciones sobre listas están restringidas sobre \texttt{Int}
   por razones de retrocompatibilidad.} indica la longitud.
 \end{itemize}
 
-Otras funciones generalizan una función binaria sobre una lista. Es el caso de
+Otras funciones generalizan una función binaria sobre una lista u otras estructuras. Es el caso de
 \texttt{sum}, \texttt{product}, \texttt{maximum} o \texttt{minimum}.
 
 \subsection{Tuplas}
@@ -97,4 +97,4 @@ cada lista:
 \end{lstlisting}
 
 No existen tuplas de un elemento, aunque sí existe la tupla vacía, escrita \texttt{()}
-y llamada \textit{unit}, que funciona como \texttt{void}.
+y llamada \textit{unit}, que funciona como \texttt{None} en Python o \texttt{void} en C++.

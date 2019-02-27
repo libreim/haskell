@@ -19,7 +19,7 @@ zip (a:as) (b:bs) = (a,b) : zip as bs
 \end{lstlisting}
 
 En la mayoría de los casos puede probarse por inducción que la función termina
-en casos finitos. En las \textbf{listas} el caso base suele ser la lista vacía:
+en casos finitos\footnote{En otros lenguajes como \enlace{https://www.idris-lang.org/}{Idris}, basado en Haskell, esta demostración puede hacerse por el compilador de forma automática en algunos casos}. En las \textbf{listas} el caso base suele ser la lista vacía\footnote{Esta no es una implementación eficiente de la función longitud (¿puedes ver por qué?) pero la presentamos así por sencillez}:
 
 \begin{lstlisting}
 length :: [a] -> Int
@@ -134,7 +134,7 @@ aplican la función a los elementos de una lista ordenadamente:
  a_1 \oplus  (a_2 \oplus  (\dots \oplus  (a_n \oplus  z )))
 \end{equation*}
 
-Su definición es:
+Su definición es\footnote{Como pasaba cuando presentamos las funciones sobre listas esta función puede generalizarse a otras estructuras en las que tendrá una definición diferente}:
 
 \begin{lstlisting}
 foldr :: (a -> b -> b) -> b -> [a] -> b

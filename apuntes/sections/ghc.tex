@@ -15,19 +15,18 @@ de extensiones y es actualmente el compilador más utilizado para este lenguaje.
 
 \texttt{ghci} es el intérprete interactivo asociado a \texttt{ghc}.
 Para simplificar el proceso de E/S en esta introducción usaremos el intérprete
-para cargar un archivo \footnote{Existe una versión online del intérprete
-interactivo en \enlace{http://ghc.io}{ghc.io}, aunque éste no permite cargar archivos.}
+para cargar un archivo \footnote{Puedes probarlo online en \enlace{https://repl.it/languages/haskell}{repl.it}.}
 y trabajaremos los archivos desde el propio intérprete.
 El intérprete permite los siguientes comandos:
 
 \begin{itemize}
- \item \texttt{:q} \qquad  Salir
- \item \texttt{:l} \qquad  Cargar módulo
- \item \texttt{:r} \qquad  Recargar módulos
- \item \texttt{:t} \qquad  Comprobar tipos \footnote{
+ \item \texttt{:q \phantom{modulo}} \qquad  Salir
+ \item \texttt{:l modulo} \qquad  Cargar \texttt{modulo}
+ \item \texttt{:r \phantom{modulo}} \qquad  Recargar módulos
+ \item \texttt{:t expr\phantom{lo}} \qquad  Comprobar tipo de \texttt{expr} \footnote{
  Si queremos que \texttt{ghci} nos muestre el tipo de las expresiones por defecto
  podemos usar \texttt{:set +t}.}
- \item \texttt{:i} \qquad  Obtener información
+ \item \texttt{:i \phantom{modulo}} \qquad  Obtener información
 \end{itemize}
 
 Una vez instalado \texttt{ghci}, crea un archivo \texttt{archivo.hs} y
@@ -63,7 +62,7 @@ la evaluación.
 
 Al no haber efectos secundarios el orden de evaluación no importa permitiendo una
 evaluación \textbf{perezosa}, y pudiendo
-\enlace{http://dgiim.github.io/blog/2015/03/24/algebra-tipos/}{
+\enlace{https://libreim.github.io/blog/2015/03/24/algebra-tipos/}{
 razonar algebraicamente} sobre nuestros programas.
 
 
@@ -97,11 +96,11 @@ su lado y separados por espacios. No encerramos los argumentos entre paréntesis
 como se haría en la mayoría de lenguajes:
 
 \begin{lstlisting}
-succ 9				-- El siguiente de 9
+abs 3				-- El valor absoluto de 3
 min 28 51			-- El menor entre 28 y 51
-succ  2 + 3   -- El sucesor de 2 sumado a 3
-succ (2 + 3)  -- El sucesor de 2 + 3
-(*) (max 6 4) (succ 9)	-- Notado como prefijo
+negate  2 + 3   -- -2 + 3
+negate (2 + 3)  -- -(2+3)
+(*) (max 6 4) (negate 9)	-- Notado como prefijo
 id 42	 -- Identidad
 \end{lstlisting}
 
@@ -127,7 +126,7 @@ que en el segundo la llamamos con uno sólo (\texttt{g 2}).
 
 Haskell incluye una sentencia condicional \texttt{if}.
 \textbf{Siempre} tiene que tener una sentencia \texttt{else}.
-Otras estructuras como los bucles no tienen un equivalente en Haskell.
+Otras estructuras como los bucles no tienen un equivalente directo \footnote{Como aproximación a los bucles tipo ``while'' y ``for'' puedes consultar las funciones \texttt{until} de la biblioteca estándar y \texttt{for\_ } del módulo \texttt{Data.Foldable} respectivamente.} en Haskell.
 
 \begin{lstlisting}
 if 3 > 2 then 4 else 3

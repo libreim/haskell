@@ -27,19 +27,23 @@ variables se sustituirán por cada combinación posible de los elementos:
 \section{Listas infinitas y evaluación perezosa}
 La sintaxis de rangos nos permite escribir listas infinitas:
 
+\begin{fullwidth}
 \begin{lstlisting}
 [1..] -- Enteros positivos
 fibs = 0 : 1 : zipWith (+) fibs (tail fibs) -- Secuencia de Fibonacci
 repeat :: a -> [a] -- Crea listas infinitas con todos los elementos iguales
 repeat n = n : repeat n -- repeat n = [n,n..]
 \end{lstlisting}
+\end{fullwidth}
 
 Si intentamos mostrar estas listas en el intérprete no acabará. Sin embargo, podemos utilizarlas
 junto con otras funciones sin problema:
 
+\begin{fullwidth}
 \begin{lstlisting}
   zip [1..] ["azul","verde","rojo"] -- [(1,"azul"),(2,"verde"),(3,"rojo")]
 \end{lstlisting}
+\end{fullwidth}
 
 Esto sucede porque Haskell es un lenguaje de evaluación no estricta o perezoso, por lo que sólo evaluará
 los elementos que necesite. Así, en \texttt{||}, el segundo elemento sólo se evaluará si el
@@ -56,9 +60,7 @@ En \texttt{test.hs} escribimos el programa:
 main = putStrLn "Hello World!"
 \end{lstlisting}
 
-Compilamos usando \texttt{ghc -o hello test.hs}
-\footnote{También podríamos usar \texttt{runghc}, que compila y ejecuta el programa
-en un solo paso}.
+Compilamos usando \texttt{ghc -o hello test.hs}.
 Acabamos de definir la función \texttt{main} como la función \texttt{putStrLn}
 aplicada sobre la cadena \texttt{``Hello World!''}.
 
@@ -66,8 +68,8 @@ A diferencia de lo que haríamos en un lenguaje imperativo no le decimos que
 para ejecutar \texttt{main} haya que ejecutar una función \texttt{putStr},
 sino que \textbf{definimos} \texttt{main} como la función.
 
-Además del compilador, \textit{Haskell Platform} incluye \texttt{runhaskell}, un
-intérprete no interactivo que podríamos llamar con \texttt{runhaskell test.hs}
+Además del compilador, \textit{Haskell Platform} incluye \texttt{runghc}, un
+intérprete no interactivo que podríamos llamar con \texttt{runghc test.hs}
 para este ejemplo.
 
 \subsection{Ejemplos prácticos y más}

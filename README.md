@@ -13,9 +13,9 @@ También se incluyen [algunos ejercicios](https://github.com/libreim/haskell/blo
 
 ## Introducción a Haskell
 
-Los primeros apuntes que creamos están revisados y [disponibles en pdf](https://github.com/libreim/haskell/blob/master/apuntesHaskell.pdf). Son una introducción corta que describe desde cero el sistema de tipos, los constructores de tipos más habituales (listas y tuplas) y cómo definir y utilizar funciones y tipos.
+Los primeros apuntes que creamos están revisados y [disponibles en pdf](https://github.com/libreim/haskell/blob/master/apuntes/introHaskell.pdf). Son una introducción corta que describe desde cero el sistema de tipos, los constructores de tipos más habituales (listas y tuplas) y cómo definir y utilizar funciones y tipos.
 
-También está disponible [el código fuente](https://github.com/libreim/haskell/tree/master/apuntesHaskellsrc) en LaTeX.
+También está disponible [el código fuente](https://github.com/libreim/haskell/tree/master/apuntes) en LaTeX.
 
 ## Funtores y Mónadas
 
@@ -28,9 +28,7 @@ Ejemplos autocontenidos de funtores y uso de mónadas. Requieren los conocimient
 
 ## Haskell en la OSL
 
-Como parte de una reunión de [usuarios de Github en Granada](https://github.com/github-users-grx) dimos una charla en la [OSL](http://osl.ugr.es). Incluimos aquí [la presentación con notas](https://github.com/libreim/haskell/blob/master/CharlaOSL.pdf).
-
-Puedes acceder a otras versiones, a un índice describiendo el contenido y al código fuente en el [repositorio de la charla](https://github.com/github-users-grx/osl-talk-haskell).
+Como parte de una reunión de usuarios de Github en Granada dimos una charla en la [OSL](http://osl.ugr.es). Incluimos aquí [la presentación con notas](https://github.com/libreim/haskell/blob/master/CharlaOSL.pdf).
 
 ### Ejemplos en Haskell literario
 
