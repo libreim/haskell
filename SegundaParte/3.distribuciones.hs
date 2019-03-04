@@ -112,12 +112,12 @@ instance Show (State Seed Int) where
 showdist :: Distribution Int -> String
 showdist dist = unlines $ map counter [minimum samples..maximum samples]
   where samples = fst $ runState (replicateM 50000 dist) 1
-        counter n = show n ++ ":\t " ++ replicate ((count n samples) `div` (3000 `div` range)) '#'
+        counter n = show n <> ":\t " <> replicate ((count n samples) `div` (3000 `div` range)) '#'
         range = maximum samples - minimum samples + 1
 
 count :: Eq a => a -> [a] -> Int
 count x = length . filter (x==)
 
-  
+
 main :: IO ()
 main = return ()

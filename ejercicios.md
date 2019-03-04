@@ -66,7 +66,7 @@ funciones:
   - `concat :: [[a]] -> [a]`
   - `maximum :: [a] -> a`
   - `length :: Num t => [a] -> t`
-  - `++ :: [a] -> [a] -> [a]`
+  - `<> :: [a] -> [a] -> [a]`
   - `map :: (a -> b) -> [a] -> [b]`
   - `filter :: (a -> Bool) -> [a] -> [a]`
 

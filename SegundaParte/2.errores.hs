@@ -9,7 +9,7 @@ Y parar cuando estemos suficientemente cerca (más cerca que un ε dado).
 import Control.Monad
 import Text.Printf
 printd :: Double -> IO ()
-printd = putStrLn . printf "%.3f"
+printd = printf "%.3f"
 
 (//) :: Int -> Int -> Double
 (//) a b = (fromIntegral a) / (fromIntegral b)
@@ -18,7 +18,7 @@ printd = putStrLn . printf "%.3f"
 -- Implementamos el concepto de límite en una lista infinita buscando hasta
 -- encontrar dos términos que se diferencien en menos distancia que épsilon.
 --
--- >>> armonic = map (1 //) [1..] 
+-- >>> armonic = map (1 //) [1..]
 -- >>> printd $ limit 0.0000000001 armonic
 -- 0.000
 --
@@ -45,7 +45,7 @@ sqroot x = limit 0.003 (iterate (newtonaprox x) x)
 -- función que lo resuelva obteniendo sus dos raíces:
 data QPol = QPol Double Double Double
 instance Show QPol where
-  show (QPol a b c) = show a ++ "x² + " ++ show b ++ "x + " ++ show c
+  show (QPol a b c) = printf "%fx² + %fx + %f" a b c
 
 solve :: QPol -> (Double,Double)
 solve (QPol a b c) = (sol1,sol2)
@@ -56,7 +56,7 @@ solve (QPol a b c) = (sol1,sol2)
 -- Y podemos comprobar que funciona como esperamos:
 --
 -- >>> pol = QPol 1 (-5) 6
--- >>> putStrLn $ "Las soluciones de " ++ show pol ++ " son " ++ solve pol
+-- >>> putStrLn $ "Las soluciones de " <> show pol <> " son " <> solve pol
 -- Las soluciones de 1.0x² + -5.0x + 6.0 son (3.0,2.0)
 --
 -- ¡Excepto en los casos en los que el discriminante es no positivo!

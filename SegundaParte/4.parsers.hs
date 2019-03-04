@@ -37,7 +37,7 @@ showexp ex = ex
 -- Calcula la tabla de multiplicación del grupo,
 -- dados sus generadores y sus relaciones.
 multtable :: Group -> Table
-multtable (Group gens rels) = Table [[rewrite cs (a ++ b) | a <- nf] | b <- nf]
+multtable (Group gens rels) = Table [[rewrite cs (a <> b) | a <- nf] | b <- nf]
     where cs = knuthBendix rels
           nf = nfs (gens, cs)
 
@@ -123,7 +123,7 @@ b	ab	1	a
 ab	b	a	1
 
 Grupo diédrico de orden 3. D3
-< s,t | ss=1; ttt=1; ts=stt >       
+< s,t | ss=1; ttt=1; ts=stt >
 1	s	t	st	ts	tt
 s	1	ts	tt	t	st
 t	st	tt	ts	s	1

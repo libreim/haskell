@@ -40,7 +40,7 @@ colocar el nodo y reordenar los órdenes de los subárboles.
 \begin{code}
 preorder :: Tree a -> [a]
 preorder Empty = []
-preorder (Node x lft rgt) = preorder lft ++ [x] ++ preorder rgt
+preorder (Node x lft rgt) = preorder lft <> [x] <> preorder rgt
 \end{code}
 
 
@@ -87,7 +87,7 @@ treesort = preorder . foldl insert Empty
 Completando los árboles
 ------------------
 
-Vamos hacer a los árboles instancias de la clase `Eq`. 
+Vamos hacer a los árboles instancias de la clase `Eq`.
 Podemos delegar la tarea en el compilador incluyendo `deriving Eq` en la
 definición, pero vamos a escribirlo nosotros mismos.
 
@@ -95,7 +95,7 @@ definición, pero vamos a escribirlo nosotros mismos.
 instance (Eq a) => Eq (Tree a) where
     Empty          == Empty          = True
     (Node x xl xr) == Empty          = False
-    (Node x xl xr) == (Node y yl yr) = and [x==y, xl==yl, xr==yr] 
+    (Node x xl xr) == (Node y yl yr) = and [x==y, xl==yl, xr==yr]
 \end{code}
 
 Inmediatamente podemos usar `(/=)` en árboles.

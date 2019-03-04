@@ -3,7 +3,7 @@
 l1 :: [Int]
 l1 = [1,2,3]
 
-l2 = l1 ++ [4,5] -- Concatenar
+l2 = l1 <> [4,5] -- Concatenar
 
 l3 = 0 : l2 -- Anteponer un elemento
 -- l3 == 0:(1:(2:(3:(4:(5:[])))))
@@ -37,7 +37,7 @@ repeat' a = a : repeat' a
 
 {- Funciones de orden superior -}
 
--- map f [a1, a2, ..., an] = 
+-- map f [a1, a2, ..., an] =
 -- [f a1, f a2, ..., f an]
 map' :: (a -> b) -> [a] -> [b]
 map' f []     = []
@@ -47,11 +47,11 @@ suma1 :: [Int] -> [Int]
 suma1 = map (+1)
 
 exclama :: [String] -> [String]
-exclama = map (++"!")
+exclama = map (<>"!")
 
 
 
--- foldr (⊕) z [a1,...,an] = 
+-- foldr (⊕) z [a1,...,an] =
 -- a1 ⊕ (a2 ⊕ (... ⊕ (an ⊕ z)))
 foldr' :: (a -> b -> b) -> b -> [a] -> b
 foldr' f z []     = z
@@ -61,7 +61,7 @@ sum' :: [Int] -> Int
 sum' = foldr (+) 0
 
 concat' :: [[a]] -> [a]
-concat' = foldr (++) []
+concat' = foldr (<>) []
 
 
 
@@ -69,7 +69,7 @@ concat' = foldr (++) []
 {- Definición de tipos -}
 
 -- data Bool = False | True
--- data Int = 
+-- data Int =
 -- -9223372036854775808|...|-1|0|1|...|9223372036854775807
 
 
@@ -96,7 +96,7 @@ mismaEdad (P _ e1) (P _ e2) = e1 == e2
 
 
 -- Varios constructores de datos
-data Color = RGB Double Double Double 
+data Color = RGB Double Double Double
           |  HSV Double Double Double
 
 -- Tipos recursivos
@@ -124,5 +124,3 @@ data Tree a = Empty | Node a (Tree a) (Tree a)
 refl :: Tree a -> Tree a
 refl Empty = Empty
 refl (Node a t1 t2) = Node a (refl t2) (refl t1)
-
-

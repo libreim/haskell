@@ -22,8 +22,8 @@ listas.
 
 \begin{code}
 qsort (x:xs) = qsort [y | y<-xs, y<=x]
-            ++ [x]
-            ++ qsort [y | y<-xs, y>x]
+            <> [x]
+            <> qsort [y | y<-xs, y>x]
 \end{code}
 
 
@@ -32,7 +32,7 @@ Ejemplo
 Este programa ordena una lista de números:
 \begin{code}
 main :: IO ()
-main = do putStrLn "Introduzca números a ordenar: "
+main = do putStrLn "Introduzca números a ordenar separados por espacios: "
           contents <- getLine
           let numbers = map read $ words contents :: [Integer]
           print $ qsort numbers
