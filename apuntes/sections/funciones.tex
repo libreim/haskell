@@ -46,7 +46,7 @@ mult 1 x = x
 mult n x = x + (mult (n-1) x)
 
 replica 1 s = s
-replica n s = s ++ (replica (n-1) s)
+replica n s = s <> (replica (n-1) s)
 \end{lstlisting}
 
 Tienen un patrón común: Aplican una misma función binaria un cierto número de
@@ -59,7 +59,7 @@ repite f n x = f x (repite f (n-1) x)
 \end{lstlisting}
 
 De esta forma:
-\texttt{mult = repite (+)} y \texttt{replica = repite (++)}.
+\texttt{mult = repite (+)} y \texttt{replica = repite (<>)}.
 Esto nos deja unas funciones mucho más limpias y más fáciles de mantener.
 
 \begin{extra}{Funciones lambda}
@@ -102,7 +102,7 @@ map f (x:xs) = f x : map f xs
 
 Algunos ejemplos de uso:
 \begin{lstlisting}
-map (++"!") ["Sugar", "Spice", "Everything nice"]
+map (<>"!") ["Sugar", "Spice", "Everything nice"]
 map (map (*3)) [[1,2],[5,2,7],[]]
 \end{lstlisting}
 
@@ -148,7 +148,7 @@ o el producto de los elementos de una lista podemos hacerlo con \texttt{foldr}:
 \begin{lstlisting}
 sum      =  foldr (+) 0
 product  =  foldr (*) 1
-concat   =  foldr (++) []
+concat   =  foldr (<>) []
 \end{lstlisting}
 
 Con \texttt{foldr} podemos definir \texttt{map}, \texttt{filter} y la mayoría de

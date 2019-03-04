@@ -58,10 +58,10 @@ definir listas fácilmente. Prueba estos ejemplos:
 Su implementación se basa en la clase de tipos \texttt{Enum}.
 \end{extra}
 
-Algunas funciones relevantes sobre listas (y otras estructuras \footnote{\texttt{null}, \texttt{elem} y \texttt{length} funcionan sobre otro tipo de estructuras de datos como conjuntos, árboles o vectores en versiones recientes de GHC.}) son:
+Algunas funciones relevantes sobre listas (y otras estructuras \footnote{\texttt{null}, \texttt{elem} y \texttt{length} funcionan sobre otro tipo de estructuras de datos como conjuntos, árboles o vectores en versiones recientes de GHC. \texttt{<>} funciona sobre cualquier semigrupo.}) son:
 
 \begin{itemize}
-  \item \texttt{++ :: [a] -> [a] -> [a]}: concatena dos listas.
+  \item \texttt{<> :: [a] -> [a] -> [a]}: concatena dos listas.
   \item \texttt{head :: [a] -> a}: devuelve la cabeza (primer elemento).
   \item \texttt{tail :: [a] -> [a]}: devuelve la cola.
   \item \texttt{null :: [a] -> Bool}: indica si una lista está vacía.

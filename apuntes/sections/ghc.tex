@@ -10,8 +10,8 @@ repositorios de la mayoría de distribuciones GNU/Linux
 (\texttt{haskell-platform}).
 \end{otro}
 
-\texttt{ghc} es el compilador más utilizado para Haskell. Contiene gran cantidad
-de extensiones y es actualmente el compilador más utilizado para este lenguaje.
+\texttt{ghc} es el compilador más utilizado para Haskell. Contiene además gran cantidad
+de extensiones no estándar del lenguaje.
 
 \texttt{ghci} es el intérprete interactivo asociado a \texttt{ghc}.
 Para simplificar el proceso de E/S en esta introducción usaremos el intérprete
@@ -75,7 +75,7 @@ intérprete, devolviendo el resultado esperado:
 \begin{lstlisting}
 5 + 6 * 4
 (+) 5 6
-"Hello " ++ "World!"
+"Hello " <> "World!"
 True && False
 not True
 "Hello" == "Hello"
@@ -126,11 +126,11 @@ que en el segundo la llamamos con uno sólo (\texttt{g 2}).
 
 Haskell incluye una sentencia condicional \texttt{if}.
 \textbf{Siempre} tiene que tener una sentencia \texttt{else}.
-Otras estructuras como los bucles no tienen un equivalente directo \footnote{Como aproximación a los bucles tipo ``while'' y ``for'' puedes consultar las funciones \texttt{until} de la biblioteca estándar y \texttt{for\_ } del módulo \texttt{Data.Foldable} respectivamente.} en Haskell.
+Otras estructuras como los bucles no tienen un equivalente directo \footnote{Como aproximación a los bucles tipo «while» y «for» puedes consultar las funciones \texttt{until} de la biblioteca estándar y \texttt{for\_ } del módulo \texttt{Data.Foldable} respectivamente.} en Haskell.
 
 \begin{lstlisting}
 if 3 > 2 then 4 else 3
-(if False then "Hello" else "Goodbye") ++ " World!"
+(if False then "Hello" else "Goodbye") <> " World!"
 \end{lstlisting}
 
 \newpage

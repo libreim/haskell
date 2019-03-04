@@ -76,11 +76,11 @@ head (x:xs) = x
 second (x:y:xs) = y
 \end{lstlisting}
 
-Otro ejemplo es \texttt{(++)}:
+Otro ejemplo es \texttt{(<>)}\footnote{En realidad, esta definición debería estar dentro de una instancia de \texttt{Semigroup}}:
 \begin{lstlisting}
-(++) :: [a] -> [a] -> [a]
-[]     ++ ys = ys
-(x:xs) ++ ys = x : (xs ++ ys)
+(<>) :: [a] -> [a] -> [a]
+[]     <> ys = ys
+(x:xs) <> ys = x : (xs <> ys)
 \end{lstlisting}
 
 Podemos utilizar el reconocimiento de patrones sobre cualquier tipo que soporte
