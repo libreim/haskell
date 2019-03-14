@@ -4,7 +4,7 @@ Repositorio de recursos de libreim sobre Haskell.
 
 ## Cuaderno en IHaskell
 
-[Introducción a Haskell interactiva](https://github.com/libreim/haskell/blob/master/PrimeraParte/PrimeraParte.ipynb) que describe desde cero el sistema de tipos, cómo definir y utilizar funciones, tipos y constructores de tipos y funtores. El código original utilizado en la charla está disponible [aquí](https://github.com/libreim/haskell/tree/master/PrimeraParte).
+[Introducción a Haskell interactiva](https://github.com/libreim/haskell/blob/master/PrimeraParte/PrimeraParte.ipynb) que describe desde cero el sistema de tipos, cómo definir y utilizar funciones, tipos y constructores de tipos y funtores. Una versión actualizada del código original utilizado en la charla está disponible [aquí](https://github.com/libreim/haskell/tree/master/PrimeraParte).
 
 Contiene ejercicios sobre los temas introducidos que pueden realizarse en el mismo cuaderno si **se ejecuta con [IHaskell](https://github.com/gibiansky/IHaskell)**.
 

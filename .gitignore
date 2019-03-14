@@ -1,3 +1,4 @@
+PrimeraParte/wcount/examples/*
 ## Literate haskell auxiliary files:
 *.hi
 *.o
